@@ -14,11 +14,13 @@
     =========================== */
     :root {
       --purple:  #4e2e84;
+      --purple-light: #f3eeff;
       --orange:  #ed9724;
       --dark:    #17171d;
-      --dark2:   #1d1e1c;
-      --cream:   #fcf3dc;
       --white:   #ffffff;
+      --text:    #1a1033;
+      --text-muted: rgba(26,16,51,0.55);
+      --border:  rgba(78,46,132,0.12);
       --red:     #de4623;
       --sans: 'Raleway', -apple-system, BlinkMacSystemFont, sans-serif;
     }
@@ -29,8 +31,8 @@
 
     body {
       font-family: var(--sans);
-      background: var(--dark);
-      color: var(--cream);
+      background: var(--white);
+      color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -105,12 +107,12 @@
 
     .btn-outline {
       background: transparent;
-      color: var(--cream);
-      border-color: rgba(252,243,220,0.45);
+      color: var(--white);
+      border-color: rgba(255,255,255,0.55);
     }
     .btn-outline:hover {
-      background: rgba(252,243,220,0.10);
-      border-color: var(--cream);
+      background: rgba(255,255,255,0.15);
+      border-color: var(--white);
     }
 
     .btn-purple {
@@ -147,7 +149,7 @@
     .loader__title {
       font-size: clamp(32px, 8vw, 56px);
       font-weight: 900;
-      color: var(--cream);
+      color: var(--white);
       line-height: 1;
       animation: loaderIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
     }
@@ -184,8 +186,8 @@
       transition: background 0.38s ease, box-shadow 0.3s;
     }
     .nav.scrolled {
-      background: var(--dark);
-      box-shadow: 0 2px 32px rgba(0,0,0,0.4);
+      background: var(--white);
+      box-shadow: 0 2px 24px rgba(78,46,132,0.10);
     }
     .nav__inner {
       max-width: 1280px;
@@ -214,8 +216,11 @@
       font-weight: 900;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: var(--cream);
+      color: var(--white);
+      transition: color 0.38s;
     }
+    .nav.scrolled .nav__brand-name { color: var(--purple); }
+    .nav.scrolled .nav__brand-top  { color: var(--orange); }
     .nav__links {
       display: flex;
       align-items: center;
@@ -226,9 +231,10 @@
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(252,243,220,0.75);
+      color: rgba(255,255,255,0.80);
       transition: color 0.2s;
     }
+    .nav.scrolled .nav__links a { color: var(--text-muted); }
     .nav__links a:hover { color: var(--orange); }
     .nav__actions { display: flex; align-items: center; gap: 12px; }
     .nav__cta {
@@ -347,10 +353,11 @@
       display: block;
       width: 100%;
       height: 2px;
-      background: var(--cream);
-      transition: transform 0.3s, opacity 0.3s;
+      background: var(--white);
+      transition: transform 0.3s, opacity 0.3s, background 0.38s;
       transform-origin: center;
     }
+    .nav.scrolled .hamburger span { background: var(--purple); }
 
     /* Mobile menu */
     .mobile-menu {
@@ -457,28 +464,20 @@
       align-items: center;
       overflow: hidden;
     }
+    .hero__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
     .hero__bg {
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(to right, rgba(23,23,29,0.96) 35%, rgba(23,23,29,0.60) 65%, rgba(23,23,29,0.20) 100%);
+      background: linear-gradient(to right, rgba(23,23,29,0.88) 30%, rgba(23,23,29,0.55) 65%, rgba(23,23,29,0.25) 100%);
       z-index: 1;
-    }
-    .hero__bg-img {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #2a1550 0%, #17171d 50%, #1a0d08 100%);
-      /* Replace with actual food image: background-image: url('Brand_guidlines/hero.jpg'); */
-      background-size: cover;
-      background-position: center;
-    }
-    /* Subtle pattern overlay */
-    .hero__pattern {
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(237,151,36,0.06) 1px, transparent 1px);
-      background-size: 32px 32px;
-      z-index: 0;
     }
     .hero__content {
       position: relative;
@@ -621,7 +620,7 @@
        OM OSS
     =========================== */
     .about {
-      background: var(--dark);
+      background: var(--white);
       padding: 120px 0;
     }
     .about__inner {
@@ -652,21 +651,21 @@
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(252,243,220,0.6);
+      color: rgba(255,255,255,0.7);
     }
     .about__heading {
       font-size: clamp(32px, 4vw, 52px);
       font-weight: 900;
       line-height: 1.05;
-      color: var(--cream);
+      color: var(--text);
       margin-bottom: 24px;
     }
-    .about__heading span { color: var(--orange); }
+    .about__heading span { color: var(--purple); }
     .about__text {
       font-size: 16px;
       font-weight: 400;
       line-height: 1.8;
-      color: rgba(252,243,220,0.65);
+      color: var(--text-muted);
       margin-bottom: 20px;
     }
     .about__visual {
@@ -714,7 +713,7 @@
     .about__stat-num {
       font-size: 32px;
       font-weight: 900;
-      color: var(--cream);
+      color: var(--text);
       line-height: 1;
     }
     .about__stat-label {
@@ -722,7 +721,7 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(252,243,220,0.45);
+      color: var(--text-muted);
       margin-top: 4px;
     }
 
@@ -730,7 +729,7 @@
        MENY PREVIEW
     =========================== */
     .menu {
-      background: var(--purple);
+      background: var(--purple-light);
       padding: 120px 0;
     }
     .menu__inner {
@@ -749,24 +748,26 @@
       font-size: clamp(36px, 5vw, 64px);
       font-weight: 900;
       line-height: 1;
-      color: var(--cream);
+      color: var(--text);
     }
-    .menu__heading span { color: var(--orange); }
+    .menu__heading span { color: var(--purple); }
     .menu__grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      gap: 16px;
     }
     .menu-card {
-      background: rgba(255,255,255,0.05);
+      background: var(--white);
       padding: 36px 32px;
-      border: 1px solid rgba(255,255,255,0.07);
-      transition: background 0.25s, border-color 0.25s;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 16px rgba(78,46,132,0.06);
+      transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
       cursor: default;
     }
     .menu-card:hover {
-      background: rgba(237,151,36,0.10);
-      border-color: rgba(237,151,36,0.30);
+      box-shadow: 0 8px 32px rgba(78,46,132,0.12);
+      border-color: rgba(237,151,36,0.4);
+      transform: translateY(-3px);
     }
     .menu-card__cat {
       font-size: 10px;
@@ -779,26 +780,26 @@
     .menu-card__name {
       font-size: 22px;
       font-weight: 800;
-      color: var(--cream);
+      color: var(--text);
       margin-bottom: 10px;
       line-height: 1.2;
     }
     .menu-card__desc {
       font-size: 14px;
       font-weight: 400;
-      color: rgba(252,243,220,0.55);
+      color: var(--text-muted);
       line-height: 1.65;
       margin-bottom: 20px;
     }
     .menu-card__price {
       font-size: 22px;
       font-weight: 900;
-      color: var(--orange);
+      color: var(--purple);
     }
     .menu-card__price span {
       font-size: 12px;
       font-weight: 600;
-      color: rgba(252,243,220,0.4);
+      color: var(--text-muted);
     }
 
     /* Lunch banner */
@@ -829,7 +830,7 @@
        RESTAURANGER
     =========================== */
     .locations {
-      background: var(--dark2);
+      background: var(--white);
       padding: 120px 0;
     }
     .locations__inner {
@@ -848,23 +849,24 @@
       font-size: clamp(36px, 5vw, 64px);
       font-weight: 900;
       line-height: 1;
-      color: var(--cream);
+      color: var(--text);
     }
-    .locations__heading span { color: var(--orange); }
+    .locations__heading span { color: var(--purple); }
     .locations__grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
     .loc-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
+      background: var(--white);
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 16px rgba(78,46,132,0.06);
       padding: 32px 28px;
-      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+      transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
     }
     .loc-card:hover {
-      background: rgba(78,46,132,0.35);
-      border-color: rgba(78,46,132,0.6);
+      box-shadow: 0 8px 32px rgba(78,46,132,0.14);
+      border-color: var(--purple);
       transform: translateY(-4px);
     }
     .loc-card__number {
@@ -877,13 +879,13 @@
     .loc-card__name {
       font-size: 22px;
       font-weight: 900;
-      color: var(--cream);
+      color: var(--text);
       margin-bottom: 8px;
     }
     .loc-card__address {
       font-size: 13px;
       font-weight: 500;
-      color: rgba(252,243,220,0.55);
+      color: var(--text-muted);
       line-height: 1.5;
       margin-bottom: 20px;
     }
@@ -891,14 +893,19 @@
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.05em;
-      color: rgba(252,243,220,0.40);
-      border-top: 1px solid rgba(255,255,255,0.07);
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
       padding-top: 16px;
     }
     .loc-card__hours strong {
-      color: var(--orange);
+      color: var(--purple);
       font-weight: 700;
     }
+    .loc-card--coming {
+      border-color: var(--orange);
+      background: #fffbf2;
+    }
+    .loc-card--coming .loc-card__name { color: var(--purple); }
 
     /* ===========================
        KONTAKT
@@ -1009,8 +1016,8 @@
        FOOTER
     =========================== */
     .footer {
-      background: var(--dark);
-      border-top: 1px solid rgba(255,255,255,0.06);
+      background: var(--purple);
+      border-top: none;
       padding: 80px 0 40px;
     }
     .footer__inner {
@@ -1044,7 +1051,7 @@
       font-size: 14px;
       font-weight: 400;
       line-height: 1.7;
-      color: rgba(252,243,220,0.45);
+      color: rgba(255,255,255,0.55);
       max-width: 280px;
       margin-bottom: 24px;
     }
@@ -1072,7 +1079,7 @@
     .footer__col-links a {
       font-size: 13px;
       font-weight: 500;
-      color: rgba(252,243,220,0.45);
+      color: rgba(255,255,255,0.50);
       transition: color 0.2s;
     }
     .footer__col-links a:hover { color: var(--orange); }
@@ -1081,19 +1088,19 @@
       align-items: center;
       justify-content: space-between;
       padding-top: 32px;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255,255,255,0.12);
       gap: 16px;
     }
     .footer__copy {
       font-size: 12px;
       font-weight: 500;
-      color: rgba(252,243,220,0.28);
+      color: rgba(255,255,255,0.35);
     }
     .footer__bottom-links { display: flex; gap: 24px; }
     .footer__bottom-links a {
       font-size: 12px;
       font-weight: 500;
-      color: rgba(252,243,220,0.28);
+      color: rgba(255,255,255,0.35);
       transition: color 0.2s;
     }
     .footer__bottom-links a:hover { color: var(--orange); }
@@ -1272,8 +1279,9 @@
        HERO
   ============================================================ -->
   <section class="hero" id="hem">
-    <div class="hero__bg-img"></div>
-    <div class="hero__pattern"></div>
+    <video class="hero__video" autoplay muted loop playsinline>
+      <source src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b0225d7fc07c77fc534312.mp4" type="video/mp4">
+    </video>
     <div class="hero__bg"></div>
 
     <div class="hero__content">
@@ -1476,70 +1484,52 @@
       <div class="locations__scroll-wrap" id="loc-scroll">
       <div class="locations__grid">
         <div class="loc-card reveal">
-          <div class="loc-card__number">01 · Stockholm</div>
+          <div class="loc-card__number">01 · Södermalm</div>
           <div class="loc-card__name">Hornsgatan</div>
-          <div class="loc-card__address">Hornsgatan – Stockholm<br>Adress uppdateras</div>
-          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+          <div class="loc-card__address">Hornsgatan, Stockholm<br>Takeaway &amp; Leverans</div>
+          <div class="loc-card__hours"><strong>Tel:</strong> 08 25 56 60</div>
         </div>
         <div class="loc-card reveal">
-          <div class="loc-card__number">02 · Stockholm</div>
+          <div class="loc-card__number">02 · Södermalm</div>
           <div class="loc-card__name">Folkungagatan</div>
-          <div class="loc-card__address">Folkungagatan – Stockholm<br>Adress uppdateras</div>
-          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+          <div class="loc-card__address">Folkungagatan, Stockholm<br>Takeaway &amp; Leverans</div>
+          <div class="loc-card__hours"><strong>Tel:</strong> 08 25 56 60</div>
         </div>
         <div class="loc-card reveal">
-          <div class="loc-card__number">03 · Stockholm</div>
+          <div class="loc-card__number">03 · Vasastan</div>
           <div class="loc-card__name">Birkagatan</div>
-          <div class="loc-card__address">Birkagatan – Stockholm<br>Adress uppdateras</div>
-          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+          <div class="loc-card__address">Birkagatan, Stockholm<br>Takeaway &amp; Leverans</div>
+          <div class="loc-card__hours"><strong>Tel:</strong> 08 25 56 60</div>
         </div>
         <div class="loc-card reveal">
-          <div class="loc-card__number">04 · Stockholm</div>
+          <div class="loc-card__number">04 · Kungsholmen</div>
           <div class="loc-card__name">Hantverkargatan</div>
-          <div class="loc-card__address">Hantverkargatan – Stockholm<br>Adress uppdateras</div>
-          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+          <div class="loc-card__address">Hantverkargatan, Stockholm<br>Takeaway &amp; Leverans</div>
+          <div class="loc-card__hours"><strong>Tel:</strong> 08 25 56 60</div>
         </div>
         <div class="loc-card reveal">
-          <div class="loc-card__number">05 · Stockholm</div>
+          <div class="loc-card__number">05 · Östermalm</div>
           <div class="loc-card__name">Nybrogatan</div>
-          <div class="loc-card__address">Nybrogatan – Stockholm<br>Adress uppdateras</div>
-          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+          <div class="loc-card__address">Nybrogatan, Stockholm<br>Takeaway &amp; Leverans</div>
+          <div class="loc-card__hours"><strong>Tel:</strong> 08 25 56 60</div>
         </div>
         <div class="loc-card reveal">
-          <div class="loc-card__number">06 · Stockholm</div>
+          <div class="loc-card__number">06 · Kungsholmen</div>
           <div class="loc-card__name">Lindhagen</div>
-          <div class="loc-card__address">Lindhagen – Stockholm<br>Adress uppdateras</div>
-          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+          <div class="loc-card__address">Lindhagen, Stockholm<br>Äta på plats</div>
+          <div class="loc-card__hours"><strong>Tel:</strong> 08 25 56 60</div>
         </div>
         <div class="loc-card reveal">
-          <div class="loc-card__number">07 · Stockholm</div>
-          <div class="loc-card__name">Tuletorget</div>
-          <div class="loc-card__address">Tuletorget – Stockholm<br>Adress uppdateras</div>
-          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
-        </div>
-        <div class="loc-card reveal">
-          <div class="loc-card__number">08 · Stockholm</div>
-          <div class="loc-card__name">Sockenplan</div>
-          <div class="loc-card__address">Sockenplan – Stockholm<br>Adress uppdateras</div>
-          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
-        </div>
-        <div class="loc-card reveal">
-          <div class="loc-card__number">09 · Sollentuna</div>
+          <div class="loc-card__number">07 · Sollentuna</div>
           <div class="loc-card__name">Sollentuna</div>
-          <div class="loc-card__address">Sollentuna<br>Adress uppdateras</div>
-          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+          <div class="loc-card__address">Sollentuna<br>Takeaway &amp; Leverans</div>
+          <div class="loc-card__hours"><strong>Tel:</strong> 08 25 56 60</div>
         </div>
-        <div class="loc-card reveal">
-          <div class="loc-card__number">10 · Tyresö</div>
-          <div class="loc-card__name">Tyresö</div>
-          <div class="loc-card__address">Tyresö<br>Adress uppdateras</div>
-          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
-        </div>
-        <div class="loc-card reveal">
-          <div class="loc-card__number">11 · Stockholm</div>
-          <div class="loc-card__name">Olivecronas väg</div>
-          <div class="loc-card__address">Olivecronas väg – Stockholm<br>Adress uppdateras</div>
-          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+        <div class="loc-card loc-card--coming reveal">
+          <div class="loc-card__number">08 · Öppnar 13 mars</div>
+          <div class="loc-card__name">Hammarby Sjöstad</div>
+          <div class="loc-card__address">Hammarby Sjöstad, Stockholm<br>Ny restaurang!</div>
+          <div class="loc-card__hours"><strong>Öppnar:</strong> 13 mars 2026</div>
         </div>
       </div>
       </div><!-- /locations__scroll-wrap -->
