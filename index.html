@@ -247,6 +247,89 @@
     /* Location carousel arrows – desktop: hidden */
     .locations__arrows { display: none; }
 
+    /* ===========================
+       POPUP
+    =========================== */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    .popup-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .popup {
+      background: var(--dark2);
+      border: 1px solid rgba(237,151,36,0.3);
+      max-width: 460px;
+      width: 100%;
+      padding: 48px 40px 40px;
+      position: relative;
+      transform: translateY(24px);
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .popup-overlay.show .popup { transform: translateY(0); }
+    .popup__close {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(252,243,220,0.4);
+      padding: 4px;
+      transition: color 0.2s;
+    }
+    .popup__close:hover { color: var(--cream); }
+    .popup__close svg { width: 20px; height: 20px; }
+    .popup__tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .popup__date {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .popup__month {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .popup__heading {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .popup__heading span { color: var(--orange); }
+    .popup__text {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.75;
+      color: rgba(252,243,220,0.60);
+      margin-bottom: 28px;
+    }
+    .popup .btn { width: 100%; justify-content: center; }
+
     /* Hamburger */
     .hamburger {
       display: none;
@@ -1099,6 +1182,26 @@
 </head>
 <body>
 
+  <!-- Popup – Ny enhet Hammarby Sjöstad -->
+  <div class="popup-overlay" id="popup-overlay" role="dialog" aria-modal="true" aria-label="Ny restaurang öppnar">
+    <div class="popup">
+      <button class="popup__close" id="popup-close" aria-label="Stäng">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="4" x2="20" y2="20"/>
+          <line x1="20" y1="4" x2="4" y2="20"/>
+        </svg>
+      </button>
+      <div class="popup__tag">Nyhet · Ny restaurang</div>
+      <div class="popup__date">13</div>
+      <div class="popup__month">Mars 2026</div>
+      <h2 class="popup__heading">Vi öppnar i<br><span>Hammarby Sjöstad!</span></h2>
+      <p class="popup__text">
+        Vi är glada att kunna meddela att Thai House Wok öppnar en ny restaurang i Hammarby Sjöstad den 13 mars. Välkommen att besöka oss!
+      </p>
+      <a href="#restauranger" class="btn btn-orange" id="popup-cta">Läs mer</a>
+    </div>
+  </div>
+
   <!-- Laddningsskärm -->
   <div id="loader" aria-hidden="true">
     <div>
@@ -1590,6 +1693,22 @@
        JAVASCRIPT
   ============================================================ -->
   <script>
+    // --- Popup ---
+    const popupOverlay = document.getElementById('popup-overlay');
+    const popupClose   = document.getElementById('popup-close');
+    const popupCta     = document.getElementById('popup-cta');
+
+    setTimeout(() => popupOverlay.classList.add('show'), 2000);
+
+    function closePopup() {
+      popupOverlay.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+    popupClose.addEventListener('click', closePopup);
+    popupCta.addEventListener('click', closePopup);
+    popupOverlay.addEventListener('click', e => { if (e.target === popupOverlay) closePopup(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
     // --- Laddningsskärm ---
     const loader = document.getElementById('loader');
     window.addEventListener('load', () => {
