@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thai House Wok – Äkta thaimat sedan 1998</title>
+  <link rel="icon" href="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" type="image/svg+xml">
   <meta name="description" content="Thai House Wok – Stockholms bästa thairestaurang med äkta smaker, färska råvaror och 10 restauranger runt om i Stockholm.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -204,18 +205,13 @@
       flex-direction: column;
       line-height: 1;
     }
-    /* Logo swap: white on transparent nav, colored on scrolled */
     .nav__logo {
       height: 36px;
       width: auto;
       display: block;
-      transition: opacity 0.38s ease;
+      filter: brightness(0) invert(1);
     }
-    .nav__logo--white { opacity: 1; }
-    .nav__logo--color { position: absolute; top: 0; left: 0; opacity: 0; pointer-events: none; }
-    .nav__brand { position: relative; display: inline-block; line-height: 0; }
-    .nav.scrolled .nav__logo--white { opacity: 0; }
-    .nav.scrolled .nav__logo--color { opacity: 1; }
+    .nav__brand { display: inline-block; line-height: 0; }
     .nav__links {
       display: flex;
       align-items: center;
@@ -1111,7 +1107,7 @@
 
     @media (max-width: 768px) {
       .nav__inner { padding: 0 16px; gap: 12px; }
-      .nav__brand-name { font-size: 16px; }
+      .nav__logo { height: 48px; }
       .nav__links { display: none; }
       .nav__cta { font-size: 10px; padding: 9px 14px; }
       .hamburger { display: flex; }
@@ -1221,8 +1217,7 @@
   <nav class="nav" id="nav">
     <div class="nav__inner">
       <a href="#hem" class="nav__brand" aria-label="Thai House Wok startsida">
-        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="Thai House Wok" class="nav__logo nav__logo--white">
-        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="" aria-hidden="true" class="nav__logo nav__logo--color" style="filter: brightness(0) saturate(100%) invert(14%) sepia(68%) saturate(1200%) hue-rotate(245deg) brightness(70%);">
+        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="Thai House Wok" class="nav__logo">
       </a>
       <ul class="nav__links">
         <li><a href="#om-oss">Om oss</a></li>
