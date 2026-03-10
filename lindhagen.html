@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lindhagen – Thai House Wok</title>
+  <meta name="description" content="Thai House Wok i Lindhagen på Kungsholmen. Äkta thaimat, äta på plats.">
+  <link rel="icon" href="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple:       #4e2e84;
+      --purple-light: #f3eeff;
+      --orange:       #ed9724;
+      --white:        #ffffff;
+      --text:         #1a1033;
+      --text-muted:   rgba(26,16,51,0.55);
+      --border:       rgba(78,46,132,0.12);
+      --sans: 'Raleway', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--white); color: var(--text); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--white);
+      box-shadow: 0 2px 24px rgba(78,46,132,0.10);
+      height: 72px;
+    }
+    .nav__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav__logo { height: 56px; width: auto; display: block; }
+    .nav__back {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--purple);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .nav__back:hover { color: var(--orange); gap: 12px; }
+    .nav__back svg { width: 16px; height: 16px; }
+
+    /* HERO */
+    .restaurant-hero {
+      padding: 144px 0 72px;
+      background: var(--purple-light);
+    }
+    .restaurant-hero__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .restaurant-hero__label {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--orange);
+      padding: 5px 12px;
+      margin-bottom: 24px;
+    }
+    .restaurant-hero__title {
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--text);
+      margin-bottom: 36px;
+    }
+    .restaurant-hero__title span { color: var(--orange); }
+    .restaurant-hero__info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+    .restaurant-hero__info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .restaurant-hero__info-item svg {
+      width: 18px;
+      height: 18px;
+      color: var(--purple);
+      flex-shrink: 0;
+    }
+
+    /* INFO GRID */
+    .info-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 80px 48px;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* MAP PLACEHOLDER */
+    .map-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--purple) 0%, #7b4fbf 60%, #9b6fd4 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .map-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 60% 40%, rgba(237,151,36,0.15) 0%, transparent 60%);
+    }
+    .map-placeholder svg { width: 48px; height: 48px; opacity: 0.35; position: relative; }
+    .map-address {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .map-address svg { width: 16px; height: 16px; margin-top: 2px; color: var(--purple); flex-shrink: 0; }
+
+    /* DETAILS CARD */
+    .details-card {
+      background: var(--purple-light);
+      padding: 40px;
+    }
+    .details-card__row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .details-card__row:first-child { padding-top: 0; }
+    .details-card__row:last-of-type { border-bottom: none; }
+    .details-card__label {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .details-card__value {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .btn-order {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--orange);
+      padding: 16px 32px;
+      border: 2px solid var(--orange);
+      margin-top: 28px;
+      transition: background 0.22s, color 0.22s, border-color 0.22s;
+    }
+    .btn-order:hover { background: var(--purple); border-color: var(--purple); }
+
+    /* ABOUT SECTION */
+    .about-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+    .about-section__label {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .about-section__title {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 32px;
+      line-height: 1.15;
+    }
+    .about-section__title span { color: var(--orange); }
+    .about-section p {
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 24px;
+      max-width: 740px;
+    }
+
+    /* BACK BUTTON */
+    .page-back {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--purple);
+      padding: 14px 28px;
+      border: 2px solid var(--purple);
+      transition: background 0.22s, color 0.22s;
+    }
+    .btn-back:hover { background: var(--orange); border-color: var(--orange); }
+    .btn-back svg { width: 16px; height: 16px; }
+
+    /* FOOTER */
+    .footer {
+      background: var(--purple);
+      padding: 40px 0;
+      text-align: center;
+    }
+    .footer__logo { height: 60px; width: auto; margin: 0 auto 16px; }
+    .footer__copy { font-size: 12px; color: rgba(255,255,255,0.35); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav__inner { padding: 0 20px; }
+      .nav__logo { height: 40px; }
+      .restaurant-hero { padding: 120px 0 48px; }
+      .restaurant-hero__inner { padding: 0 20px; }
+      .restaurant-hero__info { gap: 16px; }
+      .info-section { padding: 48px 20px; }
+      .info-grid { grid-template-columns: 1fr; gap: 32px; }
+      .details-card { padding: 28px 24px; }
+      .about-section { padding: 0 20px 60px; }
+      .page-back { padding: 0 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html">
+        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="Thai House Wok" class="nav__logo">
+      </a>
+      <a href="index.html#restauranger" class="nav__back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Alla restauranger
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="restaurant-hero">
+    <div class="restaurant-hero__inner">
+      <span class="restaurant-hero__label">Restaurang · 06 · Kungsholmen</span>
+      <h1 class="restaurant-hero__title"><span>Lindhagen</span></h1>
+      <div class="restaurant-hero__info">
+        <div class="restaurant-hero__info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Mån–Fre 11–21, Lör–Sön 12–21
+        </div>
+        <div class="restaurant-hero__info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.21 9.11 19.79 19.79 0 01.15 .5 2 2 0 012.11 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          08 25 56 60
+        </div>
+        <div class="restaurant-hero__info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+          Äta på plats
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- INFO GRID -->
+  <section class="info-section">
+    <div class="info-grid">
+      <!-- Map -->
+      <div>
+        <div class="map-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <p class="map-address">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Lindhagen, Stockholm
+        </p>
+      </div>
+
+      <!-- Details -->
+      <div class="details-card">
+        <div class="details-card__row">
+          <span class="details-card__label">Öppettider</span>
+          <span class="details-card__value">
+            Måndag–Fredag: 11:00–21:00<br>
+            Lördag–Söndag: 12:00–21:00
+          </span>
+        </div>
+        <div class="details-card__row">
+          <span class="details-card__label">Telefon</span>
+          <span class="details-card__value">08 25 56 60</span>
+        </div>
+        <div class="details-card__row">
+          <span class="details-card__label">Tjänster</span>
+          <span class="details-card__value">Äta på plats</span>
+        </div>
+        <div class="details-card__row">
+          <span class="details-card__label">Lunch</span>
+          <span class="details-card__value">134 kr – Mån–Fre 11:00–14:00</span>
+        </div>
+        <a href="https://app.thw.se/restaurants" class="btn-order" target="_blank" rel="noopener">
+          Beställ online →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <p class="about-section__label">Om restaurangen</p>
+    <h2 class="about-section__title">Rymlig restaurang i <span>Lindhagen</span></h2>
+    <p>
+      Vår restaurang i Lindhagen på Kungsholmen är den av våra lokaler där du verkligen kan ta det lugnt och njuta. Med ett rymligt och välkomnande matsalsutrymme är det den perfekta platsen för en familjemiddag, en arbetslunch med kollegorna eller en avkopplande måltid efter en lång dag. Hos oss på Lindhagen prioriterar vi stämningen lika mycket som maten.
+    </p>
+    <p>
+      Lindhagen är ett modernt och dynamiskt område med en blandning av nyproducerade bostäder och aktiva verksamheter, och vi är glada att vara en del av den gemenskapen. Vällagad thaimat, hjärtlig service och en miljö där alla känner sig hemma – det är vad vi erbjuder. Välkommen att sitta ner hos oss.
+    </p>
+  </section>
+
+  <!-- BACK BUTTON -->
+  <div class="page-back">
+    <a href="index.html#restauranger" class="btn-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Alla restauranger
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="Thai House Wok" class="footer__logo">
+    <p class="footer__copy">© 2026 Thai House Wok. Äkta thaimat sedan 1998.</p>
+  </footer>
+
+</body>
+</html>
