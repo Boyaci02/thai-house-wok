@@ -43,6 +43,9 @@
     img { display: block; max-width: 100%; }
     ul { list-style: none; }
 
+    .mobile-only { display: none; }
+    @media (max-width: 768px) { .mobile-only { display: block; } }
+
     /* ===========================
        UTILITY
     =========================== */
@@ -281,11 +284,11 @@
       background: none;
       border: none;
       cursor: pointer;
-      color: rgba(252,243,220,0.4);
+      color: var(--text-muted);
       padding: 4px;
       transition: color 0.2s;
     }
-    .popup__close:hover { color: var(--cream); }
+    .popup__close:hover { color: var(--text); }
     .popup__close svg { width: 20px; height: 20px; }
     .popup__tag {
       font-size: 10px;
@@ -305,7 +308,7 @@
     .popup__month {
       font-size: 18px;
       font-weight: 700;
-      color: var(--cream);
+      color: var(--purple);
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 20px;
@@ -313,7 +316,7 @@
     .popup__heading {
       font-size: 26px;
       font-weight: 900;
-      color: var(--cream);
+      color: var(--text);
       line-height: 1.2;
       margin-bottom: 12px;
     }
@@ -322,7 +325,7 @@
       font-size: 14px;
       font-weight: 400;
       line-height: 1.75;
-      color: rgba(252,243,220,0.60);
+      color: var(--text-muted);
       margin-bottom: 28px;
     }
     .popup .btn { width: 100%; justify-content: center; }
@@ -1277,7 +1280,7 @@
         <span class="hero__tag-label">Äkta Thaimat · Stockholm</span>
       </div>
       <h1 class="hero__title">
-        Smakerna från<br><span>Thailand</span>
+        Smakerna från<br class="mobile-only"><span>Thailand</span>
       </h1>
       <p class="hero__subtitle">
         Handlagad mat med färska råvaror och äkta kryddor. Välkommen till Thai House Wok – med 10 restauranger runt om i Stockholm.
