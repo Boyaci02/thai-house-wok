@@ -244,6 +244,9 @@
     }
     .nav__cta:hover { background: #d4861f; }
 
+    /* Location carousel arrows – desktop: hidden */
+    .locations__arrows { display: none; }
+
     /* Hamburger */
     .hamburger {
       display: none;
@@ -1051,8 +1054,36 @@
 
       .locations__inner { padding: 0 24px; }
       .locations { padding: 80px 0; }
-      .locations__header { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .locations__grid { grid-template-columns: 1fr; }
+      .locations__header { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 16px; }
+      .locations__arrows { display: flex; gap: 8px; flex-shrink: 0; }
+      .loc-arrow {
+        width: 40px; height: 40px;
+        border: 1px solid rgba(255,255,255,0.15);
+        background: rgba(255,255,255,0.05);
+        color: var(--cream);
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s;
+      }
+      .loc-arrow:hover { background: var(--orange); border-color: var(--orange); }
+      .loc-arrow svg { width: 18px; height: 18px; }
+      .locations__scroll-wrap {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .locations__scroll-wrap::-webkit-scrollbar { display: none; }
+      .locations__grid {
+        display: flex;
+        gap: 16px;
+        width: max-content;
+      }
+      .locations__grid .loc-card {
+        width: 75vw;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+      }
 
       .contact__inner { grid-template-columns: 1fr; gap: 48px; padding: 0 24px; }
       .contact { padding: 80px 0; }
@@ -1329,8 +1360,17 @@
           </div>
           <h2 class="locations__heading">Våra<br><span>Restauranger</span></h2>
         </div>
+        <div class="locations__arrows" id="loc-arrows">
+          <button class="loc-arrow" id="loc-prev" aria-label="Föregående">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="loc-arrow" id="loc-next" aria-label="Nästa">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
       </div>
 
+      <div class="locations__scroll-wrap" id="loc-scroll">
       <div class="locations__grid">
         <div class="loc-card reveal">
           <div class="loc-card__number">01 · Stockholm</div>
@@ -1399,6 +1439,7 @@
           <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
         </div>
       </div>
+      </div><!-- /locations__scroll-wrap -->
     </div>
   </section>
 
@@ -1596,6 +1637,16 @@
     }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // --- Restauranger carousel (mobil) ---
+    const locScroll = document.getElementById('loc-scroll');
+    const locPrev   = document.getElementById('loc-prev');
+    const locNext   = document.getElementById('loc-next');
+    if (locScroll && locPrev && locNext) {
+      const scrollAmount = () => locScroll.querySelector('.loc-card').offsetWidth + 16;
+      locPrev.addEventListener('click', () => locScroll.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
+      locNext.addEventListener('click', () => locScroll.scrollBy({ left:  scrollAmount(), behavior: 'smooth' }));
+    }
 
     // --- Kontaktformulär ---
     const form = document.getElementById('contact-form');
