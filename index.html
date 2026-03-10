@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thai House Wok – Äkta thaimat sedan 1998</title>
+  <meta name="description" content="Thai House Wok – Stockholms bästa thairestaurang med äkta smaker, färska råvaror och 10 restauranger runt om i Stockholm.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ===========================
+       VARIABLER & RESET
+    =========================== */
+    :root {
+      --purple:  #4e2e84;
+      --orange:  #ed9724;
+      --dark:    #17171d;
+      --dark2:   #1d1e1c;
+      --cream:   #fcf3dc;
+      --white:   #ffffff;
+      --red:     #de4623;
+      --sans: 'Raleway', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--dark);
+      color: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    /* ===========================
+       UTILITY
+    =========================== */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--orange);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===========================
+       BUTTONS
+    =========================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: background 0.22s, color 0.22s, border-color 0.22s;
+    }
+    .btn-orange {
+      background: var(--orange);
+      color: var(--dark);
+      border-color: var(--orange);
+    }
+    .btn-orange:hover { background: #d4861f; border-color: #d4861f; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      border-color: rgba(252,243,220,0.45);
+    }
+    .btn-outline:hover {
+      background: rgba(252,243,220,0.10);
+      border-color: var(--cream);
+    }
+
+    .btn-purple {
+      background: var(--purple);
+      color: var(--cream);
+      border-color: var(--purple);
+    }
+    .btn-purple:hover { background: #3d2368; border-color: #3d2368; }
+
+    /* ===========================
+       LADDNINGSSKÄRM
+    =========================== */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--purple);
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      transition: opacity 0.55s ease, visibility 0.55s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader__wordmark {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      animation: loaderIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .loader__title {
+      font-size: clamp(32px, 8vw, 56px);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 1;
+      animation: loaderIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+    }
+    .loader__bar-wrap {
+      width: min(200px, 50vw);
+      height: 2px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .loader__bar {
+      height: 100%;
+      width: 0;
+      background: var(--orange);
+      animation: loaderBar 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
+    }
+    @keyframes loaderIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes loaderBar {
+      from { width: 0; }
+      to   { width: 100%; }
+    }
+
+    /* ===========================
+       NAVIGERING
+    =========================== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: transparent;
+      transition: background 0.38s ease, box-shadow 0.3s;
+    }
+    .nav.scrolled {
+      background: var(--dark);
+      box-shadow: 0 2px 32px rgba(0,0,0,0.4);
+    }
+    .nav__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .nav__brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .nav__brand-top {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .nav__brand-name {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav__links a {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(252,243,220,0.75);
+      transition: color 0.2s;
+    }
+    .nav__links a:hover { color: var(--orange); }
+    .nav__actions { display: flex; align-items: center; gap: 12px; }
+    .nav__cta {
+      background: var(--orange);
+      color: var(--dark);
+      padding: 10px 22px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+      display: none;
+    }
+    .nav__cta:hover { background: #d4861f; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      width: 36px;
+      height: 36px;
+      padding: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--cream);
+      transition: transform 0.3s, opacity 0.3s;
+      transform-origin: center;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--purple);
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.45s;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .mobile-menu.open {
+      transform: translateX(0);
+      visibility: visible;
+      pointer-events: all;
+    }
+    .mobile-menu__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      flex-shrink: 0;
+    }
+    .mobile-menu__brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .mobile-menu__brand-top {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .mobile-menu__brand-name {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+    .mobile-menu__close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+    }
+    .mobile-menu__close svg { width: 28px; height: 28px; }
+    .mobile-menu__nav {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 32px;
+      overflow-y: auto;
+    }
+    .mobile-menu__nav ul li { border-bottom: 1px solid rgba(255,255,255,0.10); }
+    .mobile-menu__nav ul li:first-child { border-top: 1px solid rgba(255,255,255,0.10); }
+    .mobile-menu__nav ul li a {
+      display: block;
+      padding: 18px 0;
+      font-size: clamp(32px, 9vw, 48px);
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--cream);
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .mobile-menu__nav ul li a:hover { color: var(--orange); }
+    .mobile-menu__footer {
+      padding: 24px 32px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      display: flex;
+      gap: 24px;
+      flex-shrink: 0;
+    }
+    .mobile-menu__footer a {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(252,243,220,0.45);
+      transition: color 0.2s;
+    }
+    .mobile-menu__footer a:hover { color: var(--orange); }
+
+    /* ===========================
+       HERO
+    =========================== */
+    .hero {
+      min-height: 100svh;
+      background: var(--dark);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(23,23,29,0.96) 35%, rgba(23,23,29,0.60) 65%, rgba(23,23,29,0.20) 100%);
+      z-index: 1;
+    }
+    .hero__bg-img {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #2a1550 0%, #17171d 50%, #1a0d08 100%);
+      /* Replace with actual food image: background-image: url('Brand_guidlines/hero.jpg'); */
+      background-size: cover;
+      background-position: center;
+    }
+    /* Subtle pattern overlay */
+    .hero__pattern {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(237,151,36,0.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+      z-index: 0;
+    }
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 120px 48px 80px;
+      width: 100%;
+    }
+    .hero__tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .hero__tag-line {
+      width: 32px;
+      height: 2px;
+      background: var(--orange);
+    }
+    .hero__tag-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .hero__title {
+      font-size: clamp(52px, 7.5vw, 110px);
+      font-weight: 900;
+      line-height: 0.95;
+      color: var(--cream);
+      margin-bottom: 28px;
+      max-width: 720px;
+    }
+    .hero__title span { color: var(--orange); }
+    .hero__subtitle {
+      font-size: clamp(15px, 1.5vw, 18px);
+      font-weight: 400;
+      line-height: 1.75;
+      color: rgba(252,243,220,0.65);
+      max-width: 500px;
+      margin-bottom: 44px;
+    }
+    .hero__buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* Floating badge */
+    .hero__badge {
+      position: absolute;
+      right: 48px;
+      bottom: 80px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 2;
+      animation: badgeSpin 18s linear infinite;
+    }
+    .hero__badge-year {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1;
+    }
+    .hero__badge-label {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dark);
+      opacity: 0.7;
+    }
+
+    /* Scroll indicator */
+    .hero__scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 48px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero__scroll-line {
+      width: 40px;
+      height: 1px;
+      background: rgba(252,243,220,0.3);
+    }
+    .hero__scroll-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(252,243,220,0.35);
+    }
+
+    /* ===========================
+       TICKER
+    =========================== */
+    .ticker {
+      background: var(--orange);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker__track {
+      display: inline-flex;
+      animation: tickerScroll 28s linear infinite;
+    }
+    .ticker__item {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 40px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dark);
+    }
+    .ticker__dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--dark);
+      opacity: 0.4;
+      flex-shrink: 0;
+    }
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ===========================
+       OM OSS
+    =========================== */
+    .about {
+      background: var(--dark);
+      padding: 120px 0;
+    }
+    .about__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about__year-block {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      background: var(--purple);
+      padding: 16px 24px;
+      margin-bottom: 28px;
+    }
+    .about__year {
+      font-size: 56px;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+    }
+    .about__year-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(252,243,220,0.6);
+    }
+    .about__heading {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+    .about__heading span { color: var(--orange); }
+    .about__text {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.8;
+      color: rgba(252,243,220,0.65);
+      margin-bottom: 20px;
+    }
+    .about__visual {
+      position: relative;
+    }
+    .about__img-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--purple);
+      background-image: linear-gradient(135deg, #3d2368 0%, #4e2e84 100%);
+      /* Replace with actual image */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about__img-placeholder {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(252,243,220,0.25);
+    }
+    .about__img-accent {
+      position: absolute;
+      bottom: -28px;
+      left: -28px;
+      width: 55%;
+      aspect-ratio: 1;
+      background: var(--orange);
+      background-image: linear-gradient(135deg, #ed9724 0%, #d4861f 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about__stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .about__stat {
+      border-left: 2px solid var(--orange);
+      padding-left: 16px;
+    }
+    .about__stat-num {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 1;
+    }
+    .about__stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(252,243,220,0.45);
+      margin-top: 4px;
+    }
+
+    /* ===========================
+       MENY PREVIEW
+    =========================== */
+    .menu {
+      background: var(--purple);
+      padding: 120px 0;
+    }
+    .menu__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .menu__header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 64px;
+      gap: 24px;
+    }
+    .menu__heading {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--cream);
+    }
+    .menu__heading span { color: var(--orange); }
+    .menu__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .menu-card {
+      background: rgba(255,255,255,0.05);
+      padding: 36px 32px;
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.25s, border-color 0.25s;
+      cursor: default;
+    }
+    .menu-card:hover {
+      background: rgba(237,151,36,0.10);
+      border-color: rgba(237,151,36,0.30);
+    }
+    .menu-card__cat {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+    .menu-card__name {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--cream);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .menu-card__desc {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(252,243,220,0.55);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .menu-card__price {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--orange);
+    }
+    .menu-card__price span {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(252,243,220,0.4);
+    }
+
+    /* Lunch banner */
+    .lunch-banner {
+      background: var(--orange);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 2px;
+    }
+    .lunch-banner__text { }
+    .lunch-banner__heading {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .lunch-banner__sub {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(23,23,29,0.65);
+    }
+    .lunch-banner .btn-purple { flex-shrink: 0; }
+
+    /* ===========================
+       RESTAURANGER
+    =========================== */
+    .locations {
+      background: var(--dark2);
+      padding: 120px 0;
+    }
+    .locations__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .locations__header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 64px;
+      gap: 24px;
+    }
+    .locations__heading {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--cream);
+    }
+    .locations__heading span { color: var(--orange); }
+    .locations__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .loc-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 32px 28px;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    }
+    .loc-card:hover {
+      background: rgba(78,46,132,0.35);
+      border-color: rgba(78,46,132,0.6);
+      transform: translateY(-4px);
+    }
+    .loc-card__number {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .loc-card__name {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+    .loc-card__address {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(252,243,220,0.55);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .loc-card__hours {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: rgba(252,243,220,0.40);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 16px;
+    }
+    .loc-card__hours strong {
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    /* ===========================
+       KONTAKT
+    =========================== */
+    .contact {
+      background: var(--purple);
+      padding: 120px 0;
+    }
+    .contact__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact__heading {
+      font-size: clamp(36px, 4.5vw, 60px);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+    .contact__heading span { color: var(--orange); }
+    .contact__text {
+      font-size: 16px;
+      color: rgba(252,243,220,0.60);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .contact__details { display: flex; flex-direction: column; gap: 16px; }
+    .contact__detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .contact__detail-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(237,151,36,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact__detail-icon svg { width: 16px; height: 16px; stroke: var(--orange); }
+    .contact__detail-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 2px;
+    }
+    .contact__detail-value {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(252,243,220,0.75);
+    }
+    .contact__form {
+      background: rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 48px 40px;
+    }
+    .contact__form-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--cream);
+      margin-bottom: 32px;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(252,243,220,0.5);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--cream);
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--orange);
+      background: rgba(237,151,36,0.06);
+    }
+    .form-group textarea { height: 140px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .contact__form .btn { width: 100%; justify-content: center; margin-top: 8px; }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    .footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 80px 0 40px;
+    }
+    .footer__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 64px;
+    }
+    .footer__brand-top {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+    .footer__brand-name {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+    .footer__tagline {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: rgba(252,243,220,0.45);
+      max-width: 280px;
+      margin-bottom: 24px;
+    }
+    .footer__socials { display: flex; gap: 12px; }
+    .footer__social {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .footer__social:hover { background: var(--orange); border-color: var(--orange); }
+    .footer__social svg { width: 16px; height: 16px; stroke: var(--cream); fill: none; }
+    .footer__col-title {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 20px;
+    }
+    .footer__col-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer__col-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(252,243,220,0.45);
+      transition: color 0.2s;
+    }
+    .footer__col-links a:hover { color: var(--orange); }
+    .footer__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      gap: 16px;
+    }
+    .footer__copy {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(252,243,220,0.28);
+    }
+    .footer__bottom-links { display: flex; gap: 24px; }
+    .footer__bottom-links a {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(252,243,220,0.28);
+      transition: color 0.2s;
+    }
+    .footer__bottom-links a:hover { color: var(--orange); }
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
+    @media (max-width: 1024px) {
+      .menu__grid { grid-template-columns: repeat(2, 1fr); }
+      .locations__grid { grid-template-columns: repeat(2, 1fr); }
+      .footer__grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav__inner { padding: 0 16px; gap: 12px; }
+      .nav__brand-name { font-size: 16px; }
+      .nav__links { display: none; }
+      .nav__cta { display: block; font-size: 10px; padding: 9px 14px; }
+      .hamburger { display: flex; }
+
+      .hero__content { padding: 0 24px 72px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 100svh; }
+      .hero__bg { background-image: linear-gradient(to bottom, rgba(23,23,29,0.25) 0%, rgba(23,23,29,0.70) 50%, rgba(23,23,29,0.95) 100%); }
+      .hero__title { font-size: clamp(44px, 12vw, 64px); }
+      .hero__subtitle { font-size: 14px; margin-bottom: 32px; }
+      .hero__buttons { flex-direction: column; }
+      .hero__buttons .btn { width: 100%; justify-content: center; border-radius: 60px; padding: 16px; }
+      .hero__badge { right: 20px; bottom: 28px; width: 90px; height: 90px; }
+      .hero__badge-year { font-size: 22px; }
+      .hero__scroll { display: none; }
+
+      .about__inner { grid-template-columns: 1fr; gap: 48px; padding: 0 24px; }
+      .about { padding: 80px 0; }
+      .about__visual { display: none; }
+      .about__stats { grid-template-columns: repeat(2, 1fr); }
+
+      .menu__inner { padding: 0 24px; }
+      .menu { padding: 80px 0; }
+      .menu__header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .menu__grid { grid-template-columns: 1fr; }
+      .lunch-banner { flex-direction: column; padding: 32px 24px; }
+
+      .locations__inner { padding: 0 24px; }
+      .locations { padding: 80px 0; }
+      .locations__header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .locations__grid { grid-template-columns: 1fr; }
+
+      .contact__inner { grid-template-columns: 1fr; gap: 48px; padding: 0 24px; }
+      .contact { padding: 80px 0; }
+      .contact__form { padding: 32px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .footer__inner { padding: 0 24px; }
+      .footer { padding: 60px 0 32px; }
+      .footer__grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer__bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Laddningsskärm -->
+  <div id="loader" aria-hidden="true">
+    <div>
+      <div class="loader__wordmark">Thai House Wok</div>
+      <div class="loader__title">Äkta Smaker</div>
+    </div>
+    <div class="loader__bar-wrap">
+      <div class="loader__bar"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       NAVIGERING
+  ============================================================ -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#hem" class="nav__brand" aria-label="Thai House Wok startsida">
+        <span class="nav__brand-top">Thai House</span>
+        <span class="nav__brand-name">Wok</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="#om-oss">Om oss</a></li>
+        <li><a href="#meny">Meny</a></li>
+        <li><a href="#restauranger">Restauranger</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="#meny" class="nav__cta">Se meny</a>
+        <button class="hamburger" id="hamburger" aria-label="Öppna meny" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="mobile-menu__header">
+      <div class="mobile-menu__brand">
+        <span class="mobile-menu__brand-top">Thai House</span>
+        <span class="mobile-menu__brand-name">Wok</span>
+      </div>
+      <button class="mobile-menu__close" id="menu-close" aria-label="Stäng meny">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="4" x2="20" y2="20"/>
+          <line x1="20" y1="4" x2="4" y2="20"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="mobile-menu__nav">
+      <ul>
+        <li><a href="#om-oss">Om oss</a></li>
+        <li><a href="#meny">Meny</a></li>
+        <li><a href="#restauranger">Restauranger</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__footer">
+      <a href="https://instagram.com/thaiHouseWok" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://facebook.com/thaiHouseWok" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero" id="hem">
+    <div class="hero__bg-img"></div>
+    <div class="hero__pattern"></div>
+    <div class="hero__bg"></div>
+
+    <div class="hero__content">
+      <div class="hero__tag">
+        <div class="hero__tag-line"></div>
+        <span class="hero__tag-label">Äkta Thaimat · Stockholm</span>
+      </div>
+      <h1 class="hero__title">
+        Smakerna<br>från <span>Thailand</span>
+      </h1>
+      <p class="hero__subtitle">
+        Handlagad mat med färska råvaror och äkta kryddor. Välkommen till Thai House Wok – med 10 restauranger runt om i Stockholm.
+      </p>
+      <div class="hero__buttons">
+        <a href="#meny" class="btn btn-orange">Se menyn</a>
+        <a href="#restauranger" class="btn btn-outline">Hitta restaurang</a>
+      </div>
+    </div>
+
+    <div class="hero__badge">
+      <span class="hero__badge-year">1998</span>
+      <span class="hero__badge-label">Sedan</span>
+    </div>
+
+    <div class="hero__scroll">
+      <div class="hero__scroll-line"></div>
+      <span class="hero__scroll-label">Scrolla</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       TICKER
+  ============================================================ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span class="ticker__item">Pad Thai<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Röd Curry<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Grön Curry<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Massaman<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Pad See Ew<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Tom Kha<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Phaneang<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Pad King<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Gul Curry<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Pad Thai<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Röd Curry<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Grön Curry<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Massaman<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Pad See Ew<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Tom Kha<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Phaneang<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Pad King<span class="ticker__dot"></span></span>
+      <span class="ticker__item">Gul Curry<span class="ticker__dot"></span></span>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       OM OSS
+  ============================================================ -->
+  <section class="about" id="om-oss">
+    <div class="about__inner">
+      <div class="reveal">
+        <div class="about__year-block">
+          <span class="about__year">1998</span>
+          <span class="about__year-label">Grundat</span>
+        </div>
+        <h2 class="about__heading">Äkta smaker,<br><span>hantverksskicklighet</span></h2>
+        <p class="about__text">
+          Thai House Wok grundades 1998 med en enkel idé: servera äkta thaimat lagad med kärlek och de finaste råvarorna. Sedan dess har vi vuxit till att bli en av Stockholms mest älskade thairestauranger.
+        </p>
+        <p class="about__text">
+          Varje rätt lagas från grunden med färska ingredienser, äkta thaikryddor och recept som förts vidare i generationer. Vi tror på mat som smakar som hemma – fast bättre.
+        </p>
+        <div class="about__stats">
+          <div class="about__stat">
+            <div class="about__stat-num">10+</div>
+            <div class="about__stat-label">Restauranger</div>
+          </div>
+          <div class="about__stat">
+            <div class="about__stat-num">25+</div>
+            <div class="about__stat-label">Års erfarenhet</div>
+          </div>
+          <div class="about__stat">
+            <div class="about__stat-num">50+</div>
+            <div class="about__stat-label">Rätter på menyn</div>
+          </div>
+          <div class="about__stat">
+            <div class="about__stat-num">★ 4.7</div>
+            <div class="about__stat-label">Genomsnittligt betyg</div>
+          </div>
+        </div>
+      </div>
+      <div class="about__visual reveal">
+        <div class="about__img-main">
+          <span class="about__img-placeholder">Foto här</span>
+        </div>
+        <div class="about__img-accent">
+          <span class="about__img-placeholder" style="font-size:9px;">Mat-foto</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       MENY
+  ============================================================ -->
+  <section class="menu" id="meny">
+    <div class="menu__inner">
+      <div class="menu__header reveal">
+        <div>
+          <div class="section-tag label" style="color:var(--orange);">
+            <span style="display:inline-block;width:28px;height:2px;background:var(--orange);vertical-align:middle;margin-right:10px;"></span>
+            Våra rätter
+          </div>
+          <h2 class="menu__heading">Smakrik<br><span>Meny</span></h2>
+        </div>
+        <a href="#kontakt" class="btn btn-outline" style="flex-shrink:0;">Full meny →</a>
+      </div>
+
+      <div class="menu__grid">
+        <!-- Curryrätter -->
+        <div class="menu-card reveal">
+          <div class="menu-card__cat">Curry</div>
+          <div class="menu-card__name">Röd Curry</div>
+          <div class="menu-card__desc">Krämig röd curry med kokosmjölk, paprika, bambuskott och thaibasilika. Välj kyckling, räkor eller tofu.</div>
+          <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card__cat">Curry</div>
+          <div class="menu-card__name">Grön Curry</div>
+          <div class="menu-card__desc">Aromatisk grön curry med kokosmjölk, aubergine, bönor och färsk koriander. Stark och fyllig.</div>
+          <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card__cat">Curry</div>
+          <div class="menu-card__name">Massaman Curry</div>
+          <div class="menu-card__desc">Mild och rund curry med jordnötter, potatis, lök och en touch av kanel och kardemumma.</div>
+          <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
+        </div>
+
+        <!-- Wok / nudlar -->
+        <div class="menu-card reveal">
+          <div class="menu-card__cat">Wok</div>
+          <div class="menu-card__name">Pad Thai</div>
+          <div class="menu-card__desc">Klassisk woknudel med ägg, böngroddar, jordnötter, lime och vår hemliga Pad Thai-sås.</div>
+          <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card__cat">Wok</div>
+          <div class="menu-card__name">Pad See Ew</div>
+          <div class="menu-card__desc">Breda risnudlar wokade med ägg, broccoli och mörk sojasås. En rik och mättande klassiker.</div>
+          <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
+        </div>
+        <div class="menu-card reveal">
+          <div class="menu-card__cat">Wok</div>
+          <div class="menu-card__name">Pad Prig Phao</div>
+          <div class="menu-card__desc">Wokad med chiliolja, thaibasilika, lök och paprika. Kryddig och smakintensiv.</div>
+          <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
+        </div>
+      </div>
+
+      <!-- Lunch-banner -->
+      <div class="lunch-banner reveal">
+        <div class="lunch-banner__text">
+          <div class="lunch-banner__heading">Lunchmeny – 134 kr</div>
+          <div class="lunch-banner__sub">Måndag–fredag · Serveras med ris, sallad och bröd · Blanda 2 rätter 130 kr · Blanda 3 rätter 150 kr</div>
+        </div>
+        <a href="#kontakt" class="btn btn-purple">Se veckans lunch</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       RESTAURANGER
+  ============================================================ -->
+  <section class="locations" id="restauranger">
+    <div class="locations__inner">
+      <div class="locations__header reveal">
+        <div>
+          <div class="section-tag label" style="color:var(--orange);">
+            <span style="display:inline-block;width:28px;height:2px;background:var(--orange);vertical-align:middle;margin-right:10px;"></span>
+            Hitta oss
+          </div>
+          <h2 class="locations__heading">Våra<br><span>Restauranger</span></h2>
+        </div>
+      </div>
+
+      <div class="locations__grid">
+        <div class="loc-card reveal">
+          <div class="loc-card__number">01 · Stockholm</div>
+          <div class="loc-card__name">Hornsgatan</div>
+          <div class="loc-card__address">Hornsgatan – Stockholm<br>Adress uppdateras</div>
+          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+        </div>
+        <div class="loc-card reveal">
+          <div class="loc-card__number">02 · Stockholm</div>
+          <div class="loc-card__name">Folkungagatan</div>
+          <div class="loc-card__address">Folkungagatan – Stockholm<br>Adress uppdateras</div>
+          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+        </div>
+        <div class="loc-card reveal">
+          <div class="loc-card__number">03 · Stockholm</div>
+          <div class="loc-card__name">Birkagatan</div>
+          <div class="loc-card__address">Birkagatan – Stockholm<br>Adress uppdateras</div>
+          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+        </div>
+        <div class="loc-card reveal">
+          <div class="loc-card__number">04 · Stockholm</div>
+          <div class="loc-card__name">Hantverkargatan</div>
+          <div class="loc-card__address">Hantverkargatan – Stockholm<br>Adress uppdateras</div>
+          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+        </div>
+        <div class="loc-card reveal">
+          <div class="loc-card__number">05 · Stockholm</div>
+          <div class="loc-card__name">Nybrogatan</div>
+          <div class="loc-card__address">Nybrogatan – Stockholm<br>Adress uppdateras</div>
+          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+        </div>
+        <div class="loc-card reveal">
+          <div class="loc-card__number">06 · Stockholm</div>
+          <div class="loc-card__name">Lindhagen</div>
+          <div class="loc-card__address">Lindhagen – Stockholm<br>Adress uppdateras</div>
+          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+        </div>
+        <div class="loc-card reveal">
+          <div class="loc-card__number">07 · Stockholm</div>
+          <div class="loc-card__name">Tuletorget</div>
+          <div class="loc-card__address">Tuletorget – Stockholm<br>Adress uppdateras</div>
+          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+        </div>
+        <div class="loc-card reveal">
+          <div class="loc-card__number">08 · Stockholm</div>
+          <div class="loc-card__name">Sockenplan</div>
+          <div class="loc-card__address">Sockenplan – Stockholm<br>Adress uppdateras</div>
+          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+        </div>
+        <div class="loc-card reveal">
+          <div class="loc-card__number">09 · Sollentuna</div>
+          <div class="loc-card__name">Sollentuna</div>
+          <div class="loc-card__address">Sollentuna<br>Adress uppdateras</div>
+          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+        </div>
+        <div class="loc-card reveal">
+          <div class="loc-card__number">10 · Tyresö</div>
+          <div class="loc-card__name">Tyresö</div>
+          <div class="loc-card__address">Tyresö<br>Adress uppdateras</div>
+          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+        </div>
+        <div class="loc-card reveal">
+          <div class="loc-card__number">11 · Stockholm</div>
+          <div class="loc-card__name">Olivecronas väg</div>
+          <div class="loc-card__address">Olivecronas väg – Stockholm<br>Adress uppdateras</div>
+          <div class="loc-card__hours"><strong>Öppet:</strong> Uppdateras</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       KONTAKT
+  ============================================================ -->
+  <section class="contact" id="kontakt">
+    <div class="contact__inner">
+      <div class="reveal">
+        <div class="section-tag label" style="color:var(--orange);margin-bottom:20px;">
+          <span style="display:inline-block;width:28px;height:2px;background:var(--orange);vertical-align:middle;margin-right:10px;"></span>
+          Kontakta oss
+        </div>
+        <h2 class="contact__heading">Hör av<br><span>dig!</span></h2>
+        <p class="contact__text">
+          Frågor om catering, jobb, allergier eller bara vill säga hej? Vi svarar gärna.
+        </p>
+        <div class="contact__details">
+          <div class="contact__detail">
+            <div class="contact__detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact__detail-label">Adress</div>
+              <div class="contact__detail-value">Flera restauranger i Stockholm – se listan ovan</div>
+            </div>
+          </div>
+          <div class="contact__detail">
+            <div class="contact__detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.18 2 2 0 012.07 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact__detail-label">Telefon</div>
+              <div class="contact__detail-value">Uppdateras</div>
+            </div>
+          </div>
+          <div class="contact__detail">
+            <div class="contact__detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact__detail-label">E-post</div>
+              <div class="contact__detail-value">info@thw.se</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact__form reveal">
+        <div class="contact__form-title">Skicka ett meddelande</div>
+        <form id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Namn</label>
+              <input type="text" id="name" placeholder="Ditt namn" required>
+            </div>
+            <div class="form-group">
+              <label for="email">E-post</label>
+              <input type="email" id="email" placeholder="din@email.se" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Ämne</label>
+            <input type="text" id="subject" placeholder="Vad gäller det?">
+          </div>
+          <div class="form-group">
+            <label for="message">Meddelande</label>
+            <textarea id="message" placeholder="Skriv ditt meddelande här..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-orange">Skicka meddelande</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-top">Thai House</div>
+          <div class="footer__brand-name">Wok</div>
+          <p class="footer__tagline">Äkta thaimat lagad med kärlek och de finaste råvarorna sedan 1998. Välkommen till oss!</p>
+          <div class="footer__socials">
+            <a href="https://instagram.com/thaiHouseWok" target="_blank" rel="noopener" class="footer__social" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://facebook.com/thaiHouseWok" target="_blank" rel="noopener" class="footer__social" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Navigering</div>
+          <div class="footer__col-links">
+            <a href="#om-oss">Om oss</a>
+            <a href="#meny">Meny</a>
+            <a href="#restauranger">Restauranger</a>
+            <a href="#kontakt">Kontakt</a>
+            <a href="#kontakt">Jobb</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Meny</div>
+          <div class="footer__col-links">
+            <a href="#meny">Curryrätter</a>
+            <a href="#meny">Wok & Nudlar</a>
+            <a href="#meny">Förrätter</a>
+            <a href="#meny">Lunch 134 kr</a>
+            <a href="#meny">Veckans lunch</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Restauranger</div>
+          <div class="footer__col-links">
+            <a href="#restauranger">Hornsgatan</a>
+            <a href="#restauranger">Folkungagatan</a>
+            <a href="#restauranger">Birkagatan</a>
+            <a href="#restauranger">Nybrogatan</a>
+            <a href="#restauranger">Se alla →</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="footer__copy">© 2025 Thai House Wok. Alla rättigheter förbehållna.</div>
+        <div class="footer__bottom-links">
+          <a href="#">Integritetspolicy</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // --- Laddningsskärm ---
+    const loader = document.getElementById('loader');
+    window.addEventListener('load', () => {
+      setTimeout(() => loader.classList.add('hidden'), 1500);
+    });
+
+    // --- Sticky nav ---
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // --- Hamburger / Mobile menu ---
+    const btn      = document.getElementById('hamburger');
+    const mobileM  = document.getElementById('mobile-menu');
+    const closeBtn = document.getElementById('menu-close');
+
+    function openMenu() {
+      btn.classList.add('open');
+      mobileM.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      mobileM.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      btn.classList.remove('open');
+      mobileM.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      mobileM.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    btn.addEventListener('click', () => mobileM.classList.contains('open') ? closeMenu() : openMenu());
+    closeBtn.addEventListener('click', closeMenu);
+    mobileM.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    // --- Scroll reveal ---
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // --- Kontaktformulär ---
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.textContent = 'Skickat! ✓';
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
+        setTimeout(() => {
+          submitBtn.textContent = 'Skicka meddelande';
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '';
+          form.reset();
+        }, 3000);
+      });
+    }
+  </script>
+</body>
+</html>
