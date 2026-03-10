@@ -1007,6 +1007,128 @@
     .contact__form .btn { width: 100%; justify-content: center; margin-top: 8px; }
 
     /* ===========================
+       BLOGG
+    =========================== */
+    .blog {
+      padding: 100px 0;
+      background: var(--white);
+    }
+    .blog__header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 52px;
+      gap: 24px;
+    }
+    .blog__title {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1.05;
+    }
+    .blog__title span { color: var(--orange); }
+    .blog__see-all {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--purple);
+      border-bottom: 2px solid var(--orange);
+      padding-bottom: 2px;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+    .blog__see-all:hover { color: var(--orange); }
+    .blog__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: box-shadow 0.25s, transform 0.25s;
+      background: var(--white);
+    }
+    .blog-card:hover {
+      box-shadow: 0 12px 40px rgba(78,46,132,0.12);
+      transform: translateY(-4px);
+    }
+    .blog-card--featured {
+      grid-column: span 2;
+    }
+    .blog-card__img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      background: var(--purple-light);
+    }
+    .blog-card--featured .blog-card__img { aspect-ratio: 21/9; }
+    .blog-card__img-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--purple) 0%, #7b4fbf 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .blog-card--featured .blog-card__img-placeholder { aspect-ratio: 21/9; }
+    .blog-card__img-placeholder svg { width: 48px; height: 48px; opacity: 0.3; }
+    .blog-card__body { padding: 28px; display: flex; flex-direction: column; flex: 1; }
+    .blog-card__meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .blog-card__tag {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--orange);
+      padding: 4px 10px;
+    }
+    .blog-card__date {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .blog-card__heading {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .blog-card--featured .blog-card__heading { font-size: 26px; }
+    .blog-card__excerpt {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      flex: 1;
+    }
+    .blog-card__link {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--purple);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .blog-card__link:hover { color: var(--orange); gap: 12px; }
+    .blog-card__link svg { width: 14px; height: 14px; }
+
+    /* ===========================
        FOOTER
     =========================== */
     .footer {
@@ -1106,6 +1228,8 @@
       .menu__grid { grid-template-columns: repeat(2, 1fr); }
       .locations__grid { grid-template-columns: repeat(2, 1fr); }
       .footer__grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .blog__grid { grid-template-columns: 1fr; }
+      .blog-card--featured { grid-column: span 1; }
     }
 
     @media (max-width: 768px) {
@@ -1607,6 +1731,53 @@
     </div>
   </section>
 
+
+  <!-- ============================================================
+       BLOGG
+  ============================================================ -->
+  <section class="blog" id="blogg">
+    <div class="container">
+      <div class="blog__header reveal">
+        <h2 class="blog__title">Senaste <span>nytt</span></h2>
+        <a href="#blogg" class="blog__see-all">Alla artiklar →</a>
+      </div>
+      <div class="blog__grid">
+
+        <!-- Featured article -->
+        <a href="hammarby-sjostad.html" class="blog-card blog-card--featured reveal">
+          <div class="blog-card__img-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta">
+              <span class="blog-card__tag">Nyhet</span>
+              <span class="blog-card__date">13 mars 2026</span>
+            </div>
+            <h3 class="blog-card__heading">Vi öppnar i Hammarby Sjöstad – en ny plats för äkta thaimat</h3>
+            <p class="blog-card__excerpt">Det är med stor glädje vi berättar att Thai House Wok öppnar sin tionde restaurang i hjärtat av Hammarby Sjöstad den 13 mars. En modern stadsdel förtjänar äkta smaker – välkommen!</p>
+            <span class="blog-card__link">Läs mer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+        <!-- Placeholder article 2 -->
+        <a href="#blogg" class="blog-card reveal">
+          <div class="blog-card__img-placeholder" style="background: linear-gradient(135deg, #ed9724 0%, #f5bc6e 100%);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta">
+              <span class="blog-card__tag" style="background:var(--purple);">Meny</span>
+              <span class="blog-card__date">Kommer snart</span>
+            </div>
+            <h3 class="blog-card__heading">Nyheter på menyn – smaker direkt från Thailand</h3>
+            <p class="blog-card__excerpt">Vi uppdaterar vår meny med nya rätter inspirerade av gatuköken i Bangkok och Chiang Mai. Håll utkik!</p>
+            <span class="blog-card__link">Läs mer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
 
   <!-- ============================================================
        FOOTER
