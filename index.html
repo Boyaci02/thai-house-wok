@@ -204,23 +204,18 @@
       flex-direction: column;
       line-height: 1;
     }
-    .nav__brand-top {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--orange);
+    /* Logo swap: white on transparent nav, colored on scrolled */
+    .nav__logo {
+      height: 36px;
+      width: auto;
+      display: block;
+      transition: opacity 0.38s ease;
     }
-    .nav__brand-name {
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--white);
-      transition: color 0.38s;
-    }
-    .nav.scrolled .nav__brand-name { color: var(--purple); }
-    .nav.scrolled .nav__brand-top  { color: var(--orange); }
+    .nav__logo--white { opacity: 1; }
+    .nav__logo--color { position: absolute; top: 0; left: 0; opacity: 0; pointer-events: none; }
+    .nav__brand { position: relative; display: inline-block; line-height: 0; }
+    .nav.scrolled .nav__logo--white { opacity: 0; }
+    .nav.scrolled .nav__logo--color { opacity: 1; }
     .nav__links {
       display: flex;
       align-items: center;
@@ -1226,8 +1221,8 @@
   <nav class="nav" id="nav">
     <div class="nav__inner">
       <a href="#hem" class="nav__brand" aria-label="Thai House Wok startsida">
-        <span class="nav__brand-top">Thai House</span>
-        <span class="nav__brand-name">Wok</span>
+        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="Thai House Wok" class="nav__logo nav__logo--white">
+        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="" aria-hidden="true" class="nav__logo nav__logo--color" style="filter: brightness(0) saturate(100%) invert(14%) sepia(68%) saturate(1200%) hue-rotate(245deg) brightness(70%);">
       </a>
       <ul class="nav__links">
         <li><a href="#om-oss">Om oss</a></li>
@@ -1249,10 +1244,7 @@
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="mobile-menu__header">
-      <div class="mobile-menu__brand">
-        <span class="mobile-menu__brand-top">Thai House</span>
-        <span class="mobile-menu__brand-name">Wok</span>
-      </div>
+      <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="Thai House Wok" class="mobile-menu__logo" style="height:32px;width:auto;filter:brightness(0) invert(1);">
       <button class="mobile-menu__close" id="menu-close" aria-label="Stäng meny">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <line x1="4" y1="4" x2="20" y2="20"/>
@@ -1625,8 +1617,7 @@
     <div class="footer__inner">
       <div class="footer__grid">
         <div>
-          <div class="footer__brand-top">Thai House</div>
-          <div class="footer__brand-name">Wok</div>
+          <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="Thai House Wok" style="height:40px;width:auto;filter:brightness(0) invert(1);margin-bottom:16px;">
           <p class="footer__tagline">Äkta thaimat lagad med kärlek och de finaste råvarorna sedan 1998. Välkommen till oss!</p>
           <div class="footer__socials">
             <a href="https://instagram.com/thaiHouseWok" target="_blank" rel="noopener" class="footer__social" aria-label="Instagram">
