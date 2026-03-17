@@ -24,6 +24,7 @@
       --border:  rgba(78,46,132,0.12);
       --red:     #de4623;
       --cream:   #ffffff;
+      --purple-deep: #1a0f33;
       --sans: 'Raleway', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
@@ -101,14 +102,14 @@
       padding: 14px 28px;
       border: 2px solid transparent;
       cursor: pointer;
-      transition: background 0.22s, color 0.22s, border-color 0.22s;
+      transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.2s, box-shadow 0.2s;
     }
     .btn-orange {
       background: var(--orange);
       color: var(--dark);
       border-color: var(--orange);
     }
-    .btn-orange:hover { background: #d4861f; border-color: #d4861f; }
+    .btn-orange:hover { background: #d4861f; border-color: #d4861f; transform: scale(1.03); box-shadow: 0 6px 24px rgba(237,151,36,0.35); }
 
     .btn-outline {
       background: transparent;
@@ -125,7 +126,7 @@
       color: var(--cream);
       border-color: var(--purple);
     }
-    .btn-purple:hover { background: #3d2368; border-color: #3d2368; }
+    .btn-purple:hover { background: #3d2368; border-color: #3d2368; transform: scale(1.03); }
 
     /* ===========================
        LADDNINGSSKÄRM
@@ -227,7 +228,19 @@
       text-transform: uppercase;
       color: rgba(255,255,255,0.80);
       transition: color 0.2s;
+      position: relative;
     }
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--orange);
+      transition: width 0.25s ease;
+    }
+    .nav__links a:hover::after { width: 100%; }
     .nav.scrolled .nav__links a { color: var(--text-muted); }
     .nav__links a:hover { color: var(--orange); }
     .nav__actions { display: flex; align-items: center; gap: 12px; }
@@ -605,6 +618,7 @@
       opacity: 0.4;
       flex-shrink: 0;
     }
+    .ticker:hover .ticker__track { animation-play-state: paused; }
     @keyframes tickerScroll {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
@@ -723,7 +737,7 @@
        MENY PREVIEW
     =========================== */
     .menu {
-      background: var(--purple-light);
+      background: var(--purple-deep);
       padding: 120px 0;
     }
     .menu__inner {
@@ -742,9 +756,9 @@
       font-size: clamp(36px, 5vw, 64px);
       font-weight: 900;
       line-height: 1;
-      color: var(--text);
+      color: var(--white);
     }
-    .menu__heading span { color: var(--purple); }
+    .menu__heading span { color: var(--orange); }
     .menu__grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -820,6 +834,67 @@
     }
     .lunch-banner .btn-purple { flex-shrink: 0; }
 
+    /* Menu dark-background overrides */
+    .menu .menu-card {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.10);
+    }
+    .menu .menu-card:hover {
+      background: rgba(255,255,255,0.10);
+      border-color: var(--orange);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+      transform: translateY(-5px);
+    }
+    .menu .menu-card__cat { color: rgba(237,151,36,0.8); }
+    .menu .menu-card__name { color: var(--white); }
+    .menu .menu-card__desc { color: rgba(255,255,255,0.52); }
+    .menu .menu-card__price { color: var(--orange); }
+    .menu .menu-card__price span { color: rgba(255,255,255,0.35); }
+
+    /* Popular badge */
+    .menu-card__badge {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dark);
+      background: var(--orange);
+      padding: 3px 9px;
+      margin-bottom: 10px;
+    }
+
+    /* Menu tabs */
+    .menu__tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .menu__tab {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: transparent;
+      color: rgba(255,255,255,0.50);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .menu__tab:hover {
+      border-color: rgba(237,151,36,0.6);
+      color: var(--orange);
+    }
+    .menu__tab.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: var(--dark);
+    }
+    .menu-card.hidden { display: none; }
+
     /* ===========================
        RESTAURANGER
     =========================== */
@@ -859,9 +934,10 @@
       transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
     }
     .loc-card:hover {
-      box-shadow: 0 8px 32px rgba(78,46,132,0.14);
+      box-shadow: 0 16px 48px rgba(78,46,132,0.22);
       border-color: var(--purple);
-      transform: translateY(-4px);
+      border-bottom: 3px solid var(--orange);
+      transform: translateY(-6px);
     }
     .loc-card__number {
       font-size: 11px;
@@ -1518,21 +1594,29 @@
         <a href="#kontakt" class="btn btn-outline" style="flex-shrink:0;">Full meny →</a>
       </div>
 
+      <div class="menu__tabs reveal">
+        <button class="menu__tab active" data-filter="alla">Alla</button>
+        <button class="menu__tab" data-filter="curry">Curryrätter</button>
+        <button class="menu__tab" data-filter="wok">Wokrätter</button>
+        <button class="menu__tab" data-filter="sallad">Sallader</button>
+      </div>
+
       <div class="menu__grid">
         <!-- Curryrätter -->
-        <div class="menu-card reveal">
+        <div class="menu-card reveal" data-category="curry">
+          <div class="menu-card__badge">Populär</div>
           <div class="menu-card__cat">Curry</div>
           <div class="menu-card__name">Röd Curry</div>
           <div class="menu-card__desc">Krämig röd curry med kokosmjölk, paprika, bambuskott och thaibasilika. Välj kyckling, räkor eller tofu.</div>
           <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
         </div>
-        <div class="menu-card reveal">
+        <div class="menu-card reveal" data-category="curry">
           <div class="menu-card__cat">Curry</div>
           <div class="menu-card__name">Grön Curry</div>
           <div class="menu-card__desc">Aromatisk grön curry med kokosmjölk, aubergine, bönor och färsk koriander. Stark och fyllig.</div>
           <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
         </div>
-        <div class="menu-card reveal">
+        <div class="menu-card reveal" data-category="curry">
           <div class="menu-card__cat">Curry</div>
           <div class="menu-card__name">Massaman Curry</div>
           <div class="menu-card__desc">Mild och rund curry med jordnötter, potatis, lök och en touch av kanel och kardemumma.</div>
@@ -1540,23 +1624,45 @@
         </div>
 
         <!-- Wok / nudlar -->
-        <div class="menu-card reveal">
+        <div class="menu-card reveal" data-category="wok">
+          <div class="menu-card__badge">Populär</div>
           <div class="menu-card__cat">Wok</div>
           <div class="menu-card__name">Pad Thai</div>
           <div class="menu-card__desc">Klassisk woknudel med ägg, böngroddar, jordnötter, lime och vår hemliga Pad Thai-sås.</div>
           <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
         </div>
-        <div class="menu-card reveal">
+        <div class="menu-card reveal" data-category="wok">
           <div class="menu-card__cat">Wok</div>
           <div class="menu-card__name">Pad See Ew</div>
           <div class="menu-card__desc">Breda risnudlar wokade med ägg, broccoli och mörk sojasås. En rik och mättande klassiker.</div>
           <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
         </div>
-        <div class="menu-card reveal">
+        <div class="menu-card reveal" data-category="wok">
           <div class="menu-card__cat">Wok</div>
           <div class="menu-card__name">Pad Prig Phao</div>
           <div class="menu-card__desc">Wokad med chiliolja, thaibasilika, lök och paprika. Kryddig och smakintensiv.</div>
           <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
+        </div>
+
+        <!-- Sallader -->
+        <div class="menu-card reveal" data-category="sallad">
+          <div class="menu-card__badge">Populär</div>
+          <div class="menu-card__cat">Sallad</div>
+          <div class="menu-card__name">Papayasallad</div>
+          <div class="menu-card__desc">Krispig grön papaya med chilipeppar, lime, tomater, jordnötter och torkat räkpulver. Frisk och het.</div>
+          <div class="menu-card__price">89 kr <span>som förrätt</span></div>
+        </div>
+        <div class="menu-card reveal" data-category="sallad">
+          <div class="menu-card__cat">Sallad</div>
+          <div class="menu-card__name">Thaisallad med räkor</div>
+          <div class="menu-card__desc">Färsk sallad med wokade räkor, citrongräs, glasnudlar, mynta och en het limemarineringsvinaigrette.</div>
+          <div class="menu-card__price">109 kr <span>som förrätt</span></div>
+        </div>
+        <div class="menu-card reveal" data-category="sallad">
+          <div class="menu-card__cat">Sallad</div>
+          <div class="menu-card__name">Larb Kai</div>
+          <div class="menu-card__desc">Isanstil köttfärssallad med hackad kyckling, rostad ris, mynta, schalottenlök och limejuice.</div>
+          <div class="menu-card__price">109 kr <span>som förrätt</span></div>
         </div>
       </div>
 
@@ -1895,17 +2001,50 @@
     closeBtn.addEventListener('click', closeMenu);
     mobileM.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
-    // --- Scroll reveal ---
+    // --- Scroll reveal with stagger ---
     const revealObs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          // Reset delay after animation so hover isn't affected
+          setTimeout(() => { entry.target.style.transitionDelay = ''; }, 900);
           revealObs.unobserve(entry.target);
         }
       });
     }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
 
+    // Apply stagger delays to grid children
+    ['.menu__grid .menu-card', '.locations__grid .loc-card', '.blog__grid .blog-card'].forEach(sel => {
+      const groups = {};
+      document.querySelectorAll(sel).forEach(el => {
+        const parent = el.parentElement;
+        if (!groups[parent]) groups[parent] = [];
+        groups[parent].push(el);
+      });
+      Object.values(groups).forEach(items => {
+        items.forEach((el, i) => { el.style.transitionDelay = (i % 3 * 80) + 'ms'; });
+      });
+    });
+
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // --- Menu tabs ---
+    const menuTabs = document.querySelectorAll('.menu__tab');
+    const menuCards = document.querySelectorAll('.menu__grid .menu-card');
+    menuTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        menuTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+        menuCards.forEach(card => {
+          if (filter === 'alla' || card.dataset.category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
 
     // --- Restauranger carousel (mobil) ---
     const locScroll = document.getElementById('loc-scroll');
