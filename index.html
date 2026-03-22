@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thai House Wok – Äkta thaimat sedan 2006</title>
   <link rel="icon" href="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" type="image/svg+xml">
-  <meta name="description" content="Thai House Wok – Stockholms bästa thairestaurang med äkta smaker, färska råvaror och 10 restauranger runt om i Stockholm.">
+  <meta name="description" content="Thai House Wok – Stockholms bästa thairestaurang med äkta smaker, färska råvaror och 9 restauranger runt om i Stockholm.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
@@ -516,11 +516,10 @@
       font-size: clamp(52px, 7.5vw, 110px);
       font-weight: 900;
       line-height: 0.95;
-      color: var(--cream);
+      color: #ffffff;
       margin-bottom: 28px;
-      max-width: 720px;
+      white-space: nowrap;
     }
-    .hero__title span { color: var(--orange); }
     .hero__subtitle {
       font-size: clamp(15px, 1.5vw, 18px);
       font-weight: 400;
@@ -643,15 +642,16 @@
     .about__year-block {
       display: inline-flex;
       align-items: baseline;
-      gap: 8px;
-      background: var(--purple);
-      padding: 16px 24px;
+      gap: 12px;
+      background: transparent;
+      border-left: 3px solid var(--purple);
+      padding: 4px 0 4px 20px;
       margin-bottom: 28px;
     }
     .about__year {
-      font-size: 56px;
+      font-size: 48px;
       font-weight: 900;
-      color: var(--orange);
+      color: var(--text);
       line-height: 1;
     }
     .about__year-label {
@@ -659,7 +659,7 @@
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
+      color: var(--text-muted);
     }
     .about__heading {
       font-size: clamp(32px, 4vw, 52px);
@@ -850,6 +850,67 @@
     .menu .menu-card__desc { color: rgba(255,255,255,0.52); }
     .menu .menu-card__price { color: var(--orange); }
     .menu .menu-card__price span { color: rgba(255,255,255,0.35); }
+    .menu .menu-card__number { color: rgba(255,255,255,0.22); }
+    .menu .menu-card__protein { color: rgba(255,255,255,0.35); }
+    .menu .menu-card__protein strong { color: rgba(255,255,255,0.50); }
+
+    /* Menu card image placeholder */
+    .menu-card__img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: rgba(255,255,255,0.04);
+      border: 1px dashed rgba(255,255,255,0.12);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.18);
+    }
+    /* Menu card number */
+    .menu-card__number {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 6px;
+    }
+    /* Spice indicator */
+    .menu-card__spice {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.40);
+      margin-bottom: 12px;
+    }
+    .menu-card__spice-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+      opacity: 0.85;
+    }
+    .menu-card__spice-dot.empty {
+      background: rgba(255,255,255,0.18);
+      opacity: 1;
+    }
+    /* Protein choice */
+    .menu-card__protein {
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.35);
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+    .menu-card__protein strong {
+      color: rgba(255,255,255,0.50);
+      font-weight: 600;
+    }
 
     /* Popular badge */
     .menu-card__badge {
@@ -899,7 +960,7 @@
        RESTAURANGER
     =========================== */
     .locations {
-      background: var(--white);
+      background: var(--purple-light);
       padding: 120px 0;
     }
     .locations__inner {
@@ -928,16 +989,15 @@
     }
     .loc-card {
       background: var(--white);
-      border: 1px solid var(--border);
-      box-shadow: 0 2px 16px rgba(78,46,132,0.06);
+      border: 1px solid rgba(78,46,132,0.08);
+      box-shadow: 0 2px 12px rgba(78,46,132,0.04);
       padding: 32px 28px;
       transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
     }
     .loc-card:hover {
-      box-shadow: 0 16px 48px rgba(78,46,132,0.22);
-      border-color: var(--purple);
-      border-bottom: 3px solid var(--orange);
-      transform: translateY(-6px);
+      box-shadow: 0 8px 28px rgba(78,46,132,0.12);
+      border-color: rgba(78,46,132,0.2);
+      transform: translateY(-4px);
     }
     .loc-card__number {
       font-size: 11px;
@@ -985,13 +1045,13 @@
       padding: 120px 0;
     }
     .contact__inner {
-      max-width: 1280px;
+      max-width: 860px;
       margin: 0 auto;
       padding: 0 48px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
     .contact__heading {
       font-size: clamp(36px, 4.5vw, 60px);
@@ -1384,7 +1444,7 @@
 <body>
 
   <!-- Popup – Ny enhet Hammarby Sjöstad -->
-  <div class="popup-overlay" id="popup-overlay" role="dialog" aria-modal="true" aria-label="Ny restaurang öppnar">
+  <div class="popup-overlay" id="popup-overlay" role="dialog" aria-modal="true" aria-label="Ny restaurang har öppnat">
     <div class="popup">
       <button class="popup__close" id="popup-close" aria-label="Stäng">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -1393,13 +1453,13 @@
         </svg>
       </button>
       <div class="popup__tag">Nyhet · Ny restaurang</div>
-      <div class="popup__date">13</div>
-      <div class="popup__month">Mars 2026</div>
-      <h2 class="popup__heading">Vi öppnar i<br><span>Hammarby Sjöstad!</span></h2>
+      <div class="popup__date">NU</div>
+      <div class="popup__month">Öppen!</div>
+      <h2 class="popup__heading">Vi har öppnat i<br><span>Hammarby Sjöstad!</span></h2>
       <p class="popup__text">
-        Vi är glada att kunna meddela att Thai House Wok öppnar en ny restaurang i Hammarby Sjöstad den 13 mars. Välkommen att besöka oss!
+        Thai House Wok finns nu i Hammarby Sjöstad. Besök oss och upplev äkta thaimat i vår nionde restaurang!
       </p>
-      <a href="#restauranger" class="btn btn-orange" id="popup-cta">Läs mer</a>
+      <a href="#restauranger" class="btn btn-orange" id="popup-cta">Hitta hit</a>
     </div>
   </div>
 
@@ -1479,21 +1539,14 @@
         <div class="hero__tag-line"></div>
         <span class="hero__tag-label">Äkta Thaimat · Stockholm</span>
       </div>
-      <h1 class="hero__title">
-        Thai House <span>Wok</span>
-      </h1>
+      <h1 class="hero__title">Thai House Wok</h1>
       <p class="hero__subtitle">
-        Handlagad mat med färska råvaror och äkta kryddor. Välkommen till Thai House Wok – med 10 restauranger runt om i Stockholm.
+        Handlagad mat med färska råvaror och äkta kryddor. Välkommen till Thai House Wok, med 9 restauranger runt om i Stockholm.
       </p>
       <div class="hero__buttons">
         <a href="#meny" class="btn btn-orange">Se menyn</a>
         <a href="#restauranger" class="btn btn-outline">Hitta restaurang</a>
       </div>
-    </div>
-
-    <div class="hero__badge">
-      <span class="hero__badge-year">2006</span>
-      <span class="hero__badge-label">Sedan</span>
     </div>
 
     <div class="hero__scroll">
@@ -1503,31 +1556,6 @@
   </section>
 
 
-  <!-- ============================================================
-       TICKER
-  ============================================================ -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker__track">
-      <span class="ticker__item">Pad Thai<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Röd Curry<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Grön Curry<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Massaman<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Pad See Ew<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Tom Kha<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Phaneang<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Pad King<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Gul Curry<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Pad Thai<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Röd Curry<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Grön Curry<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Massaman<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Pad See Ew<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Tom Kha<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Phaneang<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Pad King<span class="ticker__dot"></span></span>
-      <span class="ticker__item">Gul Curry<span class="ticker__dot"></span></span>
-    </div>
-  </div>
 
 
   <!-- ============================================================
@@ -1549,7 +1577,7 @@
         </p>
         <div class="about__stats">
           <div class="about__stat">
-            <div class="about__stat-num">10+</div>
+            <div class="about__stat-num">9</div>
             <div class="about__stat-label">Restauranger</div>
           </div>
           <div class="about__stat">
@@ -1604,65 +1632,146 @@
       <div class="menu__grid">
         <!-- Curryrätter -->
         <div class="menu-card reveal" data-category="curry">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__number">#01</div>
           <div class="menu-card__badge">Populär</div>
-          <div class="menu-card__cat">Curry</div>
+          <div class="menu-card__cat">Curryrätter</div>
           <div class="menu-card__name">Röd Curry</div>
-          <div class="menu-card__desc">Krämig röd curry med kokosmjölk, paprika, bambuskott och thaibasilika. Välj kyckling, räkor eller tofu.</div>
-          <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
+          <div class="menu-card__desc">Krämig röd curry med kokosmjölk, paprika, bambuskott och thaibasilika.</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            Medel
+          </div>
+          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 115 kr <span>inkl. ris</span></div>
+          <div class="menu-card__protein"><strong>Välj protein:</strong> Kyckling · Räkor · Tofu</div>
         </div>
         <div class="menu-card reveal" data-category="curry">
-          <div class="menu-card__cat">Curry</div>
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__number">#02</div>
+          <div class="menu-card__cat">Curryrätter</div>
           <div class="menu-card__name">Grön Curry</div>
-          <div class="menu-card__desc">Aromatisk grön curry med kokosmjölk, aubergine, bönor och färsk koriander. Stark och fyllig.</div>
-          <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
+          <div class="menu-card__desc">Aromatisk grön curry med kokosmjölk, aubergine, bönor och färsk koriander.</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            Stark
+          </div>
+          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 115 kr <span>inkl. ris</span></div>
+          <div class="menu-card__protein"><strong>Välj protein:</strong> Kyckling · Räkor · Tofu</div>
         </div>
         <div class="menu-card reveal" data-category="curry">
-          <div class="menu-card__cat">Curry</div>
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__number">#03</div>
+          <div class="menu-card__cat">Curryrätter</div>
           <div class="menu-card__name">Massaman Curry</div>
           <div class="menu-card__desc">Mild och rund curry med jordnötter, potatis, lök och en touch av kanel och kardemumma.</div>
-          <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            Mild
+          </div>
+          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 115 kr <span>inkl. ris</span></div>
+          <div class="menu-card__protein"><strong>Välj protein:</strong> Kyckling · Räkor · Tofu</div>
         </div>
 
         <!-- Wok / nudlar -->
         <div class="menu-card reveal" data-category="wok">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__number">#04</div>
           <div class="menu-card__badge">Populär</div>
-          <div class="menu-card__cat">Wok</div>
+          <div class="menu-card__cat">Wokrätter</div>
           <div class="menu-card__name">Pad Thai</div>
           <div class="menu-card__desc">Klassisk woknudel med ägg, böngroddar, jordnötter, lime och vår hemliga Pad Thai-sås.</div>
-          <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            Mild
+          </div>
+          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 115 kr <span>inkl. ris</span></div>
+          <div class="menu-card__protein"><strong>Välj protein:</strong> Kyckling · Räkor · Tofu</div>
         </div>
         <div class="menu-card reveal" data-category="wok">
-          <div class="menu-card__cat">Wok</div>
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__number">#05</div>
+          <div class="menu-card__cat">Wokrätter</div>
           <div class="menu-card__name">Pad See Ew</div>
           <div class="menu-card__desc">Breda risnudlar wokade med ägg, broccoli och mörk sojasås. En rik och mättande klassiker.</div>
-          <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            Mild
+          </div>
+          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 115 kr <span>inkl. ris</span></div>
+          <div class="menu-card__protein"><strong>Välj protein:</strong> Kyckling · Räkor · Tofu</div>
         </div>
         <div class="menu-card reveal" data-category="wok">
-          <div class="menu-card__cat">Wok</div>
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__number">#06</div>
+          <div class="menu-card__cat">Wokrätter</div>
           <div class="menu-card__name">Pad Prig Phao</div>
           <div class="menu-card__desc">Wokad med chiliolja, thaibasilika, lök och paprika. Kryddig och smakintensiv.</div>
-          <div class="menu-card__price">115 kr <span>inkl. ris</span></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            Stark
+          </div>
+          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 115 kr <span>inkl. ris</span></div>
+          <div class="menu-card__protein"><strong>Välj protein:</strong> Kyckling · Räkor · Tofu</div>
         </div>
 
         <!-- Sallader -->
         <div class="menu-card reveal" data-category="sallad">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__number">#07</div>
           <div class="menu-card__badge">Populär</div>
-          <div class="menu-card__cat">Sallad</div>
+          <div class="menu-card__cat">Sallader</div>
           <div class="menu-card__name">Papayasallad</div>
-          <div class="menu-card__desc">Krispig grön papaya med chilipeppar, lime, tomater, jordnötter och torkat räkpulver. Frisk och het.</div>
-          <div class="menu-card__price">89 kr <span>som förrätt</span></div>
+          <div class="menu-card__desc">Krispig grön papaya med chilipeppar, lime, tomater, jordnötter och torkat räkpulver.</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            Medel
+          </div>
+          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 89 kr <span>som förrätt</span></div>
+          <div class="menu-card__protein"><strong>Välj protein:</strong> Räkor · Kyckling · Vegetarisk</div>
         </div>
         <div class="menu-card reveal" data-category="sallad">
-          <div class="menu-card__cat">Sallad</div>
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__number">#08</div>
+          <div class="menu-card__cat">Sallader</div>
           <div class="menu-card__name">Thaisallad med räkor</div>
-          <div class="menu-card__desc">Färsk sallad med wokade räkor, citrongräs, glasnudlar, mynta och en het limemarineringsvinaigrette.</div>
-          <div class="menu-card__price">109 kr <span>som förrätt</span></div>
+          <div class="menu-card__desc">Färsk sallad med wokade räkor, citrongräs, glasnudlar, mynta och en het limemarinad.</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            Medel
+          </div>
+          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 109 kr <span>som förrätt</span></div>
+          <div class="menu-card__protein"><strong>Välj protein:</strong> Räkor · Kyckling · Tofu</div>
         </div>
         <div class="menu-card reveal" data-category="sallad">
-          <div class="menu-card__cat">Sallad</div>
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__number">#09</div>
+          <div class="menu-card__cat">Sallader</div>
           <div class="menu-card__name">Larb Kai</div>
-          <div class="menu-card__desc">Isanstil köttfärssallad med hackad kyckling, rostad ris, mynta, schalottenlök och limejuice.</div>
-          <div class="menu-card__price">109 kr <span>som förrätt</span></div>
+          <div class="menu-card__desc">Isanstil sallad med hackad kyckling, rostad ris, mynta, schalottenlök och limejuice.</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            Medel
+          </div>
+          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 109 kr <span>som förrätt</span></div>
+          <div class="menu-card__protein"><strong>Välj protein:</strong> Kyckling · Fläsk · Tofu</div>
         </div>
       </div>
 
@@ -1706,51 +1815,52 @@
         <a href="hornsgatan.html" class="loc-card reveal">
           <div class="loc-card__number">01 · Södermalm</div>
           <div class="loc-card__name">Hornsgatan</div>
-          <div class="loc-card__address">Hornsgatan, Stockholm<br>Takeaway &amp; Leverans</div>
+          <div class="loc-card__address">Hornsgatan 67, 118 49 Stockholm<br>Takeaway &amp; Leverans</div>
           <div class="loc-card__hours"><strong>Tel:</strong> 08 25 56 60</div>
         </a>
         <a href="folkungagatan.html" class="loc-card reveal">
           <div class="loc-card__number">02 · Södermalm</div>
           <div class="loc-card__name">Folkungagatan</div>
-          <div class="loc-card__address">Folkungagatan, Stockholm<br>Takeaway &amp; Leverans</div>
+          <div class="loc-card__address">Folkungagatan 110, 116 30 Stockholm<br>Takeaway &amp; Leverans</div>
           <div class="loc-card__hours"><strong>Tel:</strong> 08 25 56 60</div>
         </a>
         <a href="birkagatan.html" class="loc-card reveal">
           <div class="loc-card__number">03 · Vasastan</div>
           <div class="loc-card__name">Birkagatan</div>
-          <div class="loc-card__address">Birkagatan, Stockholm<br>Takeaway &amp; Leverans</div>
+          <div class="loc-card__address">Birkagatan 14, 113 39 Stockholm<br>Takeaway &amp; Leverans</div>
           <div class="loc-card__hours"><strong>Tel:</strong> 08 25 56 60</div>
         </a>
         <a href="hantverkargatan.html" class="loc-card reveal">
           <div class="loc-card__number">04 · Kungsholmen</div>
           <div class="loc-card__name">Hantverkargatan</div>
-          <div class="loc-card__address">Hantverkargatan, Stockholm<br>Takeaway &amp; Leverans</div>
+          <div class="loc-card__address">Hantverkargatan 78, 112 38 Stockholm<br>Takeaway &amp; Leverans</div>
           <div class="loc-card__hours"><strong>Tel:</strong> 08 25 56 60</div>
         </a>
         <a href="nybrogatan.html" class="loc-card reveal">
           <div class="loc-card__number">05 · Östermalm</div>
           <div class="loc-card__name">Nybrogatan</div>
-          <div class="loc-card__address">Nybrogatan, Stockholm<br>Takeaway &amp; Leverans</div>
+          <div class="loc-card__address">Nybrogatan 42, 114 40 Stockholm<br>Takeaway &amp; Leverans</div>
           <div class="loc-card__hours"><strong>Tel:</strong> 08 25 56 60</div>
         </a>
         <a href="lindhagen.html" class="loc-card reveal">
           <div class="loc-card__number">06 · Kungsholmen</div>
           <div class="loc-card__name">Lindhagen</div>
-          <div class="loc-card__address">Lindhagen, Stockholm<br>Äta på plats</div>
+          <div class="loc-card__address">Lindhagensgatan 139C, 112 51 Stockholm<br>Äta på plats</div>
           <div class="loc-card__hours"><strong>Tel:</strong> 08 25 56 60</div>
         </a>
         <a href="sollentuna.html" class="loc-card reveal">
           <div class="loc-card__number">07 · Sollentuna</div>
           <div class="loc-card__name">Sollentuna</div>
-          <div class="loc-card__address">Sollentuna<br>Takeaway &amp; Leverans</div>
+          <div class="loc-card__address">Sollentunavägen 146, 191 44 Sollentuna<br>Takeaway &amp; Leverans</div>
           <div class="loc-card__hours"><strong>Tel:</strong> 08 25 56 60</div>
         </a>
-        <a href="hammarby-sjostad.html" class="loc-card loc-card--coming reveal">
-          <div class="loc-card__number">08 · Öppnar 13 mars</div>
+        <a href="hammarby-sjostad.html" class="loc-card reveal">
+          <div class="loc-card__number">08 · Södermalm</div>
           <div class="loc-card__name">Hammarby Sjöstad</div>
-          <div class="loc-card__address">Hammarby Sjöstad, Stockholm<br>Ny restaurang!</div>
-          <div class="loc-card__hours"><strong>Öppnar:</strong> 13 mars 2026</div>
+          <div class="loc-card__address">Hammarby Sjöstad, Stockholm<br>Takeaway &amp; Leverans</div>
+          <div class="loc-card__hours"><strong>Tel:</strong> 08 25 56 60</div>
         </a>
+        <!-- TODO: Saknad enhet (nr 09) – bekräfta med klienten vilken restaurang som saknas -->
       </div>
       </div><!-- /locations__scroll-wrap -->
     </div>
@@ -1762,55 +1872,18 @@
   ============================================================ -->
   <section class="contact" id="kontakt">
     <div class="contact__inner">
-      <div class="reveal">
-        <div class="section-tag label" style="color:var(--orange);margin-bottom:20px;">
+      <div class="reveal" style="width:100%;margin-bottom:48px;">
+        <div class="section-tag label" style="color:var(--orange);margin-bottom:20px;justify-content:center;">
           <span style="display:inline-block;width:28px;height:2px;background:var(--orange);vertical-align:middle;margin-right:10px;"></span>
           Kontakta oss
         </div>
-        <h2 class="contact__heading">Hör av<br><span>dig!</span></h2>
+        <h2 class="contact__heading">Hör av dig!</h2>
         <p class="contact__text">
           Frågor om catering, jobb, allergier eller bara vill säga hej? Vi svarar gärna.
         </p>
-        <div class="contact__details">
-          <div class="contact__detail">
-            <div class="contact__detail-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-            </div>
-            <div>
-              <div class="contact__detail-label">Adress</div>
-              <div class="contact__detail-value">Flera restauranger i Stockholm – se listan ovan</div>
-            </div>
-          </div>
-          <div class="contact__detail">
-            <div class="contact__detail-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.18 2 2 0 012.07 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
-              </svg>
-            </div>
-            <div>
-              <div class="contact__detail-label">Telefon</div>
-              <div class="contact__detail-value">Uppdateras</div>
-            </div>
-          </div>
-          <div class="contact__detail">
-            <div class="contact__detail-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-              </svg>
-            </div>
-            <div>
-              <div class="contact__detail-label">E-post</div>
-              <div class="contact__detail-value">info@thw.se</div>
-            </div>
-          </div>
-        </div>
       </div>
 
-      <div class="contact__form reveal">
+      <div class="contact__form reveal" style="width:100%;">
         <div class="contact__form-title">Skicka ett meddelande</div>
         <form id="contact-form">
           <div class="form-row">
