@@ -728,7 +728,7 @@
        MENY PREVIEW
     =========================== */
     .menu {
-      background: var(--white);
+      background: #efeada;
       padding: 120px 0;
     }
     .menu__inner {
@@ -825,33 +825,44 @@
     }
     .lunch-banner .btn-purple { flex-shrink: 0; }
 
-    /* Menu light-background overrides */
+    /* Menu card — beige restyle matching illustration */
     .menu .menu-card {
-      background: #FFFFFF;
-      border-color: var(--border);
+      background: #e5ddbf;
+      border: none;
+      box-shadow: none;
+      padding: 28px 24px 24px;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
     }
     .menu .menu-card:hover {
-      background: #FFFFFF;
-      border-color: var(--orange);
-      box-shadow: 0 12px 40px rgba(31,62,55,0.15);
-      transform: translateY(-5px);
+      background: #e5ddbf;
+      border: none;
+      box-shadow: 0 8px 28px rgba(31,62,55,0.10);
+      transform: translateY(-3px);
     }
-    .menu .menu-card__cat { color: var(--orange); }
-    .menu .menu-card__name { color: var(--text); }
-    .menu .menu-card__desc { color: var(--text-muted); }
-    .menu .menu-card__price { color: var(--orange); }
-    .menu .menu-card__price span { color: var(--text-muted); }
-    .menu .menu-card__number { color: rgba(35,31,26,0.28); }
-    .menu .menu-card__protein { color: rgba(35,31,26,0.55); }
-    .menu .menu-card__protein strong { color: var(--text); }
+    .menu .menu-card__cat { display: none; }
+    .menu .menu-card__badge { display: none; }
 
-    /* Menu card image placeholder */
+    /* DOM order is: img, number, name, desc, spice, price, protein.
+       Visual order we want: img, spice-oval, title-row, desc, price, protein. */
+    .menu .menu-card__img     { order: 1; }
+    .menu .menu-card__spice   { order: 2; }
+    .menu .menu-card__titlerow{ order: 3; }
+    .menu .menu-card__number  { order: 3; }
+    .menu .menu-card__name    { order: 4; }
+    .menu .menu-card__desc    { order: 5; }
+    .menu .menu-card__price   { order: 6; }
+    .menu .menu-card__protein { order: 7; }
+
     .menu-card__img {
       width: 100%;
-      aspect-ratio: 16/9;
-      background: rgba(31,62,55,0.05);
-      border: 1px dashed rgba(31,62,55,0.15);
-      margin-bottom: 20px;
+      aspect-ratio: 1;
+      max-width: 240px;
+      margin: 0 auto 14px;
+      background: transparent;
+      border: none;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -859,61 +870,103 @@
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(35,31,26,0.25);
-    }
-    /* Menu card number */
-    .menu-card__number {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.25);
-      margin-bottom: 6px;
-    }
-    /* Spice indicator */
-    .menu-card__spice {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 10px;
-      font-weight: 600;
-      color: rgba(35,31,26,0.50);
-      margin-bottom: 12px;
-    }
-    .menu-card__spice-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--orange);
-      opacity: 0.85;
-    }
-    .menu-card__spice-dot.empty {
-      background: rgba(31,62,55,0.22);
-      opacity: 1;
-    }
-    /* Protein choice */
-    .menu-card__protein {
-      font-size: 11px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.35);
-      margin-top: 12px;
-      line-height: 1.6;
-    }
-    .menu-card__protein strong {
-      color: rgba(255,255,255,0.50);
-      font-weight: 600;
+      color: rgba(35,31,26,0.20);
+      object-fit: cover;
     }
 
-    /* Popular badge */
-    .menu-card__badge {
-      display: inline-block;
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 0.16em;
+    /* Decorative chili oval (spice indicator restyled) */
+    .menu .menu-card__spice {
+      align-self: center;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: fit-content;
+      margin: 0 auto 14px;
+      padding: 8px 30px;
+      background: #1F3E37;
+      border-radius: 100px;
+      font-size: 0;
+      color: transparent;
+      position: relative;
+    }
+    .menu .menu-card__spice::after {
+      content: '';
+      position: absolute;
+      bottom: -14px;
+      left: 15%;
+      right: 15%;
+      height: 1px;
+      background: rgba(31,62,55,0.35);
+    }
+    .menu .menu-card__spice-dot {
+      width: 3px;
+      height: 14px;
+      border-radius: 2px;
+      background: #C66D3D;
+      transform: rotate(-18deg);
+      opacity: 1;
+    }
+    .menu .menu-card__spice-dot.empty {
+      background: #C66D3D;
+      opacity: 0.35;
+    }
+
+    /* Number above name, both centered */
+    .menu .menu-card__number {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .menu .menu-card__name {
+      font-size: 18px;
+      font-weight: 900;
       text-transform: uppercase;
-      color: var(--dark);
-      background: var(--orange);
-      padding: 3px 9px;
-      margin-bottom: 10px;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 0;
+    }
+
+    .menu .menu-card__desc {
+      color: #1F3E37;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.55;
+      margin: 12px 0 20px;
+    }
+
+    /* Price block */
+    .menu .menu-card__price {
+      color: var(--orange);
+      font-size: 18px;
+      font-weight: 900;
+      padding: 14px 0 0;
+      border-top: 1px solid rgba(31,62,55,0.35);
+      margin: 0;
+    }
+    .menu .menu-card__price span {
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* Protein row under price */
+    .menu .menu-card__protein {
+      color: rgba(35,31,26,0.80);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 14px 0 0;
+      margin-top: 14px;
+      border-top: 1px solid rgba(31,62,55,0.35);
+      line-height: 1.55;
+    }
+    .menu .menu-card__protein strong {
+      color: var(--text);
+      font-weight: 700;
     }
 
     /* Menu tabs */
@@ -1633,7 +1686,7 @@
         <!-- Curryrätter -->
         <div class="menu-card reveal" data-category="curry">
           <div class="menu-card__img">Foto kommer</div>
-          <div class="menu-card__number">#01</div>
+          <div class="menu-card__number">1.</div>
           <div class="menu-card__badge">Populär</div>
           <div class="menu-card__cat">Curryrätter</div>
           <div class="menu-card__name">Röd Curry</div>
@@ -1649,7 +1702,7 @@
         </div>
         <div class="menu-card reveal" data-category="curry">
           <div class="menu-card__img">Foto kommer</div>
-          <div class="menu-card__number">#02</div>
+          <div class="menu-card__number">2.</div>
           <div class="menu-card__cat">Curryrätter</div>
           <div class="menu-card__name">Grön Curry</div>
           <div class="menu-card__desc">Aromatisk grön curry med kokosmjölk, aubergine, bönor och färsk koriander.</div>
@@ -1664,7 +1717,7 @@
         </div>
         <div class="menu-card reveal" data-category="curry">
           <div class="menu-card__img">Foto kommer</div>
-          <div class="menu-card__number">#03</div>
+          <div class="menu-card__number">3.</div>
           <div class="menu-card__cat">Curryrätter</div>
           <div class="menu-card__name">Massaman Curry</div>
           <div class="menu-card__desc">Mild och rund curry med jordnötter, potatis, lök och en touch av kanel och kardemumma.</div>
@@ -1681,7 +1734,7 @@
         <!-- Wok / nudlar -->
         <div class="menu-card reveal" data-category="wok">
           <div class="menu-card__img">Foto kommer</div>
-          <div class="menu-card__number">#04</div>
+          <div class="menu-card__number">4.</div>
           <div class="menu-card__badge">Populär</div>
           <div class="menu-card__cat">Wokrätter</div>
           <div class="menu-card__name">Pad Thai</div>
@@ -1697,7 +1750,7 @@
         </div>
         <div class="menu-card reveal" data-category="wok">
           <div class="menu-card__img">Foto kommer</div>
-          <div class="menu-card__number">#05</div>
+          <div class="menu-card__number">5.</div>
           <div class="menu-card__cat">Wokrätter</div>
           <div class="menu-card__name">Pad See Ew</div>
           <div class="menu-card__desc">Breda risnudlar wokade med ägg, broccoli och mörk sojasås. En rik och mättande klassiker.</div>
@@ -1712,7 +1765,7 @@
         </div>
         <div class="menu-card reveal" data-category="wok">
           <div class="menu-card__img">Foto kommer</div>
-          <div class="menu-card__number">#06</div>
+          <div class="menu-card__number">6.</div>
           <div class="menu-card__cat">Wokrätter</div>
           <div class="menu-card__name">Pad Prig Phao</div>
           <div class="menu-card__desc">Wokad med chiliolja, thaibasilika, lök och paprika. Kryddig och smakintensiv.</div>
@@ -1729,7 +1782,7 @@
         <!-- Sallader -->
         <div class="menu-card reveal" data-category="sallad">
           <div class="menu-card__img">Foto kommer</div>
-          <div class="menu-card__number">#07</div>
+          <div class="menu-card__number">7.</div>
           <div class="menu-card__badge">Populär</div>
           <div class="menu-card__cat">Sallader</div>
           <div class="menu-card__name">Papayasallad</div>
@@ -1745,7 +1798,7 @@
         </div>
         <div class="menu-card reveal" data-category="sallad">
           <div class="menu-card__img">Foto kommer</div>
-          <div class="menu-card__number">#08</div>
+          <div class="menu-card__number">8.</div>
           <div class="menu-card__cat">Sallader</div>
           <div class="menu-card__name">Thaisallad med räkor</div>
           <div class="menu-card__desc">Färsk sallad med wokade räkor, citrongräs, glasnudlar, mynta och en het limemarinad.</div>
@@ -1760,7 +1813,7 @@
         </div>
         <div class="menu-card reveal" data-category="sallad">
           <div class="menu-card__img">Foto kommer</div>
-          <div class="menu-card__number">#09</div>
+          <div class="menu-card__number">9.</div>
           <div class="menu-card__cat">Sallader</div>
           <div class="menu-card__name">Larb Kai</div>
           <div class="menu-card__desc">Isanstil sallad med hackad kyckling, rostad ris, mynta, schalottenlök och limejuice.</div>
