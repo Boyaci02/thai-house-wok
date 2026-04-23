@@ -380,44 +380,33 @@
       margin-bottom: 16px;
       line-height: 1.5;
     }
-    .menu-card__prices {
-      padding: 14px 0 0;
-      border-top: 1px solid rgba(31,62,55,0.35);
-      margin-top: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      text-align: left;
-    }
-    .menu-card__prices li {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .menu-card__prices li span:last-child {
-      color: var(--orange);
-      font-weight: 900;
-      font-size: 14px;
-    }
 
-    /* Single price (no protein variants) */
-    .menu-card__single-price {
+    /* Price + protein line (single-price layout) */
+    .menu .menu-card__price {
       padding: 14px 0 0;
       border-top: 1px solid rgba(31,62,55,0.35);
       margin-top: auto;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 900;
       color: var(--orange);
+      letter-spacing: 0.01em;
     }
-    .menu-card__single-price small {
-      font-size: 12px;
+    .menu .menu-card__price span {
+      font-size: 13px;
       font-weight: 500;
       color: var(--text);
       margin-left: 6px;
     }
+    .menu .menu-card__proteins {
+      padding: 12px 0 0;
+      margin-top: 12px;
+      border-top: 1px solid rgba(31,62,55,0.35);
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(35,31,26,0.80);
+      line-height: 1.55;
+    }
+
 
     /* ===========================
        EXTRA TILLBEHÖR
@@ -599,13 +588,8 @@
           <div class="menu-card__name">Geang Keowan</div>
           <div class="menu-card__desc">Gröncurry med paprika, äggplanta, bambuskott och söt basilika.</div>
           <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, räkpasta</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <!-- 2 -->
@@ -620,13 +604,8 @@
           <div class="menu-card__name">Geang Phed</div>
           <div class="menu-card__desc">Rödcurry med paprika, bambuskott och söt basilika.</div>
           <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, räkpasta</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <!-- 3 -->
@@ -641,13 +620,8 @@
           <div class="menu-card__name">Geang Kaari</div>
           <div class="menu-card__desc">Gulcurry med paprika, ananas och lök.</div>
           <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <!-- 4 -->
@@ -662,13 +636,8 @@
           <div class="menu-card__name">Geang Phaneang</div>
           <div class="menu-card__desc">Phaneang curry med paprika, långböna, lök och äggplanta.</div>
           <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, räkpasta</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <!-- 5 -->
@@ -683,13 +652,8 @@
           <div class="menu-card__name">Geang Massaman</div>
           <div class="menu-card__desc">Massaman curry med paprika, potatis, lök och jordnötter på sidan.</div>
           <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, räkpasta, jordnötter</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <h2 class="menu__category-title" data-category="wok">Wok</h2>
@@ -706,13 +670,8 @@
           <div class="menu-card__name">Pad Mhed Mamuang</div>
           <div class="menu-card__desc">Ostronsås, chiliolja, paprika, broccoli, blomkål, lök, purjolök, cashewnötter.</div>
           <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <!-- 7 -->
@@ -727,13 +686,8 @@
           <div class="menu-card__name">Pad Graaprao</div>
           <div class="menu-card__desc">Ostronsås, paprika, långböna, bambuskott, vitlök, chili, lök, stark basilika.</div>
           <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <!-- 8 -->
@@ -748,13 +702,8 @@
           <div class="menu-card__name">Pad Preowan</div>
           <div class="menu-card__desc">Sötsursås, paprika, purjolök, ananas, morötter, selleri, tomat och lök.</div>
           <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <!-- 9 -->
@@ -769,13 +718,8 @@
           <div class="menu-card__name">Pad Prig Phao</div>
           <div class="menu-card__desc">Ostronsås, chiliolja, paprika, vitlök, chili, purjolök, lök, broccoli, blomkål, söt basilika.</div>
           <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <!-- 10 -->
@@ -790,13 +734,8 @@
           <div class="menu-card__name">Pad Khing</div>
           <div class="menu-card__desc">Ostronsås, paprika, morötter, lök, selleri, purjolök, ingefära.</div>
           <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <!-- 11 -->
@@ -811,13 +750,8 @@
           <div class="menu-card__name">Pad Paak</div>
           <div class="menu-card__desc">Ostronsås, paprika, broccoli, morötter, blomkål, tomat och böngroddar.</div>
           <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <!-- 12 -->
@@ -832,13 +766,8 @@
           <div class="menu-card__name">Kao Pad</div>
           <div class="menu-card__desc">Ris, morötter, lök, broccoli, tomat, ägg, soja, koriander och lime.</div>
           <div class="menu-card__allergens">Gluten, laktosfri</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <!-- 13 -->
@@ -853,13 +782,8 @@
           <div class="menu-card__name">Stekt Röd Curry</div>
           <div class="menu-card__desc">Rödcurrysås, paprika, bambuskott, långböna, äggplanta, söt basilika.</div>
           <div class="menu-card__allergens">Skaldjur, fisk, glutenfri, laktosfri · innehåller mjölkprotein</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <h2 class="menu__category-title" data-category="nudlar">Nudlar</h2>
@@ -876,13 +800,8 @@
           <div class="menu-card__name">Pad Thai</div>
           <div class="menu-card__desc">Risnudlar, morötter, böngroddar, purjolök, ägg, koriander, lime, hackade jordnötter och chilipulver på sidan.</div>
           <div class="menu-card__allergens">Laktosfri, glutenfri · sås vegansk · jordnötter</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <!-- 15 -->
@@ -897,13 +816,8 @@
           <div class="menu-card__name">Pad See Ew</div>
           <div class="menu-card__desc">Ostronsås, risnudlar, paprika, morötter, broccoli, purjolök, ägg, svart soja, sriracha på sidan.</div>
           <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <h2 class="menu__category-title" data-category="soppor">Soppor</h2>
@@ -920,13 +834,8 @@
           <div class="menu-card__name">Tom Yam Goong / Gai</div>
           <div class="menu-card__desc">Tomat, lök, citrongräs, galangal, chili, koriander, stråsvamp, chiliolja, limeblad.</div>
           <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <!-- 17 -->
@@ -941,13 +850,8 @@
           <div class="menu-card__name">Tom Kha</div>
           <div class="menu-card__desc">Kokosmjölk, galangal, citrongräs, limeblad, lök, stråsvamp och tomat.</div>
           <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein</div>
-          <ul class="menu-card__prices">
-            <li><span>Kyckling</span><span>149:-</span></li>
-            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
-            <li><span>Nöt</span><span>164:-</span></li>
-            <li><span>Bläckfisk</span><span>164:-</span></li>
-            <li><span>Räkor</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
         </div>
 
         <h2 class="menu__category-title" data-category="sallader">Sallader</h2>
@@ -964,7 +868,7 @@
           <div class="menu-card__name">Kycklingsallad</div>
           <div class="menu-card__desc">Paprika, tomat, morot, böngroddar, glasnudlar, fisksås, lime, koriander. Jordnötter och chili på sidan.</div>
           <div class="menu-card__allergens">Skaldjur, fisk, glutenfri, laktosfri · jordnötter</div>
-          <div class="menu-card__single-price">149:-<small>inkl. tillbehör</small></div>
+          <div class="menu-card__price">149:- <span>inkl. tillbehör</span></div>
         </div>
 
         <!-- 19 -->
@@ -979,7 +883,7 @@
           <div class="menu-card__name">Skaldjurssallad</div>
           <div class="menu-card__desc">Paprika, tomat, morot, böngroddar, glasnudlar, fisksås, lime, koriander. Hela jordnötter och chili på sidan.</div>
           <div class="menu-card__allergens">Skaldjur, fisk, glutenfri, laktosfri · jordnötter</div>
-          <div class="menu-card__single-price">154:-<small>inkl. tillbehör</small></div>
+          <div class="menu-card__price">154:- <span>inkl. tillbehör</span></div>
         </div>
 
         <h2 class="menu__category-title" data-category="signatur">Signatur</h2>
@@ -996,7 +900,7 @@
           <div class="menu-card__name">Graaprao Thai style Kyckling</div>
           <div class="menu-card__desc">Hackad kyckling, ostronsås, långböna, vitlök, lök, chili, stark basilika och stekt ägg.</div>
           <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
-          <div class="menu-card__single-price">169:-<small>inkl. ris</small></div>
+          <div class="menu-card__price">169:- <span>inkl. ris</span></div>
         </div>
 
         <!-- 21 -->
@@ -1011,7 +915,7 @@
           <div class="menu-card__name">Jordnötssås wok Kyckling</div>
           <div class="menu-card__desc">Jordnötssås, paprika, broccoli, blomkål, lök och purjolök.</div>
           <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, senap, jordnötter</div>
-          <div class="menu-card__single-price">169:-<small>inkl. ris</small></div>
+          <div class="menu-card__price">169:- <span>inkl. ris</span></div>
         </div>
 
         <!-- 22 -->
@@ -1026,7 +930,7 @@
           <div class="menu-card__name">Sötsur Wok &amp; Friterad Kyckling</div>
           <div class="menu-card__desc">Paprika, purjolök, ananas, morötter, selleri, tomat och lök.</div>
           <div class="menu-card__allergens">Skaldjur, fisk, laktosfri, gluten · jordnötter</div>
-          <div class="menu-card__single-price">174:-<small>inkl. ris</small></div>
+          <div class="menu-card__price">174:- <span>inkl. ris</span></div>
         </div>
 
         <!-- 23 -->
@@ -1041,7 +945,7 @@
           <div class="menu-card__name">Kao Pad Thai Style Kyckling</div>
           <div class="menu-card__desc">Stekt ris med wokad vitlök, ägg, kyckling, morötter, lök, soja, koriander och lime.</div>
           <div class="menu-card__allergens">Gluten, laktosfri</div>
-          <div class="menu-card__single-price">169:-</div>
+          <div class="menu-card__price">169:-</div>
         </div>
 
         <!-- 24 -->
@@ -1056,7 +960,7 @@
           <div class="menu-card__name">Risnudlar med Jordnötssås Kyckling</div>
           <div class="menu-card__desc">Risnudlar, morötter, ägg, koriander, lime, chilipulver och hackade jordnötter.</div>
           <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, senap, jordnötter</div>
-          <div class="menu-card__single-price">169:-</div>
+          <div class="menu-card__price">169:-</div>
         </div>
 
         <h2 class="menu__category-title" data-category="friterat">Friterade rätter</h2>
@@ -1068,11 +972,8 @@
           <div class="menu-card__name">Vårrullar (Vegetarisk)</div>
           <div class="menu-card__desc">Krispiga vegetariska vårrullar med sötchilisås.</div>
           <div class="menu-card__allergens">Gluten, laktos</div>
-          <ul class="menu-card__prices">
-            <li><span>3 st</span><span>64:-</span></li>
-            <li><span>5 st</span><span>104:-</span></li>
-            <li><span>9 st</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 64:-</div>
+          <div class="menu-card__proteins">Antal: 3 st · 5 st · 9 st</div>
         </div>
 
         <!-- 26 -->
@@ -1082,11 +983,8 @@
           <div class="menu-card__name">Ebi Fri</div>
           <div class="menu-card__desc">Friterad panerad räka serverad med sötchilisås.</div>
           <div class="menu-card__allergens">Gluten, laktosfri · skaldjur</div>
-          <ul class="menu-card__prices">
-            <li><span>3 st</span><span>64:-</span></li>
-            <li><span>5 st</span><span>104:-</span></li>
-            <li><span>9 st</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 64:-</div>
+          <div class="menu-card__proteins">Antal: 3 st · 5 st · 9 st</div>
         </div>
 
         <!-- 27 -->
@@ -1101,11 +999,8 @@
           <div class="menu-card__name">Hot Wings</div>
           <div class="menu-card__desc">Kryddiga friterade kycklingvingar.</div>
           <div class="menu-card__allergens">Gluten, selleri</div>
-          <ul class="menu-card__prices">
-            <li><span>3 st</span><span>45:-</span></li>
-            <li><span>5 st</span><span>85:-</span></li>
-            <li><span>9 st</span><span>125:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 45:-</div>
+          <div class="menu-card__proteins">Antal: 3 st · 5 st · 9 st</div>
         </div>
 
         <!-- 28 -->
@@ -1115,11 +1010,8 @@
           <div class="menu-card__name">Panko Friterad Kyckling</div>
           <div class="menu-card__desc">Krispig pankopanerad kyckling med sötchilisås.</div>
           <div class="menu-card__allergens">Gluten, selleri</div>
-          <ul class="menu-card__prices">
-            <li><span>3 st</span><span>64:-</span></li>
-            <li><span>5 st</span><span>104:-</span></li>
-            <li><span>9 st</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 64:-</div>
+          <div class="menu-card__proteins">Antal: 3 st · 5 st · 9 st</div>
         </div>
 
         <!-- 29 -->
@@ -1129,11 +1021,8 @@
           <div class="menu-card__name">Kycklingspett</div>
           <div class="menu-card__desc">Grillade kycklingspett med jordnötssås.</div>
           <div class="menu-card__allergens">Senap, innehåller mjölkprotein, gluten</div>
-          <ul class="menu-card__prices">
-            <li><span>3 st</span><span>64:-</span></li>
-            <li><span>5 st</span><span>104:-</span></li>
-            <li><span>9 st</span><span>169:-</span></li>
-          </ul>
+          <div class="menu-card__price">från 64:-</div>
+          <div class="menu-card__proteins">Antal: 3 st · 5 st · 9 st</div>
         </div>
 
       </div><!-- /menu__grid -->
