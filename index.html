@@ -1032,7 +1032,7 @@
        KONTAKT
     =========================== */
     .contact {
-      background: var(--red);
+      background: #d78c5d;
       padding: 120px 0;
     }
     .contact__inner {
@@ -1089,7 +1089,7 @@
       color: rgba(238,227,206,0.75);
     }
     .contact__form {
-      background: rgba(0,0,0,0.2);
+      background: #bf543f;
       border: 1px solid rgba(255,255,255,0.08);
       padding: 48px 40px;
     }
@@ -1113,9 +1113,9 @@
     .form-group textarea,
     .form-group select {
       width: 100%;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--cream);
+      background: #e48853;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #ffffff;
       font-family: var(--sans);
       font-size: 14px;
       font-weight: 500;
@@ -1123,15 +1123,30 @@
       outline: none;
       transition: border-color 0.2s, background 0.2s;
     }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.70);
+    }
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus {
-      border-color: var(--orange);
-      background: rgba(212,122,63,0.06);
+      border-color: #ffffff;
+      background: #e48853;
     }
     .form-group textarea { height: 140px; resize: vertical; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .contact__form .btn { width: 100%; justify-content: center; margin-top: 8px; }
+    .contact__form .btn {
+      width: 100%;
+      justify-content: center;
+      margin-top: 8px;
+      background: #f89a41;
+      color: #000000;
+      border-color: #f89a41;
+    }
+    .contact__form .btn:hover {
+      background: #e5883a;
+      border-color: #e5883a;
+    }
 
     /* ===========================
        BLOGG
