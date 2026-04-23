@@ -141,6 +141,14 @@
       background: radial-gradient(circle at 60% 40%, rgba(212,122,63,0.15) 0%, transparent 60%);
     }
     .map-placeholder svg { width: 48px; height: 48px; opacity: 0.35; position: relative; }
+    .map-placeholder iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      z-index: 2;
+    }
     .map-address {
       font-size: 14px;
       font-weight: 600;
@@ -316,7 +324,7 @@
       <!-- Map -->
       <div>
         <div class="map-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d130323.77333849839!2d17.626153578124974!3d59.311097738860575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9ecf16aa52a3%3A0xb2d030e21d5c98f7!2sThai%20House%20Wok!5e0!3m2!1ssv!2sse!4v1776962845703!5m2!1ssv!2sse" title="Thai House Wok Sollentuna" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <p class="map-address">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
