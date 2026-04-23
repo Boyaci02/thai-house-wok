@@ -982,20 +982,20 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      padding: 10px 22px;
-      border: 1px solid rgba(31,62,55,0.18);
-      background: transparent;
-      color: rgba(35,31,26,0.60);
+      padding: 12px 24px;
+      border: none;
+      background: #1d1636;
+      color: #ffffff;
       cursor: pointer;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      transition: background 0.2s, color 0.2s;
     }
     .menu__tab:hover {
-      border-color: rgba(212,122,63,0.6);
-      color: var(--orange);
+      background: #2a1f4e;
+      color: #ffffff;
     }
-    .menu__tab.active {
+    .menu__tab.active,
+    .menu__tab.active:hover {
       background: var(--orange);
-      border-color: var(--orange);
       color: var(--dark);
     }
     .menu-card.hidden { display: none; }
