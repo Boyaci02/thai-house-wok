@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meny – Thai House Wok</title>
+  <link rel="icon" href="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" type="image/svg+xml">
+  <meta name="description" content="Hela menyn – grytor, wok, nudlar, soppor, sallader, signaturrätter och friterade rätter hos Thai House Wok.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple:  #1F3E37;
+      --purple-light: #BED2CE;
+      --orange:  #D47A3F;
+      --dark:    #17171d;
+      --white:   #EEE3CE;
+      --text:    #231F1A;
+      --text-muted: rgba(35,31,26,0.60);
+      --border:  rgba(31,62,55,0.14);
+      --red:     #C66D3D;
+      --cream:   #EEE3CE;
+      --sans: 'Raleway', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: #efeada;
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    /* ===========================
+       NAV
+    =========================== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: transparent;
+      transition: background 0.38s ease, box-shadow 0.3s;
+    }
+    .nav.scrolled {
+      background: #bed1e0;
+      box-shadow: 0 2px 24px rgba(31,62,55,0.10);
+    }
+    .nav__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .nav__brand { display: inline-block; line-height: 0; }
+    .nav__logo { height: 72px; width: auto; display: block; }
+    .nav__links { display: flex; align-items: center; gap: 36px; }
+    .nav__links a {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.80);
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--orange);
+      transition: width 0.25s ease;
+    }
+    .nav__links a:hover::after { width: 100%; }
+    .nav__links a.active::after { width: 100%; }
+    .nav.scrolled .nav__links a { color: #6b7149; }
+    .nav__links a:hover { color: var(--orange); }
+    .nav__actions { display: flex; align-items: center; gap: 12px; }
+    .nav__cta {
+      background: #e19b41;
+      color: var(--dark);
+      padding: 10px 22px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+      display: block;
+    }
+    .nav__cta:hover { background: #c98630; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      width: 36px;
+      height: 36px;
+      padding: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--white);
+      transition: transform 0.3s, opacity 0.3s, background 0.38s;
+      transform-origin: center;
+    }
+    .nav.scrolled .hamburger span { background: #6b7149; }
+
+    /* Mobile menu */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--purple);
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.45s;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .mobile-menu.open {
+      transform: translateX(0);
+      visibility: visible;
+      pointer-events: all;
+    }
+    .mobile-menu__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      flex-shrink: 0;
+    }
+    .mobile-menu__close {
+      background: none; border: none; cursor: pointer;
+      padding: 6px; color: var(--cream);
+      display: flex; align-items: center;
+    }
+    .mobile-menu__close svg { width: 28px; height: 28px; }
+    .mobile-menu__nav {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 32px;
+      overflow-y: auto;
+    }
+    .mobile-menu__nav ul li { border-bottom: 1px solid rgba(255,255,255,0.10); }
+    .mobile-menu__nav ul li:first-child { border-top: 1px solid rgba(255,255,255,0.10); }
+    .mobile-menu__nav ul li a {
+      display: block;
+      padding: 18px 0;
+      font-size: clamp(32px, 9vw, 48px);
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--cream);
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .mobile-menu__nav ul li a:hover { color: var(--orange); }
+    .mobile-menu__footer {
+      padding: 24px 32px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      display: flex;
+      gap: 24px;
+      flex-shrink: 0;
+    }
+    .mobile-menu__footer a {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(238,227,206,0.45);
+      transition: color 0.2s;
+    }
+    .mobile-menu__footer a:hover { color: var(--orange); }
+
+    /* ===========================
+       HERO
+    =========================== */
+    .menu-hero {
+      padding: 144px 0 64px;
+      background: #bed1e0;
+      border-bottom: 1px solid rgba(31,62,55,0.15);
+    }
+    .menu-hero__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .menu-hero__label {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #6b7149;
+      margin-bottom: 18px;
+    }
+    .menu-hero__title {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+    .menu-hero__title span { color: #492f7f; }
+    .menu-hero__lead {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text);
+      max-width: 640px;
+    }
+
+    /* ===========================
+       MENY
+    =========================== */
+    .menu {
+      background: #efeada;
+      padding: 72px 0 120px;
+    }
+    .menu__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .menu__tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .menu__tab {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      border: none;
+      background: #1d1636;
+      color: #ffffff;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .menu__tab:hover { background: #2a1f4e; color: #ffffff; }
+    .menu__tab.active,
+    .menu__tab.active:hover {
+      background: var(--orange);
+      color: var(--dark);
+    }
+
+    .menu__category-title {
+      grid-column: 1 / -1;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 900;
+      color: var(--text);
+      margin: 32px 0 4px;
+      letter-spacing: 0.01em;
+    }
+    .menu__category-title:first-child { margin-top: 0; }
+    .menu__category-title span { color: var(--orange); }
+
+    .menu__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .menu-card {
+      background: #e5ddbf;
+      padding: 28px 24px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .menu-card:hover {
+      box-shadow: 0 8px 28px rgba(31,62,55,0.10);
+      transform: translateY(-3px);
+    }
+    .menu-card.hidden { display: none; }
+
+    .menu-card__img {
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 240px;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(35,31,26,0.20);
+      object-fit: cover;
+    }
+
+    .menu-card__spice {
+      align-self: center;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      width: fit-content;
+      margin: 0 auto 14px;
+      padding: 8px 22px;
+      background: #1F3E37;
+      border-radius: 100px;
+      position: relative;
+    }
+    .menu-card__spice::after {
+      content: '';
+      position: absolute;
+      bottom: -14px;
+      left: 15%;
+      right: 15%;
+      height: 1px;
+      background: rgba(31,62,55,0.35);
+    }
+    .menu-card__spice-dot {
+      width: 18px;
+      height: 22px;
+      background: url('https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea43b9dddb92342c16b824.svg') center/contain no-repeat;
+      opacity: 1;
+    }
+    .menu-card__spice-dot.empty { opacity: 0.25; }
+
+    .menu-card__number {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .menu-card__name {
+      font-size: 18px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      line-height: 1.25;
+    }
+    .menu-card__desc {
+      color: #1F3E37;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.55;
+      margin: 12px 0 10px;
+    }
+    .menu-card__allergens {
+      font-size: 11px;
+      font-style: italic;
+      color: rgba(35,31,26,0.65);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .menu-card__prices {
+      padding: 14px 0 0;
+      border-top: 1px solid rgba(31,62,55,0.35);
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+    }
+    .menu-card__prices li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .menu-card__prices li span:last-child {
+      color: var(--orange);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    /* Single price (no protein variants) */
+    .menu-card__single-price {
+      padding: 14px 0 0;
+      border-top: 1px solid rgba(31,62,55,0.35);
+      margin-top: auto;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--orange);
+    }
+    .menu-card__single-price small {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text);
+      margin-left: 6px;
+    }
+
+    /* ===========================
+       EXTRA TILLBEHÖR
+    =========================== */
+    .extras {
+      background: #efeada;
+      padding: 0 0 120px;
+    }
+    .extras__inner {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .extras__title {
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 28px;
+      letter-spacing: 0.01em;
+    }
+    .extras__title span { color: var(--orange); }
+    .extras__list {
+      border-top: 1px solid rgba(31,62,55,0.25);
+    }
+    .extras__list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(31,62,55,0.25);
+      gap: 16px;
+    }
+    .extras__item-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .extras__item-name small {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-top: 2px;
+      font-style: italic;
+    }
+    .extras__item-price {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    .footer {
+      background: #d78c5d;
+      padding: 56px 0 32px;
+      color: var(--cream);
+    }
+    .footer__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      text-align: center;
+    }
+    .footer__logo { height: 56px; width: auto; margin: 0 auto 16px; }
+    .footer__copy { font-size: 12px; color: rgba(255,255,255,0.70); }
+    .footer__copy a { color: rgba(255,255,255,0.85); text-decoration: underline; }
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
+    @media (max-width: 1024px) {
+      .menu__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav__links, .nav__cta { display: none; }
+      .hamburger { display: flex; }
+      .nav__inner { padding: 0 24px; height: 72px; }
+      .nav__logo { height: 56px; }
+      .menu-hero { padding: 112px 0 48px; }
+      .menu-hero__inner { padding: 0 24px; }
+      .menu__inner { padding: 0 20px; }
+      .menu { padding: 56px 0 80px; }
+      .menu__grid { grid-template-columns: 1fr; }
+      .extras__inner { padding: 0 20px; }
+      .extras { padding: 0 0 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__brand" aria-label="Thai House Wok startsida">
+        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="Thai House Wok" class="nav__logo">
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html#om-oss">Om oss</a></li>
+        <li><a href="meny.html" class="active">Meny</a></li>
+        <li><a href="index.html#restauranger">Restauranger</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="https://app.thw.se/restaurants" target="_blank" rel="noopener" class="nav__cta">Beställ online</a>
+        <button class="hamburger" id="hamburger" aria-label="Öppna meny" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="mobile-menu__header">
+      <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="Thai House Wok" style="height:32px;width:auto;">
+      <button class="mobile-menu__close" id="menu-close" aria-label="Stäng meny">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="4" x2="20" y2="20"/>
+          <line x1="20" y1="4" x2="4" y2="20"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="mobile-menu__nav">
+      <ul>
+        <li><a href="index.html#om-oss">Om oss</a></li>
+        <li><a href="meny.html">Meny</a></li>
+        <li><a href="index.html#restauranger">Restauranger</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__footer">
+      <a href="https://instagram.com/thaiHouseWok" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://facebook.com/thaiHouseWok" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="menu-hero">
+    <div class="menu-hero__inner">
+      <span class="menu-hero__label">Meny</span>
+      <h1 class="menu-hero__title">Hela vår <span>meny</span></h1>
+      <p class="menu-hero__lead">
+        Äkta thaimat lagad från grunden — curry, wokrätter, nudlar, soppor och signaturklassiker. Alla våra huvudrätter kan göras med ditt val av protein.
+      </p>
+    </div>
+  </header>
+
+  <!-- MENY -->
+  <section class="menu" id="meny">
+    <div class="menu__inner">
+
+      <div class="menu__tabs">
+        <button class="menu__tab active" data-filter="alla">Alla</button>
+        <button class="menu__tab" data-filter="grytor">Grytor</button>
+        <button class="menu__tab" data-filter="wok">Wok</button>
+        <button class="menu__tab" data-filter="nudlar">Nudlar</button>
+        <button class="menu__tab" data-filter="soppor">Soppor</button>
+        <button class="menu__tab" data-filter="sallader">Sallader</button>
+        <button class="menu__tab" data-filter="signatur">Signatur</button>
+        <button class="menu__tab" data-filter="friterat">Friterat</button>
+      </div>
+
+      <div class="menu__grid">
+
+        <h2 class="menu__category-title" data-category="grytor">Grytor</h2>
+
+        <!-- 1 -->
+        <div class="menu-card" data-category="grytor">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">1.</div>
+          <div class="menu-card__name">Geang Keowan</div>
+          <div class="menu-card__desc">Gröncurry med paprika, äggplanta, bambuskott och söt basilika.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, räkpasta</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 2 -->
+        <div class="menu-card" data-category="grytor">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+          </div>
+          <div class="menu-card__number">2.</div>
+          <div class="menu-card__name">Geang Phed</div>
+          <div class="menu-card__desc">Rödcurry med paprika, bambuskott och söt basilika.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, räkpasta</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 3 -->
+        <div class="menu-card" data-category="grytor">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">3.</div>
+          <div class="menu-card__name">Geang Kaari</div>
+          <div class="menu-card__desc">Gulcurry med paprika, ananas och lök.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 4 -->
+        <div class="menu-card" data-category="grytor">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">4.</div>
+          <div class="menu-card__name">Geang Phaneang</div>
+          <div class="menu-card__desc">Phaneang curry med paprika, långböna, lök och äggplanta.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, räkpasta</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 5 -->
+        <div class="menu-card" data-category="grytor">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">5.</div>
+          <div class="menu-card__name">Geang Massaman</div>
+          <div class="menu-card__desc">Massaman curry med paprika, potatis, lök och jordnötter på sidan.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, räkpasta, jordnötter</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <h2 class="menu__category-title" data-category="wok">Wok</h2>
+
+        <!-- 6 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">6.</div>
+          <div class="menu-card__name">Pad Mhed Mamuang</div>
+          <div class="menu-card__desc">Ostronsås, chiliolja, paprika, broccoli, blomkål, lök, purjolök, cashewnötter.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 7 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+          </div>
+          <div class="menu-card__number">7.</div>
+          <div class="menu-card__name">Pad Graaprao</div>
+          <div class="menu-card__desc">Ostronsås, paprika, långböna, bambuskott, vitlök, chili, lök, stark basilika.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 8 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">8.</div>
+          <div class="menu-card__name">Pad Preowan</div>
+          <div class="menu-card__desc">Sötsursås, paprika, purjolök, ananas, morötter, selleri, tomat och lök.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 9 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+          </div>
+          <div class="menu-card__number">9.</div>
+          <div class="menu-card__name">Pad Prig Phao</div>
+          <div class="menu-card__desc">Ostronsås, chiliolja, paprika, vitlök, chili, purjolök, lök, broccoli, blomkål, söt basilika.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 10 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">10.</div>
+          <div class="menu-card__name">Pad Khing</div>
+          <div class="menu-card__desc">Ostronsås, paprika, morötter, lök, selleri, purjolök, ingefära.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 11 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">11.</div>
+          <div class="menu-card__name">Pad Paak</div>
+          <div class="menu-card__desc">Ostronsås, paprika, broccoli, morötter, blomkål, tomat och böngroddar.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 12 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">12.</div>
+          <div class="menu-card__name">Kao Pad</div>
+          <div class="menu-card__desc">Ris, morötter, lök, broccoli, tomat, ägg, soja, koriander och lime.</div>
+          <div class="menu-card__allergens">Gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 13 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">13.</div>
+          <div class="menu-card__name">Stekt Röd Curry</div>
+          <div class="menu-card__desc">Rödcurrysås, paprika, bambuskott, långböna, äggplanta, söt basilika.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, glutenfri, laktosfri · innehåller mjölkprotein</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <h2 class="menu__category-title" data-category="nudlar">Nudlar</h2>
+
+        <!-- 14 -->
+        <div class="menu-card" data-category="nudlar">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">14.</div>
+          <div class="menu-card__name">Pad Thai</div>
+          <div class="menu-card__desc">Risnudlar, morötter, böngroddar, purjolök, ägg, koriander, lime, hackade jordnötter och chilipulver på sidan.</div>
+          <div class="menu-card__allergens">Laktosfri, glutenfri · sås vegansk · jordnötter</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 15 -->
+        <div class="menu-card" data-category="nudlar">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">15.</div>
+          <div class="menu-card__name">Pad See Ew</div>
+          <div class="menu-card__desc">Ostronsås, risnudlar, paprika, morötter, broccoli, purjolök, ägg, svart soja, sriracha på sidan.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <h2 class="menu__category-title" data-category="soppor">Soppor</h2>
+
+        <!-- 16 -->
+        <div class="menu-card" data-category="soppor">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+          </div>
+          <div class="menu-card__number">16.</div>
+          <div class="menu-card__name">Tom Yam Goong / Gai</div>
+          <div class="menu-card__desc">Tomat, lök, citrongräs, galangal, chili, koriander, stråsvamp, chiliolja, limeblad.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 17 -->
+        <div class="menu-card" data-category="soppor">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">17.</div>
+          <div class="menu-card__name">Tom Kha</div>
+          <div class="menu-card__desc">Kokosmjölk, galangal, citrongräs, limeblad, lök, stråsvamp och tomat.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <h2 class="menu__category-title" data-category="sallader">Sallader</h2>
+
+        <!-- 18 -->
+        <div class="menu-card" data-category="sallader">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">18.</div>
+          <div class="menu-card__name">Kycklingsallad</div>
+          <div class="menu-card__desc">Paprika, tomat, morot, böngroddar, glasnudlar, fisksås, lime, koriander. Jordnötter och chili på sidan.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, glutenfri, laktosfri · jordnötter</div>
+          <div class="menu-card__single-price">149:-<small>inkl. tillbehör</small></div>
+        </div>
+
+        <!-- 19 -->
+        <div class="menu-card" data-category="sallader">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">19.</div>
+          <div class="menu-card__name">Skaldjurssallad</div>
+          <div class="menu-card__desc">Paprika, tomat, morot, böngroddar, glasnudlar, fisksås, lime, koriander. Hela jordnötter och chili på sidan.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, glutenfri, laktosfri · jordnötter</div>
+          <div class="menu-card__single-price">154:-<small>inkl. tillbehör</small></div>
+        </div>
+
+        <h2 class="menu__category-title" data-category="signatur">Signatur</h2>
+
+        <!-- 20 -->
+        <div class="menu-card" data-category="signatur">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+          </div>
+          <div class="menu-card__number">20.</div>
+          <div class="menu-card__name">Graaprao Thai style Kyckling</div>
+          <div class="menu-card__desc">Hackad kyckling, ostronsås, långböna, vitlök, lök, chili, stark basilika och stekt ägg.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <div class="menu-card__single-price">169:-<small>inkl. ris</small></div>
+        </div>
+
+        <!-- 21 -->
+        <div class="menu-card" data-category="signatur">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">21.</div>
+          <div class="menu-card__name">Jordnötssås wok Kyckling</div>
+          <div class="menu-card__desc">Jordnötssås, paprika, broccoli, blomkål, lök och purjolök.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, senap, jordnötter</div>
+          <div class="menu-card__single-price">169:-<small>inkl. ris</small></div>
+        </div>
+
+        <!-- 22 -->
+        <div class="menu-card" data-category="signatur">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">22.</div>
+          <div class="menu-card__name">Sötsur Wok &amp; Friterad Kyckling</div>
+          <div class="menu-card__desc">Paprika, purjolök, ananas, morötter, selleri, tomat och lök.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, laktosfri, gluten · jordnötter</div>
+          <div class="menu-card__single-price">174:-<small>inkl. ris</small></div>
+        </div>
+
+        <!-- 23 -->
+        <div class="menu-card" data-category="signatur">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">23.</div>
+          <div class="menu-card__name">Kao Pad Thai Style Kyckling</div>
+          <div class="menu-card__desc">Stekt ris med wokad vitlök, ägg, kyckling, morötter, lök, soja, koriander och lime.</div>
+          <div class="menu-card__allergens">Gluten, laktosfri</div>
+          <div class="menu-card__single-price">169:-</div>
+        </div>
+
+        <!-- 24 -->
+        <div class="menu-card" data-category="signatur">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">24.</div>
+          <div class="menu-card__name">Risnudlar med Jordnötssås Kyckling</div>
+          <div class="menu-card__desc">Risnudlar, morötter, ägg, koriander, lime, chilipulver och hackade jordnötter.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, senap, jordnötter</div>
+          <div class="menu-card__single-price">169:-</div>
+        </div>
+
+        <h2 class="menu__category-title" data-category="friterat">Friterade rätter</h2>
+
+        <!-- 25 -->
+        <div class="menu-card" data-category="friterat">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__number">25.</div>
+          <div class="menu-card__name">Vårrullar (Vegetarisk)</div>
+          <div class="menu-card__desc">Krispiga vegetariska vårrullar med sötchilisås.</div>
+          <div class="menu-card__allergens">Gluten, laktos</div>
+          <ul class="menu-card__prices">
+            <li><span>3 st</span><span>64:-</span></li>
+            <li><span>5 st</span><span>104:-</span></li>
+            <li><span>9 st</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 26 -->
+        <div class="menu-card" data-category="friterat">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__number">26.</div>
+          <div class="menu-card__name">Ebi Fri</div>
+          <div class="menu-card__desc">Friterad panerad räka serverad med sötchilisås.</div>
+          <div class="menu-card__allergens">Gluten, laktosfri · skaldjur</div>
+          <ul class="menu-card__prices">
+            <li><span>3 st</span><span>64:-</span></li>
+            <li><span>5 st</span><span>104:-</span></li>
+            <li><span>9 st</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 27 -->
+        <div class="menu-card" data-category="friterat">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">27.</div>
+          <div class="menu-card__name">Hot Wings</div>
+          <div class="menu-card__desc">Kryddiga friterade kycklingvingar.</div>
+          <div class="menu-card__allergens">Gluten, selleri</div>
+          <ul class="menu-card__prices">
+            <li><span>3 st</span><span>45:-</span></li>
+            <li><span>5 st</span><span>85:-</span></li>
+            <li><span>9 st</span><span>125:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 28 -->
+        <div class="menu-card" data-category="friterat">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__number">28.</div>
+          <div class="menu-card__name">Panko Friterad Kyckling</div>
+          <div class="menu-card__desc">Krispig pankopanerad kyckling med sötchilisås.</div>
+          <div class="menu-card__allergens">Gluten, selleri</div>
+          <ul class="menu-card__prices">
+            <li><span>3 st</span><span>64:-</span></li>
+            <li><span>5 st</span><span>104:-</span></li>
+            <li><span>9 st</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 29 -->
+        <div class="menu-card" data-category="friterat">
+          <div class="menu-card__img">Foto kommer</div>
+          <div class="menu-card__number">29.</div>
+          <div class="menu-card__name">Kycklingspett</div>
+          <div class="menu-card__desc">Grillade kycklingspett med jordnötssås.</div>
+          <div class="menu-card__allergens">Senap, innehåller mjölkprotein, gluten</div>
+          <ul class="menu-card__prices">
+            <li><span>3 st</span><span>64:-</span></li>
+            <li><span>5 st</span><span>104:-</span></li>
+            <li><span>9 st</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+      </div><!-- /menu__grid -->
+    </div><!-- /menu__inner -->
+  </section>
+
+  <!-- EXTRA TILLBEHÖR -->
+  <section class="extras">
+    <div class="extras__inner">
+      <h2 class="extras__title">Extra <span>tillbehör</span></h2>
+      <ul class="extras__list">
+        <li>
+          <span class="extras__item-name">Extra ris</span>
+          <span class="extras__item-price">25:-</span>
+        </li>
+        <li>
+          <span class="extras__item-name">Extra nudlar</span>
+          <span class="extras__item-price">25:-</span>
+        </li>
+        <li>
+          <span class="extras__item-name">Extra grönsaker</span>
+          <span class="extras__item-price">39:-</span>
+        </li>
+        <li>
+          <span class="extras__item-name">
+            Extra protein
+            <small>kyckling, fläsk, tofu, nöt, bläckfisk eller 4 st räkor</small>
+          </span>
+          <span class="extras__item-price">49:-</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="Thai House Wok" class="footer__logo">
+      <p class="footer__copy">© 2026 Thai House Wok. Äkta thaimat sedan 2006. <a href="index.html">Till startsidan</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll background
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuClose = document.getElementById('menu-close');
+    function openMenu() {
+      mobileMenu.classList.add('open');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    hamburger?.addEventListener('click', openMenu);
+    menuClose?.addEventListener('click', closeMenu);
+    mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    // Menu tab filter
+    const tabs = document.querySelectorAll('.menu__tab');
+    const cards = document.querySelectorAll('.menu-card');
+    const categoryTitles = document.querySelectorAll('.menu__category-title');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+        cards.forEach(card => {
+          const match = filter === 'alla' || card.dataset.category === filter;
+          card.classList.toggle('hidden', !match);
+        });
+        categoryTitles.forEach(title => {
+          const match = filter === 'alla' || title.dataset.category === filter;
+          title.style.display = match ? '' : 'none';
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
