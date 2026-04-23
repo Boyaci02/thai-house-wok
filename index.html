@@ -683,11 +683,14 @@
       width: 100%;
       aspect-ratio: 4/5;
       background: var(--purple);
-      background-image: linear-gradient(135deg, #15302A 0%, #1F3E37 100%);
-      /* Replace with actual image */
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .about__img-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .about__img-placeholder {
       font-size: 11px;
@@ -1596,7 +1599,7 @@
       </div>
       <div class="about__visual reveal">
         <div class="about__img-main">
-          <span class="about__img-placeholder">Foto här</span>
+          <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69ea14639fe87a999454983c.jpg" alt="Thai House Wok – sedan 2006" loading="lazy">
         </div>
         <div class="about__img-accent">
           <span class="about__img-placeholder" style="font-size:9px;">Mat-foto</span>
