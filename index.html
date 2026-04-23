@@ -978,6 +978,130 @@
       font-weight: 700;
     }
 
+
+    /* Menu card image override (contain full photo) */
+    .menu-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Category title inside grid */
+    .menu__category-title {
+      grid-column: 1 / -1;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 900;
+      color: var(--text);
+      margin: 32px 0 4px;
+      letter-spacing: 0.01em;
+    }
+    .menu__category-title:first-child { margin-top: 0; }
+    .menu__category-title span { color: var(--orange); }
+
+    /* Allergens line */
+    .menu-card__allergens {
+      font-size: 11px;
+      font-style: italic;
+      color: rgba(35,31,26,0.65);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    /* Prices list (multi-protein) */
+    .menu-card__prices {
+      padding: 14px 0 0;
+      border-top: 1px solid rgba(31,62,55,0.35);
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+      list-style: none;
+    }
+    .menu-card__prices li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .menu-card__prices li span:last-child {
+      color: var(--orange);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    /* Single-price (sallader, signatur) */
+    .menu-card__single-price {
+      padding: 14px 0 0;
+      border-top: 1px solid rgba(31,62,55,0.35);
+      margin-top: auto;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--orange);
+    }
+    .menu-card__single-price small {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text);
+      margin-left: 6px;
+    }
+
+    /* Extra tillbehör */
+    .extras {
+      background: #efeada;
+      padding: 0 0 120px;
+    }
+    .extras__inner {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .extras__title {
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 28px;
+      letter-spacing: 0.01em;
+    }
+    .extras__title span { color: var(--orange); }
+    .extras__list {
+      border-top: 1px solid rgba(31,62,55,0.25);
+      list-style: none;
+    }
+    .extras__list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(31,62,55,0.25);
+      gap: 16px;
+    }
+    .extras__item-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .extras__item-name small {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-top: 2px;
+      font-style: italic;
+    }
+    .extras__item-price {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .extras__inner { padding: 0 24px; }
+      .extras { padding: 0 0 80px; }
+    }
+
     /* Menu tabs */
     .menu__tabs {
       display: flex;
@@ -1681,162 +1805,573 @@
         <div>
           <h2 class="menu__heading"><span>Meny</span></h2>
         </div>
-        <a href="meny.html" class="btn btn-orange">Se hela menyn →</a>
-      </div>
+        </div>
 
-      <div class="menu__tabs reveal">
+      <div class="menu__tabs">
         <button class="menu__tab active" data-filter="alla">Alla</button>
-        <button class="menu__tab" data-filter="curry">Curryrätter</button>
-        <button class="menu__tab" data-filter="wok">Wok &amp; Nudlar</button>
-        <button class="menu__tab" data-filter="forratt">Förrätter</button>
-        <button class="menu__tab" data-filter="sallad">Sallader</button>
+        <button class="menu__tab" data-filter="grytor">Grytor</button>
+        <button class="menu__tab" data-filter="wok">Wok</button>
+        <button class="menu__tab" data-filter="nudlar">Nudlar</button>
+        <button class="menu__tab" data-filter="soppor">Soppor</button>
+        <button class="menu__tab" data-filter="sallader">Sallader</button>
+        <button class="menu__tab" data-filter="signatur">Signatur</button>
+        <button class="menu__tab" data-filter="friterat">Friterat</button>
       </div>
 
       <div class="menu__grid">
-        <!-- Curryrätter -->
-        <div class="menu-card reveal" data-category="curry">
-          <div class="menu-card__img">Foto kommer</div>
+
+        <h2 class="menu__category-title" data-category="grytor">Grytor</h2>
+
+        <!-- 1 -->
+        <div class="menu-card" data-category="grytor">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/1-1-300x206.png" alt="Geang Keowan" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
           <div class="menu-card__number">1.</div>
-          <div class="menu-card__badge">Populär</div>
-          <div class="menu-card__cat">Curryrätter</div>
-          <div class="menu-card__name">Röd Curry</div>
-          <div class="menu-card__desc">Krämig röd curry med kokosmjölk, paprika, bambuskott och thaibasilika.</div>
+          <div class="menu-card__name">Geang Keowan</div>
+          <div class="menu-card__desc">Gröncurry med paprika, äggplanta, bambuskott och söt basilika.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, räkpasta</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 2 -->
+        <div class="menu-card" data-category="grytor">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/2-2-300x206.png" alt="Geang Phed" loading="lazy"></div>
           <div class="menu-card__spice">
             <span class="menu-card__spice-dot"></span>
             <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot empty"></span>
-            Medel
+            <span class="menu-card__spice-dot"></span>
           </div>
-          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 115 kr <span>inkl. ris</span></div>
-          <div class="menu-card__protein"><strong>Välj protein:</strong> Kyckling · Räkor · Tofu</div>
-        </div>
-        <div class="menu-card reveal" data-category="curry">
-          <div class="menu-card__img">Foto kommer</div>
           <div class="menu-card__number">2.</div>
-          <div class="menu-card__cat">Curryrätter</div>
-          <div class="menu-card__name">Grön Curry</div>
-          <div class="menu-card__desc">Aromatisk grön curry med kokosmjölk, aubergine, bönor och färsk koriander.</div>
+          <div class="menu-card__name">Geang Phed</div>
+          <div class="menu-card__desc">Rödcurry med paprika, bambuskott och söt basilika.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, räkpasta</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 3 -->
+        <div class="menu-card" data-category="grytor">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/3-2-300x206.png" alt="Geang Kaari" loading="lazy"></div>
           <div class="menu-card__spice">
             <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot"></span>
-            Stark
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
           </div>
-          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 115 kr <span>inkl. ris</span></div>
-          <div class="menu-card__protein"><strong>Välj protein:</strong> Kyckling · Räkor · Tofu</div>
-        </div>
-        <div class="menu-card reveal" data-category="curry">
-          <div class="menu-card__img">Foto kommer</div>
           <div class="menu-card__number">3.</div>
-          <div class="menu-card__cat">Curryrätter</div>
-          <div class="menu-card__name">Massaman Curry</div>
-          <div class="menu-card__desc">Mild och rund curry med jordnötter, potatis, lök och en touch av kanel och kardemumma.</div>
-          <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot empty"></span>
-            <span class="menu-card__spice-dot empty"></span>
-            Mild
-          </div>
-          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 115 kr <span>inkl. ris</span></div>
-          <div class="menu-card__protein"><strong>Välj protein:</strong> Kyckling · Räkor · Tofu</div>
+          <div class="menu-card__name">Geang Kaari</div>
+          <div class="menu-card__desc">Gulcurry med paprika, ananas och lök.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
         </div>
 
-        <!-- Wok / nudlar -->
-        <div class="menu-card reveal" data-category="wok">
-          <div class="menu-card__img">Foto kommer</div>
+        <!-- 4 -->
+        <div class="menu-card" data-category="grytor">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/4-3-300x206.png" alt="Geang Phaneang" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
           <div class="menu-card__number">4.</div>
-          <div class="menu-card__badge">Populär</div>
-          <div class="menu-card__cat">Wokrätter</div>
-          <div class="menu-card__name">Pad Thai</div>
-          <div class="menu-card__desc">Klassisk woknudel med ägg, böngroddar, jordnötter, lime och vår hemliga Pad Thai-sås.</div>
-          <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot empty"></span>
-            <span class="menu-card__spice-dot empty"></span>
-            Mild
-          </div>
-          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 115 kr <span>inkl. ris</span></div>
-          <div class="menu-card__protein"><strong>Välj protein:</strong> Kyckling · Räkor · Tofu</div>
-        </div>
-        <div class="menu-card reveal" data-category="wok">
-          <div class="menu-card__img">Foto kommer</div>
-          <div class="menu-card__number">5.</div>
-          <div class="menu-card__cat">Wokrätter</div>
-          <div class="menu-card__name">Pad See Ew</div>
-          <div class="menu-card__desc">Breda risnudlar wokade med ägg, broccoli och mörk sojasås. En rik och mättande klassiker.</div>
-          <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot empty"></span>
-            <span class="menu-card__spice-dot empty"></span>
-            Mild
-          </div>
-          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 115 kr <span>inkl. ris</span></div>
-          <div class="menu-card__protein"><strong>Välj protein:</strong> Kyckling · Räkor · Tofu</div>
-        </div>
-        <div class="menu-card reveal" data-category="wok">
-          <div class="menu-card__img">Foto kommer</div>
-          <div class="menu-card__number">6.</div>
-          <div class="menu-card__cat">Wokrätter</div>
-          <div class="menu-card__name">Pad Prig Phao</div>
-          <div class="menu-card__desc">Wokad med chiliolja, thaibasilika, lök och paprika. Kryddig och smakintensiv.</div>
-          <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot"></span>
-            Stark
-          </div>
-          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 115 kr <span>inkl. ris</span></div>
-          <div class="menu-card__protein"><strong>Välj protein:</strong> Kyckling · Räkor · Tofu</div>
+          <div class="menu-card__name">Geang Phaneang</div>
+          <div class="menu-card__desc">Phaneang curry med paprika, långböna, lök och äggplanta.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, räkpasta</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
         </div>
 
-        <!-- Sallader -->
-        <div class="menu-card reveal" data-category="sallad">
-          <div class="menu-card__img">Foto kommer</div>
+        <!-- 5 -->
+        <div class="menu-card" data-category="grytor">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/5-2-300x206.png" alt="Geang Massaman" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">5.</div>
+          <div class="menu-card__name">Geang Massaman</div>
+          <div class="menu-card__desc">Massaman curry med paprika, potatis, lök och jordnötter på sidan.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, räkpasta, jordnötter</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <h2 class="menu__category-title" data-category="wok">Wok</h2>
+
+        <!-- 6 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/6-2-300x206.png" alt="Pad Mhed Mamuang" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">6.</div>
+          <div class="menu-card__name">Pad Mhed Mamuang</div>
+          <div class="menu-card__desc">Ostronsås, chiliolja, paprika, broccoli, blomkål, lök, purjolök, cashewnötter.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 7 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/7-1-300x206.png" alt="Pad Graaprao" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+          </div>
           <div class="menu-card__number">7.</div>
-          <div class="menu-card__badge">Populär</div>
-          <div class="menu-card__cat">Sallader</div>
-          <div class="menu-card__name">Papayasallad</div>
-          <div class="menu-card__desc">Krispig grön papaya med chilipeppar, lime, tomater, jordnötter och torkat räkpulver.</div>
+          <div class="menu-card__name">Pad Graaprao</div>
+          <div class="menu-card__desc">Ostronsås, paprika, långböna, bambuskott, vitlök, chili, lök, stark basilika.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 8 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/8-300x206.png" alt="Pad Preowan" loading="lazy"></div>
           <div class="menu-card__spice">
             <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot"></span>
             <span class="menu-card__spice-dot empty"></span>
-            Medel
+            <span class="menu-card__spice-dot empty"></span>
           </div>
-          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 89 kr <span>som förrätt</span></div>
-          <div class="menu-card__protein"><strong>Välj protein:</strong> Räkor · Kyckling · Vegetarisk</div>
-        </div>
-        <div class="menu-card reveal" data-category="sallad">
-          <div class="menu-card__img">Foto kommer</div>
           <div class="menu-card__number">8.</div>
-          <div class="menu-card__cat">Sallader</div>
-          <div class="menu-card__name">Thaisallad med räkor</div>
-          <div class="menu-card__desc">Färsk sallad med wokade räkor, citrongräs, glasnudlar, mynta och en het limemarinad.</div>
+          <div class="menu-card__name">Pad Preowan</div>
+          <div class="menu-card__desc">Sötsursås, paprika, purjolök, ananas, morötter, selleri, tomat och lök.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 9 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/9-300x206.png" alt="Pad Prig Phao" loading="lazy"></div>
           <div class="menu-card__spice">
             <span class="menu-card__spice-dot"></span>
             <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot empty"></span>
-            Medel
+            <span class="menu-card__spice-dot"></span>
           </div>
-          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 109 kr <span>som förrätt</span></div>
-          <div class="menu-card__protein"><strong>Välj protein:</strong> Räkor · Kyckling · Tofu</div>
-        </div>
-        <div class="menu-card reveal" data-category="sallad">
-          <div class="menu-card__img">Foto kommer</div>
           <div class="menu-card__number">9.</div>
-          <div class="menu-card__cat">Sallader</div>
-          <div class="menu-card__name">Larb Kai</div>
-          <div class="menu-card__desc">Isanstil sallad med hackad kyckling, rostad ris, mynta, schalottenlök och limejuice.</div>
+          <div class="menu-card__name">Pad Prig Phao</div>
+          <div class="menu-card__desc">Ostronsås, chiliolja, paprika, vitlök, chili, purjolök, lök, broccoli, blomkål, söt basilika.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 10 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/10-1-300x206.png" alt="Pad Khing" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">10.</div>
+          <div class="menu-card__name">Pad Khing</div>
+          <div class="menu-card__desc">Ostronsås, paprika, morötter, lök, selleri, purjolök, ingefära.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 11 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/11-1-300x206.png" alt="Pad Paak" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">11.</div>
+          <div class="menu-card__name">Pad Paak</div>
+          <div class="menu-card__desc">Ostronsås, paprika, broccoli, morötter, blomkål, tomat och böngroddar.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 12 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/12-2-300x206.png" alt="Kao Pad" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">12.</div>
+          <div class="menu-card__name">Kao Pad</div>
+          <div class="menu-card__desc">Ris, morötter, lök, broccoli, tomat, ägg, soja, koriander och lime.</div>
+          <div class="menu-card__allergens">Gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 13 -->
+        <div class="menu-card" data-category="wok">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/13-2-300x206.png" alt="Stekt Röd Curry" loading="lazy"></div>
           <div class="menu-card__spice">
             <span class="menu-card__spice-dot"></span>
             <span class="menu-card__spice-dot"></span>
             <span class="menu-card__spice-dot empty"></span>
-            Medel
           </div>
-          <div class="menu-card__price"><!-- TODO: Uppdatera pris --> 109 kr <span>som förrätt</span></div>
-          <div class="menu-card__protein"><strong>Välj protein:</strong> Kyckling · Fläsk · Tofu</div>
+          <div class="menu-card__number">13.</div>
+          <div class="menu-card__name">Stekt Röd Curry</div>
+          <div class="menu-card__desc">Rödcurrysås, paprika, bambuskott, långböna, äggplanta, söt basilika.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, glutenfri, laktosfri · innehåller mjölkprotein</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
         </div>
-      </div>
+
+        <h2 class="menu__category-title" data-category="nudlar">Nudlar</h2>
+
+        <!-- 14 -->
+        <div class="menu-card" data-category="nudlar">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/14-1-300x206.png" alt="Pad Thai" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">14.</div>
+          <div class="menu-card__name">Pad Thai</div>
+          <div class="menu-card__desc">Risnudlar, morötter, böngroddar, purjolök, ägg, koriander, lime, hackade jordnötter och chilipulver på sidan.</div>
+          <div class="menu-card__allergens">Laktosfri, glutenfri · sås vegansk · jordnötter</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 15 -->
+        <div class="menu-card" data-category="nudlar">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/15-2-300x206.png" alt="Pad See Ew" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">15.</div>
+          <div class="menu-card__name">Pad See Ew</div>
+          <div class="menu-card__desc">Ostronsås, risnudlar, paprika, morötter, broccoli, purjolök, ägg, svart soja, sriracha på sidan.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <h2 class="menu__category-title" data-category="soppor">Soppor</h2>
+
+        <!-- 16 -->
+        <div class="menu-card" data-category="soppor">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/16-1-300x206.png" alt="Tom Yam Goong / Gai" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+          </div>
+          <div class="menu-card__number">16.</div>
+          <div class="menu-card__name">Tom Yam Goong / Gai</div>
+          <div class="menu-card__desc">Tomat, lök, citrongräs, galangal, chili, koriander, stråsvamp, chiliolja, limeblad.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 17 -->
+        <div class="menu-card" data-category="soppor">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/05/17-1-300x206.png" alt="Tom Kha" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">17.</div>
+          <div class="menu-card__name">Tom Kha</div>
+          <div class="menu-card__desc">Kokosmjölk, galangal, citrongräs, limeblad, lök, stråsvamp och tomat.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein</div>
+          <ul class="menu-card__prices">
+            <li><span>Kyckling</span><span>149:-</span></li>
+            <li><span>Fläsk / Tofu</span><span>159:-</span></li>
+            <li><span>Nöt</span><span>164:-</span></li>
+            <li><span>Bläckfisk</span><span>164:-</span></li>
+            <li><span>Räkor</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <h2 class="menu__category-title" data-category="sallader">Sallader</h2>
+
+        <!-- 18 -->
+        <div class="menu-card" data-category="sallader">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2025/03/kyckling-300x206.png" alt="Kycklingsallad" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">18.</div>
+          <div class="menu-card__name">Kycklingsallad</div>
+          <div class="menu-card__desc">Paprika, tomat, morot, böngroddar, glasnudlar, fisksås, lime, koriander. Jordnötter och chili på sidan.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, glutenfri, laktosfri · jordnötter</div>
+          <div class="menu-card__single-price">149:-<small>inkl. tillbehör</small></div>
+        </div>
+
+        <!-- 19 -->
+        <div class="menu-card" data-category="sallader">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2025/03/skal-300x206.png" alt="Skaldjurssallad" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">19.</div>
+          <div class="menu-card__name">Skaldjurssallad</div>
+          <div class="menu-card__desc">Paprika, tomat, morot, böngroddar, glasnudlar, fisksås, lime, koriander. Hela jordnötter och chili på sidan.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, glutenfri, laktosfri · jordnötter</div>
+          <div class="menu-card__single-price">154:-<small>inkl. tillbehör</small></div>
+        </div>
+
+        <h2 class="menu__category-title" data-category="signatur">Signatur</h2>
+
+        <!-- 20 -->
+        <div class="menu-card" data-category="signatur">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/07/Nr-20-Graaprao-Thai-Style-Kyckling-300x196.png" alt="Graaprao Thai style" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+          </div>
+          <div class="menu-card__number">20.</div>
+          <div class="menu-card__name">Graaprao Thai style Kyckling</div>
+          <div class="menu-card__desc">Hackad kyckling, ostronsås, långböna, vitlök, lök, chili, stark basilika och stekt ägg.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
+          <div class="menu-card__single-price">169:-<small>inkl. ris</small></div>
+        </div>
+
+        <!-- 21 -->
+        <div class="menu-card" data-category="signatur">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/07/Nr-21-Jordnotssas-Wok-Kyckling-300x218.png" alt="Jordnötssås wok Kyckling" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">21.</div>
+          <div class="menu-card__name">Jordnötssås wok Kyckling</div>
+          <div class="menu-card__desc">Jordnötssås, paprika, broccoli, blomkål, lök och purjolök.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, senap, jordnötter</div>
+          <div class="menu-card__single-price">169:-<small>inkl. ris</small></div>
+        </div>
+
+        <!-- 22 -->
+        <div class="menu-card" data-category="signatur">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/07/Nr-22-Sotsur-Wok-Friterad-Kyckling-300x224.png" alt="Sötsur Wok & friterad kyckling" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">22.</div>
+          <div class="menu-card__name">Sötsur Wok &amp; Friterad Kyckling</div>
+          <div class="menu-card__desc">Paprika, purjolök, ananas, morötter, selleri, tomat och lök.</div>
+          <div class="menu-card__allergens">Skaldjur, fisk, laktosfri, gluten · jordnötter</div>
+          <div class="menu-card__single-price">174:-<small>inkl. ris</small></div>
+        </div>
+
+        <!-- 23 -->
+        <div class="menu-card" data-category="signatur">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/07/Nr-23-Kao-Pad-Thai-Style-Kyckling-300x164.png" alt="Kao Pad Thai style" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">23.</div>
+          <div class="menu-card__name">Kao Pad Thai Style Kyckling</div>
+          <div class="menu-card__desc">Stekt ris med wokad vitlök, ägg, kyckling, morötter, lök, soja, koriander och lime.</div>
+          <div class="menu-card__allergens">Gluten, laktosfri</div>
+          <div class="menu-card__single-price">169:-</div>
+        </div>
+
+        <!-- 24 -->
+        <div class="menu-card" data-category="signatur">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/07/Nr-24-Risnudlar-med-Jordnotssas-Kyckling-300x164.png" alt="Risnudlar med Jordnötssås" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">24.</div>
+          <div class="menu-card__name">Risnudlar med Jordnötssås Kyckling</div>
+          <div class="menu-card__desc">Risnudlar, morötter, ägg, koriander, lime, chilipulver och hackade jordnötter.</div>
+          <div class="menu-card__allergens">Glutenfri, laktosfri · innehåller mjölkprotein, senap, jordnötter</div>
+          <div class="menu-card__single-price">169:-</div>
+        </div>
+
+        <h2 class="menu__category-title" data-category="friterat">Friterade rätter</h2>
+
+        <!-- 25 -->
+        <div class="menu-card" data-category="friterat">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/06/25-300x206.png" alt="Vårrullar" loading="lazy"></div>
+          <div class="menu-card__number">25.</div>
+          <div class="menu-card__name">Vårrullar (Vegetarisk)</div>
+          <div class="menu-card__desc">Krispiga vegetariska vårrullar med sötchilisås.</div>
+          <div class="menu-card__allergens">Gluten, laktos</div>
+          <ul class="menu-card__prices">
+            <li><span>3 st</span><span>64:-</span></li>
+            <li><span>5 st</span><span>104:-</span></li>
+            <li><span>9 st</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 26 -->
+        <div class="menu-card" data-category="friterat">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/08/Nr-26-Ebi-fry-Friterad-raka.png" alt="Ebi Fri" loading="lazy"></div>
+          <div class="menu-card__number">26.</div>
+          <div class="menu-card__name">Ebi Fri</div>
+          <div class="menu-card__desc">Friterad panerad räka serverad med sötchilisås.</div>
+          <div class="menu-card__allergens">Gluten, laktosfri · skaldjur</div>
+          <ul class="menu-card__prices">
+            <li><span>3 st</span><span>64:-</span></li>
+            <li><span>5 st</span><span>104:-</span></li>
+            <li><span>9 st</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 27 -->
+        <div class="menu-card" data-category="friterat">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/07/Nr-27-Hot-wings-300x203.png" alt="Hot Wings" loading="lazy"></div>
+          <div class="menu-card__spice">
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+          </div>
+          <div class="menu-card__number">27.</div>
+          <div class="menu-card__name">Hot Wings</div>
+          <div class="menu-card__desc">Kryddiga friterade kycklingvingar.</div>
+          <div class="menu-card__allergens">Gluten, selleri</div>
+          <ul class="menu-card__prices">
+            <li><span>3 st</span><span>45:-</span></li>
+            <li><span>5 st</span><span>85:-</span></li>
+            <li><span>9 st</span><span>125:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 28 -->
+        <div class="menu-card" data-category="friterat">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/06/28-300x206.png" alt="Panko friterad kyckling" loading="lazy"></div>
+          <div class="menu-card__number">28.</div>
+          <div class="menu-card__name">Panko Friterad Kyckling</div>
+          <div class="menu-card__desc">Krispig pankopanerad kyckling med sötchilisås.</div>
+          <div class="menu-card__allergens">Gluten, selleri</div>
+          <ul class="menu-card__prices">
+            <li><span>3 st</span><span>64:-</span></li>
+            <li><span>5 st</span><span>104:-</span></li>
+            <li><span>9 st</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+        <!-- 29 -->
+        <div class="menu-card" data-category="friterat">
+          <div class="menu-card__img"><img src="https://thw.se/wp-content/uploads/2022/06/29-300x206.png" alt="Kycklingspett" loading="lazy"></div>
+          <div class="menu-card__number">29.</div>
+          <div class="menu-card__name">Kycklingspett</div>
+          <div class="menu-card__desc">Grillade kycklingspett med jordnötssås.</div>
+          <div class="menu-card__allergens">Senap, innehåller mjölkprotein, gluten</div>
+          <ul class="menu-card__prices">
+            <li><span>3 st</span><span>64:-</span></li>
+            <li><span>5 st</span><span>104:-</span></li>
+            <li><span>9 st</span><span>169:-</span></li>
+          </ul>
+        </div>
+
+      </div><!-- /menu__grid -->
 
       <!-- Lunch-banner -->
       <div class="lunch-banner reveal">
@@ -1849,6 +2384,37 @@
     </div>
   </section>
 
+
+  <!-- ============================================================
+       EXTRA TILLBEHÖR
+  ============================================================ -->
+  <!-- EXTRA TILLBEHÖR -->
+    <section class="extras">
+      <div class="extras__inner">
+        <h2 class="extras__title">Extra <span>tillbehör</span></h2>
+        <ul class="extras__list">
+          <li>
+            <span class="extras__item-name">Extra ris</span>
+            <span class="extras__item-price">25:-</span>
+          </li>
+          <li>
+            <span class="extras__item-name">Extra nudlar</span>
+            <span class="extras__item-price">25:-</span>
+          </li>
+          <li>
+            <span class="extras__item-name">Extra grönsaker</span>
+            <span class="extras__item-price">39:-</span>
+          </li>
+          <li>
+            <span class="extras__item-name">
+              Extra protein
+              <small>kyckling, fläsk, tofu, nöt, bläckfisk eller 4 st räkor</small>
+            </span>
+            <span class="extras__item-price">49:-</span>
+          </li>
+        </ul>
+      </div>
+    </section>
 
   <!-- ============================================================
        RESTAURANGER
@@ -2143,17 +2709,19 @@
     // --- Menu tabs ---
     const menuTabs = document.querySelectorAll('.menu__tab');
     const menuCards = document.querySelectorAll('.menu__grid .menu-card');
+    const categoryTitles = document.querySelectorAll('.menu__category-title');
     menuTabs.forEach(tab => {
       tab.addEventListener('click', () => {
         menuTabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
         const filter = tab.dataset.filter;
         menuCards.forEach(card => {
-          if (filter === 'alla' || card.dataset.category === filter) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
+          const match = filter === 'alla' || card.dataset.category === filter;
+          card.classList.toggle('hidden', !match);
+        });
+        categoryTitles.forEach(title => {
+          const match = filter === 'alla' || title.dataset.category === filter;
+          title.style.display = match ? '' : 'none';
         });
       });
     });
