@@ -1007,6 +1007,31 @@
       line-height: 1.5;
     }
 
+    /* Show-more button (under menu grid) */
+    .menu__show-more-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 40px 0 0;
+    }
+    .menu__show-more {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: none;
+      background: #1d1636;
+      color: #ffffff;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .menu__show-more:hover {
+      background: #2a1f4e;
+      transform: translateY(-1px);
+    }
+    .menu__show-more-wrap.hidden { display: none; }
+
     /* Price + protein line (single-price layout) */
     .menu .menu-card__price {
       padding: 14px 0 0;
@@ -2259,6 +2284,10 @@
 
       </div><!-- /menu__grid -->
 
+      <div class="menu__show-more-wrap">
+        <button class="menu__show-more" id="menu-show-more" type="button">Se fler rätter</button>
+      </div>
+
       <!-- Lunch-banner -->
       <div class="lunch-banner reveal">
         <div class="lunch-banner__text">
@@ -2596,21 +2625,43 @@
     const menuTabs = document.querySelectorAll('.menu__tab');
     const menuCards = document.querySelectorAll('.menu__grid .menu-card');
     const categoryTitles = document.querySelectorAll('.menu__category-title');
+    const showMoreWrap = document.querySelector('.menu__show-more-wrap');
+    const showMoreBtn = document.getElementById('menu-show-more');
+    const PREVIEW_LIMIT = 6;
+    let menuExpanded = false;
+
+    function applyMenuFilter(filter) {
+      const isLimited = filter === 'alla' && !menuExpanded;
+      let shown = 0;
+      menuCards.forEach(card => {
+        const matches = filter === 'alla' || card.dataset.category === filter;
+        let show = matches;
+        if (show && isLimited && shown >= PREVIEW_LIMIT) show = false;
+        card.classList.toggle('hidden', !show);
+        if (show) shown++;
+      });
+      categoryTitles.forEach(title => {
+        const match = !isLimited && (filter === 'alla' || title.dataset.category === filter);
+        title.style.display = match ? '' : 'none';
+      });
+      if (showMoreWrap) showMoreWrap.classList.toggle('hidden', !isLimited);
+    }
+
     menuTabs.forEach(tab => {
       tab.addEventListener('click', () => {
         menuTabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        const filter = tab.dataset.filter;
-        menuCards.forEach(card => {
-          const match = filter === 'alla' || card.dataset.category === filter;
-          card.classList.toggle('hidden', !match);
-        });
-        categoryTitles.forEach(title => {
-          const match = filter === 'alla' || title.dataset.category === filter;
-          title.style.display = match ? '' : 'none';
-        });
+        applyMenuFilter(tab.dataset.filter);
       });
     });
+
+    showMoreBtn?.addEventListener('click', () => {
+      menuExpanded = true;
+      const active = document.querySelector('.menu__tab.active');
+      applyMenuFilter(active?.dataset.filter || 'alla');
+    });
+
+    applyMenuFilter('alla');
 
     // --- Restauranger carousel (mobil) ---
     const locScroll = document.getElementById('loc-scroll');
