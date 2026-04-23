@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vi öppnar i Hammarby Sjöstad – Thai House Wok</title>
-  <meta name="description" content="Thai House Wok öppnar sin tionde restaurang i Hammarby Sjöstad den 13 mars 2026. Läs mer om vad som väntar!">
+  <title>Hammarby Sjöstad – Thai House Wok</title>
+  <meta name="description" content="Thai House Wok i Hammarby Sjöstad. Äkta thaimat, takeaway och leverans.">
   <link rel="icon" href="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,6 @@
       --purple:       #1F3E37;
       --purple-light: #BED2CE;
       --orange:       #D47A3F;
-      --dark:         #17171d;
       --white:        #EEE3CE;
       --text:         #231F1A;
       --text-muted:   rgba(35,31,26,0.60);
@@ -61,17 +60,17 @@
     .nav__back:hover { color: var(--orange); gap: 12px; }
     .nav__back svg { width: 16px; height: 16px; }
 
-    /* ARTICLE HERO */
-    .article-hero {
+    /* HERO */
+    .restaurant-hero {
       padding: 144px 0 72px;
       background: var(--purple-light);
     }
-    .article-hero__inner {
-      max-width: 800px;
+    .restaurant-hero__inner {
+      max-width: 1280px;
       margin: 0 auto;
       padding: 0 48px;
     }
-    .article-hero__tag {
+    .restaurant-hero__label {
       display: inline-block;
       font-size: 9px;
       font-weight: 800;
@@ -82,100 +81,154 @@
       padding: 5px 12px;
       margin-bottom: 24px;
     }
-    .article-hero__title {
-      font-size: clamp(32px, 5vw, 60px);
+    .restaurant-hero__title {
+      font-size: clamp(40px, 6vw, 80px);
       font-weight: 900;
-      line-height: 1.05;
+      line-height: 1.0;
       color: var(--text);
-      margin-bottom: 20px;
+      margin-bottom: 36px;
     }
-    .article-hero__title span { color: var(--orange); }
-    .article-hero__meta {
+    .restaurant-hero__title span { color: var(--orange); }
+    .restaurant-hero__info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+    .restaurant-hero__info-item {
       display: flex;
       align-items: center;
-      gap: 20px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-muted);
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
     }
-    .article-hero__meta-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--orange);
+    .restaurant-hero__info-item svg {
+      width: 18px;
+      height: 18px;
+      color: var(--purple);
+      flex-shrink: 0;
     }
 
-    /* ARTICLE IMAGE */
-    .article-img {
-      max-width: 800px;
+    /* INFO GRID */
+    .info-section {
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 0 48px;
+      padding: 80px 48px;
     }
-    .article-img__placeholder {
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* MAP PLACEHOLDER */
+    .map-placeholder {
       width: 100%;
-      aspect-ratio: 16/7;
-      background: linear-gradient(135deg, var(--purple) 0%, #2D5950 100%);
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--purple) 0%, #2D5950 60%, #3E6B60 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: -1px;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
     }
-    .article-img__placeholder svg { width: 64px; height: 64px; opacity: 0.25; }
+    .map-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 60% 40%, rgba(212,122,63,0.15) 0%, transparent 60%);
+    }
+    .map-placeholder svg { width: 48px; height: 48px; opacity: 0.35; position: relative; }
+    .map-address {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .map-address svg { width: 16px; height: 16px; margin-top: 2px; color: var(--purple); flex-shrink: 0; }
 
-    /* ARTICLE BODY */
-    .article-body {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 64px 48px 100px;
+    /* DETAILS CARD */
+    .details-card {
+      background: var(--purple-light);
+      padding: 40px;
     }
-    .article-body p {
+    .details-card__row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .details-card__row:first-child { padding-top: 0; }
+    .details-card__row:last-of-type { border-bottom: none; }
+    .details-card__label {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .details-card__value {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .btn-order {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--orange);
+      padding: 16px 32px;
+      border: 2px solid var(--orange);
+      margin-top: 28px;
+      transition: background 0.22s, color 0.22s, border-color 0.22s;
+    }
+    .btn-order:hover { background: var(--purple); border-color: var(--purple); }
+
+    /* ABOUT SECTION */
+    .about-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+    .about-section__label {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .about-section__title {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 32px;
+      line-height: 1.15;
+    }
+    .about-section__title span { color: var(--orange); }
+    .about-section p {
       font-size: 17px;
       font-weight: 400;
       line-height: 1.85;
       color: var(--text);
-      margin-bottom: 28px;
-    }
-    .article-body h2 {
-      font-size: 26px;
-      font-weight: 900;
-      color: var(--text);
-      margin: 48px 0 16px;
-      line-height: 1.2;
-    }
-    .article-body h2 span { color: var(--orange); }
-    .article-body blockquote {
-      border-left: 4px solid var(--orange);
-      padding: 20px 28px;
-      background: var(--purple-light);
-      margin: 40px 0;
-    }
-    .article-body blockquote p {
-      font-size: 18px;
-      font-weight: 600;
-      font-style: italic;
-      color: var(--purple);
-      margin: 0;
-    }
-    .article-body .highlight-box {
-      background: var(--purple);
-      color: var(--white);
-      padding: 36px 40px;
-      margin: 40px 0;
-    }
-    .article-body .highlight-box p {
-      color: rgba(255,255,255,0.85);
-      margin: 0;
-    }
-    .article-body .highlight-box strong {
-      color: var(--orange);
-      font-size: 22px;
-      display: block;
-      margin-bottom: 8px;
+      margin-bottom: 24px;
+      max-width: 740px;
     }
 
     /* BACK BUTTON */
-    .article-back {
-      max-width: 800px;
+    .page-back {
+      max-width: 1280px;
       margin: 0 auto;
       padding: 0 48px 80px;
     }
@@ -209,12 +262,14 @@
     @media (max-width: 768px) {
       .nav__inner { padding: 0 20px; }
       .nav__logo { height: 40px; }
-      .article-hero__inner,
-      .article-img,
-      .article-body,
-      .article-back { padding-left: 20px; padding-right: 20px; }
-      .article-hero { padding: 120px 0 48px; }
-      .article-body p { font-size: 16px; }
+      .restaurant-hero { padding: 120px 0 48px; }
+      .restaurant-hero__inner { padding: 0 20px; }
+      .restaurant-hero__info { gap: 16px; }
+      .info-section { padding: 48px 20px; }
+      .info-grid { grid-template-columns: 1fr; gap: 32px; }
+      .details-card { padding: 28px 24px; }
+      .about-section { padding: 0 20px 60px; }
+      .page-back { padding: 0 20px 60px; }
     }
   </style>
 </head>
@@ -226,82 +281,90 @@
       <a href="index.html">
         <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="Thai House Wok" class="nav__logo">
       </a>
-      <a href="index.html#blogg" class="nav__back">
+      <a href="index.html#restauranger" class="nav__back">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        Tillbaka
+        Alla restauranger
       </a>
     </div>
   </nav>
 
-  <!-- ARTICLE HERO -->
-  <header class="article-hero">
-    <div class="article-hero__inner">
-      <span class="article-hero__tag">Nyhet</span>
-      <h1 class="article-hero__title">Vi öppnar i <span>Hammarby Sjöstad</span> – en ny plats för äkta thaimat</h1>
-      <div class="article-hero__meta">
-        <span>Thai House Wok</span>
-        <div class="article-hero__meta-dot"></div>
-        <span>13 mars 2026</span>
-        <div class="article-hero__meta-dot"></div>
-        <span>3 min läsning</span>
+  <!-- HERO -->
+  <header class="restaurant-hero">
+    <div class="restaurant-hero__inner">
+      <span class="restaurant-hero__label">Nyöppnad · 10 · Hammarby Sjöstad</span>
+      <h1 class="restaurant-hero__title"><span>Hammarby Sjöstad</span></h1>
+      <div class="restaurant-hero__info">
+        <div class="restaurant-hero__info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Mån–Fre 11–21, Lör–Sön 12–21
+        </div>
+        <div class="restaurant-hero__info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Takeaway &amp; Leverans
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- ARTICLE IMAGE -->
-  <div class="article-img">
-    <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69e9eea8b0e5e2bb7f1016bb.jpg" alt="Hammarby Sjöstad – vy över stadsdelen där Thai House Wok öppnar sin tionde restaurang" style="width:100%;aspect-ratio:16/7;object-fit:cover;display:block;margin-top:-1px;">
-  </div>
+  <!-- INFO GRID -->
+  <section class="info-section">
+    <div class="info-grid">
+      <!-- Map -->
+      <div>
+        <div class="map-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <p class="map-address">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Hammarby Sjöstad, Stockholm
+        </p>
+      </div>
 
-  <!-- ARTICLE BODY -->
-  <article class="article-body">
-
-    <p>
-      Den 13 mars 2026 slår Thai House Wok upp dörrarna till sin tionde restaurang – och den här gången är det i det pulserande och moderna Hammarby Sjöstad. Det är en stadsdel i stark tillväxt, full av nyfikna matälskare som vet vad de vill ha. Och vi är redo att leverera.
-    </p>
-
-    <blockquote>
-      <p>"Hammarby Sjöstad är precis den typ av plats vi trivs i – levande, nyfiken och välkomnande. Vi ser fram emot att bli en del av grannskapet."</p>
-    </blockquote>
-
-    <h2>Varför <span>Hammarby Sjöstad?</span></h2>
-
-    <p>
-      Vi har länge fått frågor från gäster i södra Stockholm om när vi tar oss dit. Svaret är nu. Hammarby Sjöstad har vuxit enormt de senaste åren och blivit en av Stockholms mest spännande stadsdelar. Kanalen, arkitekturen, närheten till city – det är en plats som förtjänar en restaurang som tar mat på allvar.
-    </p>
-
-    <p>
-      Sedan vi startade i Nora 2006 har vi aldrig kompromissat med råvarorna eller recepten. Varje rätt lagas från grunden med färska ingredienser och äkta kryddor hämtade från Thailand. Det är det löfte vi tar med oss till varje ny plats vi öppnar – och Hammarby Sjöstad är inget undantag.
-    </p>
-
-    <h2>Vad kan du förvänta dig?</h2>
-
-    <p>
-      Vår nya restaurang i Hammarby Sjöstad erbjuder hela vår klassiska meny – från krämiga curryrätter och fräscha woks till våra omtyckta förrätter och lunchmenyn till 134 kr. Vi erbjuder även möjlighet att beställa hem via vår app, perfekt för de kvällar när soffan lockar mer än utelivet.
-    </p>
-
-    <div class="highlight-box">
-      <strong>Öppningserbjudande – 13–20 mars</strong>
-      <p>Under öppningsveckan bjuder vi alla nya gäster på en gratis vårrull till maten. Välkommen att fira med oss!</p>
+      <!-- Details -->
+      <div class="details-card">
+        <div class="details-card__row">
+          <span class="details-card__label">Öppettider</span>
+          <span class="details-card__value">
+            Måndag–Fredag: 11:00–21:00<br>
+            Lördag–Söndag: 12:00–21:00
+          </span>
+        </div>
+        <div class="details-card__row">
+          <span class="details-card__label">Telefon</span>
+          <span class="details-card__value">Uppdateras inom kort</span>
+        </div>
+        <div class="details-card__row">
+          <span class="details-card__label">Tjänster</span>
+          <span class="details-card__value">Takeaway &amp; Leverans</span>
+        </div>
+        <div class="details-card__row">
+          <span class="details-card__label">Lunch</span>
+          <span class="details-card__value">134 kr – Mån–Fre 11:00–14:00</span>
+        </div>
+        <a href="https://app.thw.se/restaurants" class="btn-order" target="_blank" rel="noopener">
+          Beställ online →
+        </a>
+      </div>
     </div>
+  </section>
 
-    <h2>Vi ses den <span>13 mars</span></h2>
-
+  <!-- ABOUT -->
+  <section class="about-section">
+    <p class="about-section__label">Om restaurangen</p>
+    <h2 class="about-section__title">Äkta thaimat i <span>Hammarby Sjöstad</span></h2>
     <p>
-      Vi öppnar dörrarna klockan 11:00 och hoppas att du vill vara med och fira. Ta med familjen, kompisarna eller kollegorna – det finns plats för alla. Håll utkik på våra sociala medier för mer information om öppningsfesten.
+      Vår nyaste restaurang öppnade i mars 2026 i hjärtat av Hammarby Sjöstad – en modern stadsdel med närhet till vattnet, där vi nu välkomnar boende och besökare till en bit av Thailand. Med samma hantverk, färska råvaror och autentiska smaker som våra andra restauranger vill vi bli en självklar del av vardagen här.
     </p>
-
     <p>
-      Välkommen till oss i Hammarby Sjöstad. Vi ser fram emot att laga mat åt dig.
+      Hos oss hittar du våra klassiker – krämiga curryrätter, smakrika wokrätter och färska sallader – lika väl som nyheter vi utvecklat genom åren. Välkommen in för lunch, middag eller takeaway, vi ser fram emot att laga till dig.
     </p>
-
-  </article>
+  </section>
 
   <!-- BACK BUTTON -->
-  <div class="article-back">
-    <a href="index.html" class="btn-back">
+  <div class="page-back">
+    <a href="index.html#restauranger" class="btn-back">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-      Tillbaka till startsidan
+      Alla restauranger
     </a>
   </div>
 
