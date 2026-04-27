@@ -326,10 +326,10 @@
     }
 
     /* ===========================
-       FORMULÄRSEKTION
+       FORMULÄRSEKTION  (samma palett som kontaktformuläret på startsidan)
     =========================== */
     .job-form-section {
-      background: var(--purple);
+      background: #d78c5d;
       padding: 100px 0 120px;
       position: relative;
     }
@@ -350,7 +350,7 @@
       font-weight: 700;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--cream);
       margin-bottom: 20px;
     }
     .job-form-intro__tag::before {
@@ -358,7 +358,7 @@
       display: block;
       width: 28px;
       height: 2px;
-      background: var(--orange);
+      background: var(--cream);
     }
     .job-form-intro__title {
       font-size: clamp(28px, 3.4vw, 40px);
@@ -367,11 +367,11 @@
       color: var(--cream);
       margin-bottom: 24px;
     }
-    .job-form-intro__title span { color: var(--orange); }
+    .job-form-intro__title span { color: var(--purple); }
     .job-form-intro__text {
       font-size: 15px;
       line-height: 1.75;
-      color: rgba(238,227,206,0.72);
+      color: rgba(238,227,206,0.85);
       margin-bottom: 28px;
     }
     .job-form-intro__list {
@@ -384,28 +384,28 @@
       align-items: flex-start;
       gap: 12px;
       font-size: 14px;
-      color: rgba(238,227,206,0.85);
+      color: rgba(238,227,206,0.92);
     }
     .job-form-intro__list li::before {
       content: '';
       flex-shrink: 0;
       width: 8px;
       height: 8px;
-      background: var(--orange);
+      background: var(--cream);
       margin-top: 7px;
     }
 
     /* Form-card */
     .job-form {
-      background: var(--cream);
+      background: #bf543f;
       padding: 44px 40px;
       box-shadow: 0 30px 80px rgba(0,0,0,0.25);
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
     }
     .job-form__title {
       font-size: 22px;
       font-weight: 800;
-      color: var(--purple);
+      color: var(--cream);
       margin-bottom: 28px;
       letter-spacing: -0.005em;
     }
@@ -417,10 +417,10 @@
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(31,62,55,0.85);
+      color: rgba(238,227,206,0.5);
       margin-bottom: 8px;
     }
-    .form-group .req { color: var(--orange); margin-left: 4px; }
+    .form-group .req { color: var(--cream); margin-left: 4px; }
 
     .form-group input[type="text"],
     .form-group input[type="email"],
@@ -428,38 +428,38 @@
     .form-group textarea,
     .form-group select {
       width: 100%;
-      background: #ffffff;
-      border: 1px solid rgba(31,62,55,0.18);
-      color: var(--text);
+      background: #e48853;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #ffffff;
       font-family: var(--sans);
       font-size: 14px;
       font-weight: 500;
       padding: 13px 16px;
       outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
       border-radius: 0;
       appearance: none;
       -webkit-appearance: none;
     }
     .form-group input::placeholder,
     .form-group textarea::placeholder {
-      color: rgba(31,62,55,0.45);
+      color: rgba(255,255,255,0.70);
     }
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus {
-      border-color: var(--orange);
-      box-shadow: 0 0 0 3px rgba(212,122,63,0.18);
+      border-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.18);
     }
     .form-group input[aria-invalid="true"],
     .form-group textarea[aria-invalid="true"],
     .form-group select[aria-invalid="true"] {
-      border-color: #C66D3D;
-      box-shadow: 0 0 0 3px rgba(198,109,61,0.18);
+      border-color: #ffd5a8;
+      box-shadow: 0 0 0 3px rgba(255,213,168,0.25);
     }
     .form-group textarea { min-height: 140px; resize: vertical; }
     .form-group select {
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231F3E37' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
       background-repeat: no-repeat;
       background-position: right 16px center;
       background-size: 16px;
@@ -478,13 +478,13 @@
       align-items: center;
       gap: 14px;
       padding: 14px 16px;
-      background: #ffffff;
-      border: 1px dashed rgba(31,62,55,0.28);
+      background: #e48853;
+      border: 1px dashed rgba(255,255,255,0.32);
       cursor: pointer;
       transition: border-color 0.2s, background 0.2s;
       min-height: 56px;
     }
-    .form-file:hover { border-color: var(--orange); background: rgba(212,122,63,0.04); }
+    .form-file:hover { border-color: #ffffff; background: #e8915c; }
     .form-file input[type="file"] {
       position: absolute;
       inset: 0;
@@ -497,7 +497,7 @@
       justify-content: center;
       width: 28px; height: 28px;
       flex-shrink: 0;
-      color: var(--purple);
+      color: var(--cream);
     }
     .form-file__icon svg { display: block; width: 22px; height: 22px; }
     .form-file__text {
@@ -509,14 +509,14 @@
     .form-file__label {
       font-size: 13px;
       font-weight: 600;
-      color: var(--purple);
+      color: #ffffff;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .form-file__hint {
       font-size: 11px;
-      color: rgba(31,62,55,0.55);
+      color: rgba(255,255,255,0.65);
     }
 
     /* GDPR-checkbox */
@@ -532,24 +532,24 @@
       width: 20px;
       height: 20px;
       margin-top: 2px;
-      accent-color: var(--orange);
+      accent-color: var(--cream);
       cursor: pointer;
     }
     .form-consent label {
       font-size: 13px;
       line-height: 1.55;
-      color: rgba(31,62,55,0.85);
+      color: rgba(238,227,206,0.85);
       cursor: pointer;
     }
-    .form-consent a { color: var(--purple); border-bottom: 1px solid var(--orange); }
-    .form-consent a:hover { color: var(--orange); }
+    .form-consent a { color: var(--cream); border-bottom: 1px solid rgba(238,227,206,0.55); }
+    .form-consent a:hover { border-bottom-color: var(--cream); }
 
     /* Felmeddelande / status */
     .form-error {
       display: none;
       font-size: 12px;
       font-weight: 600;
-      color: #b34a1a;
+      color: #ffe1c2;
       margin-top: 6px;
     }
     .form-error.show { display: block; }
@@ -563,14 +563,21 @@
     }
     .form-status.show { display: block; }
     .form-status--err {
-      background: rgba(198,109,61,0.10);
-      border-color: #b34a1a;
-      color: #8a3914;
+      background: rgba(255,255,255,0.10);
+      border-color: var(--cream);
+      color: var(--cream);
     }
 
     .job-form .btn {
       width: 100%;
       margin-top: 8px;
+      background: #f89a41;
+      color: #000000;
+      border-color: #f89a41;
+    }
+    .job-form .btn:hover {
+      background: #e5883a;
+      border-color: #e5883a;
     }
 
     /* Tack-tillstånd */
@@ -585,55 +592,26 @@
       height: 64px;
       margin: 0 auto 20px;
       border-radius: 50%;
-      background: rgba(212,122,63,0.16);
+      background: rgba(255,255,255,0.18);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--orange);
+      color: var(--cream);
     }
     .job-success__icon svg { width: 28px; height: 28px; }
     .job-success__title {
       font-size: 22px;
       font-weight: 800;
-      color: var(--purple);
+      color: var(--cream);
       margin-bottom: 12px;
     }
     .job-success__text {
       font-size: 14px;
       line-height: 1.7;
-      color: rgba(31,62,55,0.75);
+      color: rgba(238,227,206,0.85);
       max-width: 360px;
       margin: 0 auto;
     }
-
-    /* ===========================
-       FOTNOT / SPONTANANSÖKAN
-    =========================== */
-    .job-cta {
-      padding: 80px 0;
-      background: var(--white);
-    }
-    .job-cta__inner {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 0 48px;
-      text-align: center;
-    }
-    .job-cta__title {
-      font-size: clamp(24px, 2.6vw, 32px);
-      font-weight: 800;
-      color: var(--purple);
-      margin-bottom: 14px;
-    }
-    .job-cta__text {
-      font-size: 15px;
-      line-height: 1.75;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .job-cta__text a { color: var(--orange); border-bottom: 1px solid var(--orange); font-weight: 600; }
-    .job-cta__text a:hover { color: var(--purple); border-bottom-color: var(--purple); }
 
     /* ===========================
        FOOTER
@@ -736,8 +714,6 @@
       .job-form-section__inner { padding: 0 24px; }
       .job-form { padding: 32px 22px; }
       .form-row { grid-template-columns: 1fr; }
-
-      .job-cta__inner { padding: 0 24px; }
 
       .footer__inner { padding: 0 24px; }
       .footer { padding: 60px 0 32px; }
@@ -961,16 +937,6 @@
       </div>
     </section>
 
-    <!-- SPONTANANSÖKAN -->
-    <section class="job-cta">
-      <div class="job-cta__inner">
-        <h2 class="job-cta__title">Inget passande just nu?</h2>
-        <p class="job-cta__text">
-          Vi tar gärna emot spontanansökningar — våra restauranger växer hela tiden och rätt person är alltid välkommen.
-          Mejla din ansökan direkt till <a href="mailto:[HR_EMAIL]">[HR_EMAIL]</a>.
-        </p>
-      </div>
-    </section>
   </main>
 
   <!-- FOOTER -->
