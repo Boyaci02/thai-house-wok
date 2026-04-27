@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jobba hos oss – Thai House Wok</title>
+  <link rel="icon" href="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" type="image/svg+xml">
+  <meta name="description" content="Thai House Wok är mitt i en spännande tillväxtfas och söker dig som vill jobba som kock, kassa eller diskare på någon av våra 9 restauranger i Stockholm.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ===========================
+       VARIABLER & RESET
+    =========================== */
+    :root {
+      --purple:  #1F3E37;
+      --purple-light: #BED2CE;
+      --orange:  #D47A3F;
+      --dark:    #17171d;
+      --white:   #EEE3CE;
+      --text:    #231F1A;
+      --text-muted: rgba(35,31,26,0.60);
+      --border:  rgba(31,62,55,0.14);
+      --red:     #C66D3D;
+      --cream:   #EEE3CE;
+      --purple-deep: #17302B;
+      --sans: 'Raleway', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    /* ===========================
+       BUTTONS
+    =========================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-orange {
+      background: var(--orange);
+      color: var(--dark);
+      border-color: var(--orange);
+    }
+    .btn-orange:hover { background: #B85F25; border-color: #B85F25; transform: scale(1.03); box-shadow: 0 6px 24px rgba(212,122,63,0.35); }
+
+    /* ===========================
+       NAVIGERING (solid från start)
+    =========================== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: #bed1e0;
+      box-shadow: 0 2px 24px rgba(31,62,55,0.10);
+      transition: background 0.38s ease, box-shadow 0.3s;
+    }
+    .nav__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .nav__brand { display: inline-block; line-height: 0; }
+    .nav__logo {
+      height: 72px;
+      width: auto;
+      display: block;
+    }
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav__links a {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #6b7149;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--orange);
+      transition: width 0.25s ease;
+    }
+    .nav__links a:hover::after { width: 100%; }
+    .nav__links a:hover { color: var(--orange); }
+    .nav__links a.is-active { color: var(--orange); }
+    .nav__links a.is-active::after { width: 100%; }
+    .nav__actions { display: flex; align-items: center; gap: 12px; }
+    .nav__cta {
+      background: #e19b41;
+      color: var(--dark);
+      padding: 10px 22px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+      display: block;
+    }
+    .nav__cta:hover { background: #c98630; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      width: 36px;
+      height: 36px;
+      padding: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #6b7149;
+      transition: transform 0.3s, opacity 0.3s, background 0.38s;
+      transform-origin: center;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--purple);
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.45s;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .mobile-menu.open {
+      transform: translateX(0);
+      visibility: visible;
+      pointer-events: all;
+    }
+    .mobile-menu__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      flex-shrink: 0;
+    }
+    .mobile-menu__close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+    }
+    .mobile-menu__close svg { width: 28px; height: 28px; }
+    .mobile-menu__nav {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 32px;
+      overflow-y: auto;
+    }
+    .mobile-menu__nav ul li { border-bottom: 1px solid rgba(255,255,255,0.10); }
+    .mobile-menu__nav ul li:first-child { border-top: 1px solid rgba(255,255,255,0.10); }
+    .mobile-menu__nav ul li a {
+      display: block;
+      padding: 18px 0;
+      font-size: clamp(32px, 9vw, 48px);
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--cream);
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .mobile-menu__nav ul li a:hover,
+    .mobile-menu__nav ul li a.is-active { color: var(--orange); }
+    .mobile-menu__footer {
+      padding: 24px 32px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      display: flex;
+      gap: 24px;
+      flex-shrink: 0;
+    }
+    .mobile-menu__footer a {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(238,227,206,0.45);
+      transition: color 0.2s;
+    }
+    .mobile-menu__footer a:hover { color: var(--orange); }
+
+    /* ===========================
+       JOBB-HERO / INTRO
+    =========================== */
+    .job-hero {
+      padding: 144px 0 72px;
+      background: var(--purple-light);
+      position: relative;
+      overflow: hidden;
+    }
+    .job-hero__inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 48px;
+      position: relative;
+      z-index: 2;
+    }
+    .job-hero__tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 24px;
+    }
+    .job-hero__tag::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--orange);
+    }
+    .job-hero__title {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 900;
+      line-height: 1.02;
+      color: var(--purple);
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+    .job-hero__title span { color: var(--orange); }
+    .job-hero__lead {
+      font-size: clamp(16px, 1.5vw, 19px);
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text);
+      max-width: 720px;
+      margin-bottom: 18px;
+    }
+    .job-hero__lead strong { font-weight: 700; color: var(--purple); }
+
+    /* Snabb-fakta-bricka */
+    .job-hero__facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+      max-width: 720px;
+    }
+    .job-fact {
+      border-left: 2px solid var(--orange);
+      padding-left: 18px;
+    }
+    .job-fact__num {
+      font-size: clamp(28px, 3.6vw, 40px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--purple);
+      margin-bottom: 6px;
+    }
+    .job-fact__label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(31,62,55,0.65);
+    }
+
+    /* Bakgrunds-stänk för hero */
+    .job-hero__blob {
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(212,122,63,0.18), transparent 65%);
+      top: -120px;
+      right: -120px;
+      pointer-events: none;
+    }
+
+    /* ===========================
+       FORMULÄRSEKTION
+    =========================== */
+    .job-form-section {
+      background: var(--purple);
+      padding: 100px 0 120px;
+      position: relative;
+    }
+    .job-form-section__inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .job-form-intro__tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 20px;
+    }
+    .job-form-intro__tag::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--orange);
+    }
+    .job-form-intro__title {
+      font-size: clamp(28px, 3.4vw, 40px);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+    .job-form-intro__title span { color: var(--orange); }
+    .job-form-intro__text {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(238,227,206,0.72);
+      margin-bottom: 28px;
+    }
+    .job-form-intro__list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .job-form-intro__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: rgba(238,227,206,0.85);
+    }
+    .job-form-intro__list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      background: var(--orange);
+      margin-top: 7px;
+    }
+
+    /* Form-card */
+    .job-form {
+      background: var(--cream);
+      padding: 44px 40px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .job-form__title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--purple);
+      margin-bottom: 28px;
+      letter-spacing: -0.005em;
+    }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(31,62,55,0.85);
+      margin-bottom: 8px;
+    }
+    .form-group .req { color: var(--orange); margin-left: 4px; }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid rgba(31,62,55,0.18);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 13px 16px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      border-radius: 0;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(31,62,55,0.45);
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(212,122,63,0.18);
+    }
+    .form-group input[aria-invalid="true"],
+    .form-group textarea[aria-invalid="true"],
+    .form-group select[aria-invalid="true"] {
+      border-color: #C66D3D;
+      box-shadow: 0 0 0 3px rgba(198,109,61,0.18);
+    }
+    .form-group textarea { min-height: 140px; resize: vertical; }
+    .form-group select {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231F3E37' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 16px;
+      padding-right: 44px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* CV-uppladdning */
+    .form-file {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      background: #ffffff;
+      border: 1px dashed rgba(31,62,55,0.28);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      min-height: 56px;
+    }
+    .form-file:hover { border-color: var(--orange); background: rgba(212,122,63,0.04); }
+    .form-file input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .form-file__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      flex-shrink: 0;
+      color: var(--purple);
+    }
+    .form-file__icon svg { display: block; width: 22px; height: 22px; }
+    .form-file__text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .form-file__label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--purple);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .form-file__hint {
+      font-size: 11px;
+      color: rgba(31,62,55,0.55);
+    }
+
+    /* GDPR-checkbox */
+    .form-consent {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      margin-top: 4px;
+    }
+    .form-consent input[type="checkbox"] {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      accent-color: var(--orange);
+      cursor: pointer;
+    }
+    .form-consent label {
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(31,62,55,0.85);
+      cursor: pointer;
+    }
+    .form-consent a { color: var(--purple); border-bottom: 1px solid var(--orange); }
+    .form-consent a:hover { color: var(--orange); }
+
+    /* Felmeddelande / status */
+    .form-error {
+      display: none;
+      font-size: 12px;
+      font-weight: 600;
+      color: #b34a1a;
+      margin-top: 6px;
+    }
+    .form-error.show { display: block; }
+    .form-status {
+      display: none;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      font-weight: 600;
+      border-left: 3px solid;
+    }
+    .form-status.show { display: block; }
+    .form-status--err {
+      background: rgba(198,109,61,0.10);
+      border-color: #b34a1a;
+      color: #8a3914;
+    }
+
+    .job-form .btn {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    /* Tack-tillstånd */
+    .job-success {
+      display: none;
+      text-align: center;
+      padding: 24px 8px;
+    }
+    .job-success.show { display: block; }
+    .job-success__icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: rgba(212,122,63,0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange);
+    }
+    .job-success__icon svg { width: 28px; height: 28px; }
+    .job-success__title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--purple);
+      margin-bottom: 12px;
+    }
+    .job-success__text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(31,62,55,0.75);
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    /* ===========================
+       FOTNOT / SPONTANANSÖKAN
+    =========================== */
+    .job-cta {
+      padding: 80px 0;
+      background: var(--white);
+    }
+    .job-cta__inner {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 48px;
+      text-align: center;
+    }
+    .job-cta__title {
+      font-size: clamp(24px, 2.6vw, 32px);
+      font-weight: 800;
+      color: var(--purple);
+      margin-bottom: 14px;
+    }
+    .job-cta__text {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .job-cta__text a { color: var(--orange); border-bottom: 1px solid var(--orange); font-weight: 600; }
+    .job-cta__text a:hover { color: var(--purple); border-bottom-color: var(--purple); }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    .footer {
+      background: #d78c5d;
+      border-top: none;
+      padding: 80px 0 40px;
+    }
+    .footer__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 64px;
+    }
+    .footer__tagline {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+      max-width: 280px;
+      margin-bottom: 24px;
+    }
+    .footer__socials { display: flex; gap: 12px; }
+    .footer__social {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .footer__social:hover { background: var(--orange); border-color: var(--orange); }
+    .footer__social svg { width: 16px; height: 16px; stroke: var(--cream); fill: none; }
+    .footer__col-title {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 20px;
+    }
+    .footer__col-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer__col-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.50);
+      transition: color 0.2s;
+    }
+    .footer__col-links a:hover { color: var(--orange); }
+    .footer__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      gap: 16px;
+    }
+    .footer__copy {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.35);
+    }
+    .footer__bottom-links { display: flex; gap: 24px; }
+    .footer__bottom-links a {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.35);
+      transition: color 0.2s;
+    }
+    .footer__bottom-links a:hover { color: var(--orange); }
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
+    @media (max-width: 1024px) {
+      .job-form-section__inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer__grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav__inner { padding: 0 16px; gap: 12px; }
+      .nav__logo { height: 48px; }
+      .nav__links { display: none; }
+      .nav__cta { font-size: 10px; padding: 9px 14px; }
+      .hamburger { display: flex; }
+
+      .job-hero { padding: 112px 0 56px; }
+      .job-hero__inner { padding: 0 24px; }
+      .job-hero__facts { grid-template-columns: 1fr; gap: 18px; margin-top: 36px; }
+      .job-hero__blob { width: 280px; height: 280px; top: -80px; right: -80px; }
+
+      .job-form-section { padding: 64px 0 80px; }
+      .job-form-section__inner { padding: 0 24px; }
+      .job-form { padding: 32px 22px; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .job-cta__inner { padding: 0 24px; }
+
+      .footer__inner { padding: 0 24px; }
+      .footer { padding: 60px 0 32px; }
+      .footer__grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer__bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__brand" aria-label="Thai House Wok startsida">
+        <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="Thai House Wok" class="nav__logo">
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html#om-oss">Om oss</a></li>
+        <li><a href="meny.html">Meny</a></li>
+        <li><a href="index.html#restauranger">Restauranger</a></li>
+        <li><a href="jobb.html" class="is-active" aria-current="page">Jobb</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="https://app.thw.se/restaurants" target="_blank" rel="noopener" class="nav__cta">Beställ online</a>
+        <button class="hamburger" id="hamburger" aria-label="Öppna meny" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="mobile-menu__header">
+      <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="Thai House Wok" class="mobile-menu__logo" style="height:32px;width:auto;">
+      <button class="mobile-menu__close" id="menu-close" aria-label="Stäng meny">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="4" x2="20" y2="20"/>
+          <line x1="20" y1="4" x2="4" y2="20"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="mobile-menu__nav">
+      <ul>
+        <li><a href="index.html#om-oss">Om oss</a></li>
+        <li><a href="meny.html">Meny</a></li>
+        <li><a href="index.html#restauranger">Restauranger</a></li>
+        <li><a href="jobb.html" class="is-active" aria-current="page">Jobb</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__footer">
+      <a href="https://instagram.com/thaiHouseWok" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://facebook.com/thaiHouseWok" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+
+  <!-- HERO / INTRO -->
+  <main>
+    <section class="job-hero">
+      <div class="job-hero__blob" aria-hidden="true"></div>
+      <div class="job-hero__inner">
+        <span class="job-hero__tag">Karriär hos oss</span>
+        <h1 class="job-hero__title">Jobba hos <span>Thai House Wok</span></h1>
+        <p class="job-hero__lead">
+          <strong>Thai House Wok är mitt i en spännande tillväxtfas.</strong> Vi växer både med fler restauranger och fler gäster, och söker dig som vill växa med oss. Hos oss får du jobba i ett team som bryr sig — om maten, om gästerna och om varandra.
+        </p>
+        <p class="job-hero__lead">
+          Just nu söker vi engagerade medarbetare till våra restauranger runt om i Stockholm — oavsett om du är erfaren kock med passion för thaimat, en serviceminded kassamedarbetare eller söker ditt första jobb som diskare. Skicka in din ansökan nedan, så hör vi av oss.
+        </p>
+
+        <div class="job-hero__facts">
+          <div class="job-fact">
+            <div class="job-fact__num">9</div>
+            <div class="job-fact__label">Restauranger</div>
+          </div>
+          <div class="job-fact">
+            <div class="job-fact__num">20+ år</div>
+            <div class="job-fact__label">i branschen</div>
+          </div>
+          <div class="job-fact">
+            <div class="job-fact__num">3</div>
+            <div class="job-fact__label">Roller vi söker</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULÄR -->
+    <section class="job-form-section" id="ansok">
+      <div class="job-form-section__inner">
+
+        <!-- Vänster spalt – kontext -->
+        <div class="job-form-intro">
+          <span class="job-form-intro__tag">Skicka in din ansökan</span>
+          <h2 class="job-form-intro__title">Vi söker dig som vill bli en del av <span>laget</span></h2>
+          <p class="job-form-intro__text">
+            Fyll i formuläret så återkommer vi inom kort. Bifoga gärna ett CV — det räcker långt om du vill, vi värdesätter personlighet och inställning lika mycket som erfarenhet.
+          </p>
+          <ul class="job-form-intro__list">
+            <li>Välj vilken roll du söker till</li>
+            <li>Berätta vilken restaurang som passar dig</li>
+            <li>Ladda upp ditt CV (PDF, max 10&nbsp;MB)</li>
+            <li>Vi svarar på alla ansökningar</li>
+          </ul>
+        </div>
+
+        <!-- Höger spalt – formulär -->
+        <div class="job-form" id="form-card">
+          <h3 class="job-form__title">Ansökningsformulär</h3>
+
+          <div class="form-status form-status--err" id="form-error-banner" role="alert">
+            Något gick fel — försök igen, eller mejla oss på <a href="mailto:[HR_EMAIL]" style="color:inherit;text-decoration:underline;">[HR_EMAIL]</a>.
+          </div>
+
+          <form id="job-form"
+                action="https://formspree.io/f/{FORM_ID}"
+                method="POST"
+                enctype="multipart/form-data"
+                novalidate>
+
+            <!-- Hidden Formspree-fält -->
+            <input type="hidden" name="_subject" id="subject-line" value="Ny jobbansökan – Thai House Wok">
+            <input type="hidden" name="_replyto" id="replyto-mirror">
+            <input type="hidden" name="_format" value="plain">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="namn">Namn<span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="namn" name="namn" autocomplete="name" placeholder="Ditt namn" required aria-required="true">
+              </div>
+              <div class="form-group">
+                <label for="telefon">Telefon<span class="req" aria-hidden="true">*</span></label>
+                <input type="tel" id="telefon" name="telefon" autocomplete="tel" placeholder="070-123 45 67" required aria-required="true">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-post<span class="req" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="din@email.se" required aria-required="true">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="kategori">Roll du söker till<span class="req" aria-hidden="true">*</span></label>
+                <select id="kategori" name="kategori" required aria-required="true">
+                  <option value="" disabled selected>Välj roll…</option>
+                  <option value="Kock">Kock</option>
+                  <option value="Kassa">Kassa</option>
+                  <option value="Diskare">Diskare</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="restaurang">Restaurang / ort<span class="req" aria-hidden="true">*</span></label>
+                <select id="restaurang" name="restaurang" required aria-required="true">
+                  <option value="" disabled selected>Välj restaurang…</option>
+                  <option value="Spelar ingen roll">Spelar ingen roll / vilken som helst</option>
+                  <option value="Hornsgatan">Hornsgatan, Södermalm</option>
+                  <option value="Folkungagatan">Folkungagatan, Södermalm</option>
+                  <option value="Birkagatan">Birkagatan, Vasastan</option>
+                  <option value="Hantverkargatan">Hantverkargatan, Kungsholmen</option>
+                  <option value="Nybrogatan">Nybrogatan, Östermalm</option>
+                  <option value="Lindhagen">Lindhagen, Kungsholmen</option>
+                  <option value="Sollentuna">Sollentuna</option>
+                  <option value="Hammarby Sjöstad">Hammarby Sjöstad</option>
+                  <option value="Enskedevägen">Enskedevägen, Enskede</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="meddelande">Meddelande<span class="req" aria-hidden="true">*</span></label>
+              <textarea id="meddelande" name="meddelande" placeholder="Berätta lite om dig själv, din erfarenhet och när du kan börja…" required aria-required="true"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="cv">CV-uppladdning<span class="req" aria-hidden="true">*</span></label>
+              <label class="form-file" for="cv">
+                <span class="form-file__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="17 8 12 3 7 8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                  </svg>
+                </span>
+                <span class="form-file__text">
+                  <span class="form-file__label" id="cv-filename">Välj fil…</span>
+                  <span class="form-file__hint">PDF, DOC eller DOCX – max 10&nbsp;MB</span>
+                </span>
+                <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required aria-required="true">
+              </label>
+              <div class="form-error" id="cv-error">Filen är för stor (max 10 MB) eller har fel format.</div>
+            </div>
+
+            <div class="form-consent">
+              <input type="checkbox" id="gdpr" name="gdpr" required aria-required="true" value="Ja">
+              <label for="gdpr">
+                Jag godkänner att Thai House Wok behandlar mina personuppgifter enligt GDPR i syfte att hantera min ansökan. <a href="#" target="_blank" rel="noopener">Läs mer</a>.
+              </label>
+            </div>
+            <div class="form-error" id="gdpr-error">Du behöver godkänna villkoren för att skicka in.</div>
+
+            <button type="submit" class="btn btn-orange" id="submit-btn">Skicka ansökan</button>
+          </form>
+
+          <!-- Tack-tillstånd -->
+          <div class="job-success" id="job-success" aria-live="polite">
+            <div class="job-success__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="job-success__title">Tack för din ansökan!</div>
+            <p class="job-success__text">Vi har tagit emot din ansökan och återkommer till dig så snart vi kan. Glöm inte att titta i skräpposten ifall vårt svar hamnar fel.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SPONTANANSÖKAN -->
+    <section class="job-cta">
+      <div class="job-cta__inner">
+        <h2 class="job-cta__title">Inget passande just nu?</h2>
+        <p class="job-cta__text">
+          Vi tar gärna emot spontanansökningar — våra restauranger växer hela tiden och rätt person är alltid välkommen.
+          Mejla din ansökan direkt till <a href="mailto:[HR_EMAIL]">[HR_EMAIL]</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <div>
+          <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="Thai House Wok" style="height:80px;width:auto;margin-bottom:16px;">
+          <p class="footer__tagline">Äkta thaimat lagad med kärlek och de finaste råvarorna sedan 2006. Välkommen till oss!</p>
+          <div class="footer__socials">
+            <a href="https://instagram.com/thaiHouseWok" target="_blank" rel="noopener" class="footer__social" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://facebook.com/thaiHouseWok" target="_blank" rel="noopener" class="footer__social" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Sidor</div>
+          <div class="footer__col-links">
+            <a href="index.html#om-oss">Om oss</a>
+            <a href="meny.html">Meny</a>
+            <a href="index.html#restauranger">Restauranger</a>
+            <a href="jobb.html">Jobb</a>
+            <a href="index.html#kontakt">Kontakt</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Restauranger</div>
+          <div class="footer__col-links">
+            <a href="index.html#restauranger">Hornsgatan</a>
+            <a href="index.html#restauranger">Folkungagatan</a>
+            <a href="index.html#restauranger">Birkagatan</a>
+            <a href="index.html#restauranger">Nybrogatan</a>
+            <a href="index.html#restauranger">Se alla →</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="footer__copy">© 2025 Thai House Wok. Alla rättigheter förbehållna.</div>
+        <div class="footer__bottom-links">
+          <a href="#">Integritetspolicy</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // --- Hamburger / Mobile menu ---
+    const btn      = document.getElementById('hamburger');
+    const mobileM  = document.getElementById('mobile-menu');
+    const closeBtn = document.getElementById('menu-close');
+
+    function openMenu() {
+      btn.classList.add('open');
+      mobileM.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      mobileM.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      btn.classList.remove('open');
+      mobileM.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      mobileM.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    btn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    mobileM.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+    // --- Formulär: CV-filnamn + storlek ---
+    const MAX_BYTES = 10 * 1024 * 1024; // 10 MB
+    const cvInput   = document.getElementById('cv');
+    const cvLabel   = document.getElementById('cv-filename');
+    const cvError   = document.getElementById('cv-error');
+
+    cvInput.addEventListener('change', () => {
+      cvError.classList.remove('show');
+      cvInput.setAttribute('aria-invalid', 'false');
+      const file = cvInput.files[0];
+      if (!file) {
+        cvLabel.textContent = 'Välj fil…';
+        return;
+      }
+      if (file.size > MAX_BYTES) {
+        cvError.textContent = 'Filen är för stor — max 10 MB.';
+        cvError.classList.add('show');
+        cvInput.setAttribute('aria-invalid', 'true');
+        cvInput.value = '';
+        cvLabel.textContent = 'Välj fil…';
+        return;
+      }
+      cvLabel.textContent = file.name;
+    });
+
+    // --- Formulär: submit ---
+    const form        = document.getElementById('job-form');
+    const submitBtn   = document.getElementById('submit-btn');
+    const successEl   = document.getElementById('job-success');
+    const errorBanner = document.getElementById('form-error-banner');
+    const gdpr        = document.getElementById('gdpr');
+    const gdprError   = document.getElementById('gdpr-error');
+    const subjectLine = document.getElementById('subject-line');
+    const replyto     = document.getElementById('replyto-mirror');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorBanner.classList.remove('show');
+      gdprError.classList.remove('show');
+
+      // Manuell validering – HTML5 hade gett halv-bra UX för selectar
+      if (!form.checkValidity()) {
+        // Hitta första ogiltiga och fokusera
+        const firstInvalid = form.querySelector(':invalid');
+        if (firstInvalid) firstInvalid.focus();
+        // GDPR-specifikt felmeddelande
+        if (!gdpr.checked) gdprError.classList.add('show');
+        return;
+      }
+
+      // Filstorlek (extra koll)
+      const file = cvInput.files[0];
+      if (file && file.size > MAX_BYTES) {
+        cvError.textContent = 'Filen är för stor — max 10 MB.';
+        cvError.classList.add('show');
+        cvInput.focus();
+        return;
+      }
+
+      // Bygg ämnesrad: [Ansökan – Kategori – Ort] Namn
+      const namn = form.namn.value.trim() || 'Okänd sökande';
+      const kat  = form.kategori.value || 'Okategoriserad';
+      const ort  = form.restaurang.value || 'Spelar ingen roll';
+      subjectLine.value = `[Ansökan – ${kat} – ${ort}] ${namn}`;
+      replyto.value = form.email.value.trim();
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Skickar…';
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          successEl.classList.add('show');
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          throw new Error('Server returned ' + response.status);
+        }
+      } catch (err) {
+        errorBanner.classList.add('show');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Skicka ansökan';
+        errorBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  </script>
+</body>
+</html>

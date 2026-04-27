@@ -59,6 +59,17 @@
     }
     .nav__back:hover { color: var(--orange); gap: 12px; }
     .nav__back svg { width: 16px; height: 16px; }
+    .nav__right { display: flex; align-items: center; gap: 28px; }
+    .nav__link {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--purple);
+      transition: color 0.2s;
+    }
+    .nav__link:hover { color: var(--orange); }
+    @media (max-width: 540px) { .nav__back { display: none; } }
 
     /* HERO */
     .restaurant-hero {
@@ -289,10 +300,13 @@
       <a href="index.html">
         <img src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" alt="Thai House Wok" class="nav__logo">
       </a>
-      <a href="index.html#restauranger" class="nav__back">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        Alla restauranger
-      </a>
+      <div class="nav__right">
+        <a href="jobb.html" class="nav__link">Jobb</a>
+        <a href="index.html#restauranger" class="nav__back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Alla restauranger
+        </a>
+      </div>
     </div>
   </nav>
 
