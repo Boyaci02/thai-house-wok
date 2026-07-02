@@ -1643,7 +1643,54 @@
       .footer__grid { grid-template-columns: 1fr; gap: 32px; }
       .footer__bottom { flex-direction: column; text-align: center; }
     }
-  </style>
+  
+    /* ---------- Lunchmeny (rullande 3-veckorsschema) ---------- */
+    .lunch-menu { margin-top: 28px; display: grid; gap: 22px; }
+    .lunch-today {
+      background: var(--purple); color: var(--cream);
+      border-radius: 20px; padding: 30px 32px;
+    }
+    .lunch-today__meta {
+      font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--purple-light); font-weight: 700; margin-bottom: 16px;
+    }
+    .lunch-today__dishes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .lunch-dish {
+      background: rgba(238,227,206,.07); border: 1px solid rgba(238,227,206,.16);
+      border-radius: 14px; padding: 16px 18px;
+    }
+    .lunch-dish__letter {
+      display: inline-grid; place-items: center; width: 30px; height: 30px;
+      border-radius: 50%; background: var(--orange); color: var(--cream);
+      font-weight: 800; margin-bottom: 10px;
+    }
+    .lunch-dish__name { font-weight: 700; font-size: 17px; margin-bottom: 2px; }
+    .lunch-dish__protein { color: var(--purple-light); font-size: 14px; }
+    .lunch-menu__note { margin-top: 16px; color: var(--purple-light); font-size: 14px; line-height: 1.6; }
+    .lunch-weeks__tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+    .lunch-tab {
+      padding: 9px 20px; border-radius: 999px; border: 1.5px solid var(--border);
+      background: transparent; color: var(--text); font-weight: 700; font-size: 14px;
+      cursor: pointer; font-family: inherit; transition: all .25s ease;
+    }
+    .lunch-tab.active { background: var(--purple); border-color: var(--purple); color: var(--cream); }
+    .lunch-tab .now { font-weight: 600; opacity: .75; font-size: 12px; }
+    .lunch-week-table { overflow-x: auto; }
+    .lunch-week-table table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .lunch-week-table th, .lunch-week-table td {
+      text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border);
+    }
+    .lunch-week-table th {
+      font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted);
+    }
+    .lunch-week-table td:first-child { font-weight: 700; white-space: nowrap; }
+    .lunch-week-table tr.today td { background: rgba(212,122,63,.10); }
+    .lunch-week-table .p { color: var(--text-muted); font-size: 13px; display: block; }
+    @media (max-width: 760px) {
+      .lunch-today { padding: 24px 20px; }
+      .lunch-today__dishes { grid-template-columns: 1fr; }
+    }
+</style>
 </head>
 <body>
 
@@ -1689,6 +1736,7 @@
       <ul class="nav__links">
         <li><a href="#om-oss">Om oss</a></li>
         <li><a href="meny.html">Meny</a></li>
+        <li><a href="#lunch">Lunch</a></li>
         <li><a href="#restauranger">Restauranger</a></li>
         <li><a href="jobb.html">Jobb</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
@@ -1719,6 +1767,7 @@
       <ul>
         <li><a href="#om-oss">Om oss</a></li>
         <li><a href="meny.html">Meny</a></li>
+        <li><a href="#lunch">Lunch</a></li>
         <li><a href="#restauranger">Restauranger</a></li>
         <li><a href="jobb.html">Jobb</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
@@ -1841,7 +1890,7 @@
           <div class="menu-card__spice">
             <span class="menu-card__spice-dot"></span>
             <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot"></span>
           </div>
           <div class="menu-card__number">1.</div>
           <div class="menu-card__name">Geang Keowan</div>
@@ -1857,7 +1906,7 @@
           <div class="menu-card__spice">
             <span class="menu-card__spice-dot"></span>
             <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
           </div>
           <div class="menu-card__number">2.</div>
           <div class="menu-card__name">Geang Phed</div>
@@ -1953,7 +2002,7 @@
         <div class="menu-card" data-category="wok">
           <div class="menu-card__img"><img src="assets/menu/8-300x206.png" alt="Pad Preowan" loading="lazy"></div>
           <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
           </div>
@@ -1971,7 +2020,7 @@
           <div class="menu-card__spice">
             <span class="menu-card__spice-dot"></span>
             <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
           </div>
           <div class="menu-card__number">9.</div>
           <div class="menu-card__name">Pad Prig Phao</div>
@@ -1985,7 +2034,7 @@
         <div class="menu-card" data-category="wok">
           <div class="menu-card__img"><img src="assets/menu/10-1-300x206.png" alt="Pad Khing" loading="lazy"></div>
           <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
           </div>
@@ -2001,7 +2050,7 @@
         <div class="menu-card" data-category="wok">
           <div class="menu-card__img"><img src="assets/menu/11-1-300x206.png" alt="Pad Paak" loading="lazy"></div>
           <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
           </div>
@@ -2017,7 +2066,7 @@
         <div class="menu-card" data-category="wok">
           <div class="menu-card__img"><img src="assets/menu/12-2-300x206.png" alt="Kao Pad" loading="lazy"></div>
           <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
           </div>
@@ -2035,7 +2084,7 @@
           <div class="menu-card__spice">
             <span class="menu-card__spice-dot"></span>
             <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot"></span>
           </div>
           <div class="menu-card__number">13.</div>
           <div class="menu-card__name">Stekt Röd Curry</div>
@@ -2051,7 +2100,7 @@
         <div class="menu-card" data-category="nudlar">
           <div class="menu-card__img"><img src="assets/menu/14-1-300x206.png" alt="Pad Thai" loading="lazy"></div>
           <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
           </div>
@@ -2060,14 +2109,14 @@
           <div class="menu-card__desc">Risnudlar, morötter, böngroddar, purjolök, ägg, koriander, lime, hackade jordnötter och chilipulver på sidan.</div>
           <div class="menu-card__allergens">Laktosfri, glutenfri · sås vegansk · jordnötter</div>
           <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
-          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__price">från 149:-</div>
         </div>
 
         <!-- 15 -->
         <div class="menu-card" data-category="nudlar">
           <div class="menu-card__img"><img src="assets/menu/15-2-300x206.png" alt="Pad See Ew" loading="lazy"></div>
           <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
           </div>
@@ -2076,7 +2125,7 @@
           <div class="menu-card__desc">Ostronsås, risnudlar, paprika, morötter, broccoli, purjolök, ägg, svart soja, sriracha på sidan.</div>
           <div class="menu-card__allergens">Skaldjur, fisk, gluten, laktosfri</div>
           <div class="menu-card__proteins">Välj protein: Kyckling · Fläsk/Tofu · Nöt · Bläckfisk · Räkor</div>
-          <div class="menu-card__price">från 149:- <span>inkl. ris</span></div>
+          <div class="menu-card__price">från 149:-</div>
         </div>
 
         <h2 class="menu__category-title" data-category="soppor">Soppor</h2>
@@ -2101,8 +2150,8 @@
         <div class="menu-card" data-category="soppor">
           <div class="menu-card__img"><img src="assets/menu/17-1-300x206.png" alt="Tom Kha" loading="lazy"></div>
           <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
           </div>
           <div class="menu-card__number">17.</div>
@@ -2119,8 +2168,8 @@
         <div class="menu-card" data-category="sallader">
           <div class="menu-card__img"><img src="assets/menu/kyckling-300x206.png" alt="Kycklingsallad" loading="lazy"></div>
           <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
           </div>
           <div class="menu-card__number">18.</div>
@@ -2134,8 +2183,8 @@
         <div class="menu-card" data-category="sallader">
           <div class="menu-card__img"><img src="assets/menu/skal-300x206.png" alt="Skaldjurssallad" loading="lazy"></div>
           <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
-            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
+            <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
           </div>
           <div class="menu-card__number">19.</div>
@@ -2166,7 +2215,7 @@
         <div class="menu-card" data-category="signatur">
           <div class="menu-card__img"><img src="assets/menu/Nr-21-Jordnotssas-Wok-Kyckling-300x218.png" alt="Jordnötssås wok Kyckling" loading="lazy"></div>
           <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
           </div>
@@ -2181,7 +2230,7 @@
         <div class="menu-card" data-category="signatur">
           <div class="menu-card__img"><img src="assets/menu/Nr-22-Sotsur-Wok-Friterad-Kyckling-300x224.png" alt="Sötsur Wok & friterad kyckling" loading="lazy"></div>
           <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
           </div>
@@ -2196,7 +2245,7 @@
         <div class="menu-card" data-category="signatur">
           <div class="menu-card__img"><img src="assets/menu/Nr-23-Kao-Pad-Thai-Style-Kyckling-300x164.png" alt="Kao Pad Thai style" loading="lazy"></div>
           <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
           </div>
@@ -2211,7 +2260,7 @@
         <div class="menu-card" data-category="signatur">
           <div class="menu-card__img"><img src="assets/menu/Nr-24-Risnudlar-med-Jordnotssas-Kyckling-300x164.png" alt="Risnudlar med Jordnötssås" loading="lazy"></div>
           <div class="menu-card__spice">
-            <span class="menu-card__spice-dot"></span>
+            <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
             <span class="menu-card__spice-dot empty"></span>
           </div>
@@ -2296,7 +2345,24 @@
           <div class="lunch-banner__heading">Lunchmeny – 139 kr</div>
           <div class="lunch-banner__sub">Måndag–fredag · Serveras med ris, sallad och bröd · Blanda 2 rätter 130 kr · Blanda 3 rätter 150 kr</div>
         </div>
-        <a href="#meny" class="btn btn-purple">Se veckans lunch</a>
+        <a href="#lunch" class="btn btn-purple">Se veckans lunch</a>
+      </div>
+
+      <!-- ============ LUNCHMENY — rullande 3-veckorsschema (kundens schema 2026-06) ============ -->
+      <div class="lunch-menu" id="lunch">
+        <div class="lunch-today reveal">
+          <div class="lunch-today__meta"><span id="lunchMeta">Dagens lunch</span></div>
+          <div class="lunch-today__dishes" id="lunchToday"></div>
+          <p class="lunch-menu__note">Alternativ A kan alltid beställas vegetariskt – med tofu eller bara grönsaker. Serveras med ris, sallad och bröd, måndag–fredag.</p>
+        </div>
+        <div class="lunch-weeks reveal">
+          <div class="lunch-weeks__tabs" role="tablist" aria-label="Lunchveckor">
+            <button class="lunch-tab" data-week="0" role="tab">Vecka 1</button>
+            <button class="lunch-tab" data-week="1" role="tab">Vecka 2</button>
+            <button class="lunch-tab" data-week="2" role="tab">Vecka 3</button>
+          </div>
+          <div class="lunch-week-table" id="lunchWeekTable"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -2698,6 +2764,65 @@
         }, 3000);
       });
     }
+  </script>
+
+  <!-- Lunchmenyn: rullande 3-veckorsschema som räknar ut aktuell vecka själv.
+       Ankare: måndag 2026-06-15 = Vecka 2 i cykeln (bekräftat av kunden 2026-06-18). -->
+  <script>
+  (function () {
+    var NAMES = {1:"Geang Keowan",2:"Geang Phed",3:"Geang Kaari",4:"Geang Phaneang",5:"Geang Massaman",6:"Pad Mhed Mamuang",7:"Pad Graaprao",8:"Pad Preowan",9:"Pad Prig Phao",10:"Pad Khing",11:"Pad Paak",12:"Kao Pad",13:"Stekt Röd Curry",14:"Pad Thai",15:"Pad See Ew",24:"Risnudlar med Jordnötssås"};
+    var PROT = {K:"Kyckling",N:"Nötkött",F:"Fläsk"};
+    // [vecka][dag mån..fre] = [A,B,C], t.ex. "2K" = rätt 2 med kyckling
+    var WEEKS = [
+      [["2K","9N","15F"],["4N","14K","10F"],["5K","11N","24K"],["3N","6K","8F"],["4K","15F","7N"]],
+      [["5N","6K","7F"],["3K","9F","13N"],["1N","14K","11F"],["2K","6N","10F"],["5N","24K","6K"]],
+      [["3K","14N","8F"],["1N","9K","15F"],["2K","6F","10N"],["4K","15N","11F"],["5K","9F","24K"]]
+    ];
+    var DAYS = ["Måndag","Tisdag","Onsdag","Torsdag","Fredag"];
+    var ANCHOR = new Date(2026, 5, 15); // must vara måndag; = cykelvecka index 1 (Vecka 2)
+    function cycleWeek(d) {
+      var ms = 24*3600*1000;
+      var monday = new Date(d); var day = (d.getDay() + 6) % 7; monday.setDate(d.getDate() - day); monday.setHours(0,0,0,0);
+      var weeks = Math.round((monday - ANCHOR) / (7 * ms));
+      return ((1 + weeks) % 3 + 3) % 3;
+    }
+    function dishHtml(code, letter) {
+      var num = parseInt(code, 10);
+      var p = code.replace(/\d+/, "");
+      return '<div class="lunch-dish"><span class="lunch-dish__letter">' + letter + '</span>' +
+        '<div class="lunch-dish__name">' + (NAMES[num] || ("Rätt " + num)) + '</div>' +
+        '<div class="lunch-dish__protein">' + (PROT[p] || "Kyckling") + (letter === "A" ? " · kan fås veg" : "") + '</div></div>';
+    }
+    var now = new Date();
+    var w = cycleWeek(now);
+    var dayIdx = (now.getDay() + 6) % 7; // 0 = måndag
+    var meta = document.getElementById("lunchMeta");
+    var today = document.getElementById("lunchToday");
+    var isWeekday = dayIdx < 5;
+    var showDay = isWeekday ? dayIdx : 0;
+    var showWeek = isWeekday ? w : cycleWeek(new Date(now.getTime() + (7 - dayIdx) * 24*3600*1000));
+    meta.textContent = (isWeekday ? "Dagens lunch · " + DAYS[showDay] : "Nästa lunch · " + DAYS[0]) + " · Vecka " + (showWeek + 1) + " · 139 kr";
+    today.innerHTML = WEEKS[showWeek][showDay].map(function (c, i) { return dishHtml(c, "ABC"[i]); }).join("");
+
+    var tableEl = document.getElementById("lunchWeekTable");
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(".lunch-tab"));
+    function renderWeek(wi) {
+      tabs.forEach(function (t) { t.classList.toggle("active", +t.getAttribute("data-week") === wi); });
+      var rows = WEEKS[wi].map(function (dishes, di) {
+        var isToday = isWeekday && wi === w && di === dayIdx;
+        return '<tr' + (isToday ? ' class="today"' : '') + '><td>' + DAYS[di] + '</td>' + dishes.map(function (c, i) {
+          var num = parseInt(c, 10), p = c.replace(/\d+/, "");
+          return '<td><strong>' + "ABC"[i] + '.</strong> ' + (NAMES[num] || num) + '<span class="p">' + (PROT[p] || "Kyckling") + '</span></td>';
+        }).join("") + '</tr>';
+      }).join("");
+      tableEl.innerHTML = '<table><thead><tr><th>Dag</th><th>A · alltid veg-bar</th><th>B</th><th>C</th></tr></thead><tbody>' + rows + '</tbody></table>';
+    }
+    tabs.forEach(function (t, i) {
+      if (i === w) t.innerHTML += ' <span class="now">· nu</span>';
+      t.addEventListener("click", function () { renderWeek(+t.getAttribute("data-week")); });
+    });
+    renderWeek(w);
+  })();
   </script>
 </body>
 </html>
