@@ -1686,6 +1686,11 @@
     .lunch-week-table td:first-child { font-weight: 700; white-space: nowrap; }
     .lunch-week-table tr.today td { background: rgba(212,122,63,.10); }
     .lunch-week-table .p { color: var(--text-muted); font-size: 13px; display: block; }
+    @media (max-width: 700px) {
+      .lunch-week-table th, .lunch-week-table td { padding: 9px 6px; font-size: 13px; }
+      .lunch-week-table td:first-child { white-space: normal; }
+      .lunch-week-table .p { font-size: 11px; }
+    }
     @media (max-width: 760px) {
       .lunch-today { padding: 24px 20px; }
       .lunch-today__dishes { grid-template-columns: 1fr; }
@@ -2343,7 +2348,7 @@
       <div class="lunch-banner reveal">
         <div class="lunch-banner__text">
           <div class="lunch-banner__heading">Lunchmeny – 139 kr</div>
-          <div class="lunch-banner__sub">Måndag–fredag · Serveras med ris, sallad och bröd · Blanda 2 rätter 130 kr · Blanda 3 rätter 150 kr</div>
+          <div class="lunch-banner__sub">Måndag–fredag · Serveras med ris · Blanda 2 rätter 130 kr · Blanda 3 rätter 150 kr</div>
         </div>
         <a href="#lunch" class="btn btn-purple">Se veckans lunch</a>
       </div>
@@ -2353,7 +2358,7 @@
         <div class="lunch-today reveal">
           <div class="lunch-today__meta"><span id="lunchMeta">Dagens lunch</span></div>
           <div class="lunch-today__dishes" id="lunchToday"></div>
-          <p class="lunch-menu__note">Alternativ A kan alltid beställas vegetariskt – med tofu eller bara grönsaker. Serveras med ris, sallad och bröd, måndag–fredag.</p>
+          <p class="lunch-menu__note">Alternativ A kan alltid beställas vegetariskt – med tofu eller bara grönsaker. Serveras med ris, måndag–fredag.</p>
         </div>
         <div class="lunch-weeks reveal">
           <div class="lunch-weeks__tabs" role="tablist" aria-label="Lunchveckor">
