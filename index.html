@@ -2347,8 +2347,8 @@
       <!-- Lunch-banner -->
       <div class="lunch-banner reveal">
         <div class="lunch-banner__text">
-          <div class="lunch-banner__heading">Lunchmeny – 139 kr</div>
-          <div class="lunch-banner__sub">Måndag–fredag · Serveras med ris · Blanda 2 rätter 130 kr · Blanda 3 rätter 150 kr</div>
+          <div class="lunch-banner__heading">Lunch från 139 kr</div>
+          <div class="lunch-banner__sub">Måndag–fredag · Serveras med ris · Dryck ingår</div>
         </div>
         <a href="#lunch" class="btn btn-purple">Se veckans lunch</a>
       </div>
@@ -2590,7 +2590,7 @@
             <a href="#meny">Curryrätter</a>
             <a href="#meny">Wok & Nudlar</a>
             <a href="#meny">Förrätter</a>
-            <a href="#meny">Lunch 139 kr</a>
+            <a href="#meny">Lunch från 139 kr</a>
             <a href="#meny">Veckans lunch</a>
           </div>
         </div>
@@ -2798,6 +2798,15 @@
         '<div class="lunch-dish__name">' + (NAMES[num] || ("Rätt " + num)) + '</div>' +
         '<div class="lunch-dish__protein">' + (PROT[p] || "Kyckling") + (letter === "A" ? " · kan fås veg" : "") + '</div></div>';
     }
+    function isoWeek(d) {
+      var t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+      var dayNum = (t.getUTCDay() + 6) % 7;
+      t.setUTCDate(t.getUTCDate() - dayNum + 3);
+      var firstThu = new Date(Date.UTC(t.getUTCFullYear(), 0, 4));
+      var fDay = (firstThu.getUTCDay() + 6) % 7;
+      firstThu.setUTCDate(firstThu.getUTCDate() - fDay + 3);
+      return 1 + Math.round((t - firstThu) / (7 * 24 * 3600 * 1000));
+    }
     var now = new Date();
     var w = cycleWeek(now);
     var dayIdx = (now.getDay() + 6) % 7; // 0 = måndag
@@ -2806,7 +2815,8 @@
     var isWeekday = dayIdx < 5;
     var showDay = isWeekday ? dayIdx : 0;
     var showWeek = isWeekday ? w : cycleWeek(new Date(now.getTime() + (7 - dayIdx) * 24*3600*1000));
-    meta.textContent = (isWeekday ? "Dagens lunch · " + DAYS[showDay] : "Nästa lunch · " + DAYS[0]) + " · Vecka " + (showWeek + 1) + " · 139 kr";
+    var metaDate = isWeekday ? now : new Date(now.getTime() + (7 - dayIdx) * 24*3600*1000);
+    meta.textContent = (isWeekday ? "Dagens lunch · " + DAYS[showDay] : "Nästa lunch · " + DAYS[0]) + " · Vecka " + isoWeek(metaDate) + " · från 139 kr";
     today.innerHTML = WEEKS[showWeek][showDay].map(function (c, i) { return dishHtml(c, "ABC"[i]); }).join("");
 
     var tableEl = document.getElementById("lunchWeekTable");
@@ -2822,8 +2832,22 @@
       }).join("");
       tableEl.innerHTML = '<table><thead><tr><th>Dag</th><th>A · alltid veg-bar</th><th>B</th><th>C</th></tr></thead><tbody>' + rows + '</tbody></table>';
     }
-    tabs.forEach(function (t, i) {
-      if (i === w) t.innerHTML += ' <span class="now">· nu</span>';
+    // Flikarna visar riktiga kalenderveckor (kundens önskan 28/7): nuvarande vecka först
+    var mondayNow = new Date(now); mondayNow.setDate(now.getDate() - dayIdx); mondayNow.setHours(0,0,0,0);
+    var tabParent = tabs.length ? tabs[0].parentNode : null;
+    var ordning = [];
+    for (var off = 0; off < 3; off++) {
+      var vDatum = new Date(mondayNow.getTime() + off * 7 * 24*3600*1000);
+      ordning.push({ cykel: cycleWeek(vDatum), iso: isoWeek(vDatum) });
+    }
+    ordning.forEach(function (o, pos) {
+      var t = tabs[o.cykel];
+      if (!t) return;
+      t.textContent = "Vecka " + o.iso;
+      if (pos === 0) t.innerHTML += ' <span class="now">· nu</span>';
+      if (tabParent) tabParent.appendChild(t);
+    });
+    tabs.forEach(function (t) {
       t.addEventListener("click", function () { renderWeek(+t.getAttribute("data-week")); });
     });
     renderWeek(w);
