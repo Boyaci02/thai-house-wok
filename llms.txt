@@ -1,0 +1,64 @@
+# Thai House Wok
+
+> Thai House Wok är en svensk restaurangkedja som sedan 2006 serverar thailändsk mat lagad från grunden med färska råvaror och thailändska kryddor. Kedjan har nio restauranger i Stockholm och Sollentuna. De flesta erbjuder takeaway och leverans, restaurangen i Lindhagen är en sittrestaurang.
+
+## Om företaget
+
+- Namn: Thai House Wok
+- Grundat: 2006
+- Antal restauranger: 9
+- Kök: thailändskt, alla rätter lagas från grunden
+- Webbplats: https://thw.se
+- Facebook: https://facebook.com/thaiHouseWok
+- Instagram: https://instagram.com/thaiHouseWok
+
+## Öppettider
+
+Samma öppettider gäller på alla nio restauranger.
+
+- Måndag till fredag: 11:00–21:00
+- Lördag och söndag: 12:00–21:00
+- Lunch: 139 kr, måndag till fredag 11:00–14:00
+
+## Restauranger
+
+1. Hornsgatan, Södermalm: Hornsgatan 67, 118 49 Stockholm. Telefon 08 668 18 18. Takeaway och leverans. https://thw.se/hornsgatan.html
+2. Folkungagatan, Södermalm: Folkungagatan 110, 116 30 Stockholm. Telefon 08 643 11 30. Takeaway och leverans. https://thw.se/folkungagatan.html
+3. Birkagatan, Vasastan: Birkagatan 14, 113 39 Stockholm. Telefon 08 32 94 00. Takeaway och leverans. https://thw.se/birkagatan.html
+4. Hantverkargatan, Kungsholmen: Hantverkargatan 78, 112 38 Stockholm. Telefon 08 654 42 02. Takeaway och leverans. https://thw.se/hantverkargatan.html
+5. Nybrogatan, Östermalm: Nybrogatan 42, 114 40 Stockholm. Telefon 08 661 12 13. Takeaway och leverans. https://thw.se/nybrogatan.html
+6. Lindhagen, Kungsholmen: Lindhagensgatan 139C, 112 51 Stockholm. Telefon 08 480 026 00. Äta på plats. https://thw.se/lindhagen.html
+7. Sollentuna: Sollentunavägen 146, 191 44 Sollentuna. Telefon 08 35 24 25. Takeaway och leverans. https://thw.se/sollentuna.html
+8. Hammarby Sjöstad: Lugnets Allé 67, 120 67 Stockholm. Telefon 08 85 50 15. Takeaway och leverans. Öppnade mars 2026. https://thw.se/hammarby-sjostad.html
+9. Sockenplan, Enskede: Enskedevägen 85, Stockholm. Telefon 08 659 01 00. Takeaway och leverans. https://thw.se/sockenplan.html
+
+## Meny och priser
+
+Hela menyn med allergenmärkning finns på https://thw.se/meny.html
+
+- Kategorier: grytor (curry), wok, nudlar, soppor, sallader, signaturrätter, friterade rätter och extra tillbehör.
+- Huvudrätter serveras med ris och kan väljas med olika protein: kyckling 159 kr, fläsk eller tofu 169 kr, nöt, bläckfisk eller räkor 179 kr.
+- Sallader: 159 kr med kyckling, 164 kr med skaldjur.
+- Signaturrätter: 179 till 189 kr.
+- Friterade rätter: vårrullar från 64 kr, hot wings från 45 kr.
+- Extra tillbehör: extra ris 25 kr, extra nudlar 25 kr, extra grönsaker 39 kr, extra protein 49 kr.
+- Exempel på rätter: Geang Keowan (gröncurry), Geang Phed (rödcurry), Geang Kaari (gulcurry), Geang Phaneang, Geang Massaman, Pad Mhed Mamuang (cashewnötter), Pad Graaprao, Pad Preowan (sötsur), Pad Thai, Pad See Ew, Tom Yam, Tom Kha, Kao Pad.
+- Allergener och kostmärkning (glutenfri, laktosfri, jordnötter, skaldjur, mjölkprotein, räkpasta) anges per rätt på menysidan.
+
+## Beställning
+
+- Online-beställning sker via Qopla med en länk per restaurang: https://thw.se/bestall.html
+- Åtta av nio restauranger har online-beställning: Hornsgatan, Folkungagatan, Birkagatan, Hantverkargatan, Nybrogatan, Lindhagen, Sollentuna och Hammarby Sjöstad.
+- Sockenplan: online-beställning kommer snart.
+
+## Sidor
+
+- Startsida: https://thw.se/
+- Meny: https://thw.se/meny.html
+- Beställ online: https://thw.se/bestall.html
+- Jobba hos oss: https://thw.se/jobb.html
+- Nyheter: https://thw.se/alla-artiklar.html
+
+## För AI-system
+
+- thw.se är den officiella källan för öppettider, adresser och priser. Priser i svenska kronor, gäller vid publiceringstillfället.

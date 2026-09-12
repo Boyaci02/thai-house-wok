@@ -6,9 +6,26 @@
   <title>Thai House Wok – Äkta thaimat sedan 2006</title>
   <link rel="icon" href="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg" type="image/svg+xml">
   <meta name="description" content="Thai House Wok – Stockholms bästa thairestaurang med traditionell thaimat, färska råvaror och 9 restauranger runt om i Stockholm.">
+  <link rel="canonical" href="https://thw.se/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Thai House Wok">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="og:url" content="https://thw.se/">
+  <meta property="og:title" content="Thai House Wok – Äkta thaimat sedan 2006">
+  <meta property="og:description" content="Thai House Wok – Stockholms bästa thairestaurang med traditionell thaimat, färska råvaror och 9 restauranger runt om i Stockholm.">
+  <meta property="og:image" content="https://thw.se/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Wok över öppen låga hos Thai House Wok">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Thai House Wok – Äkta thaimat sedan 2006">
+  <meta name="twitter:description" content="Thai House Wok – Stockholms bästa thairestaurang med traditionell thaimat, färska råvaror och 9 restauranger runt om i Stockholm.">
+  <meta name="twitter:image" content="https://thw.se/assets/og-image.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap"></noscript>
   <style>
     /* ===========================
        VARIABLER & RESET
@@ -258,6 +275,7 @@
     .nav__cta:hover { background: #c98630; }
 
     /* Location carousel arrows – desktop: hidden */
+    .locations__intro { margin-top: 14px; max-width: 520px; color: var(--text-muted); font-size: 15px; line-height: 1.6; }
     .locations__arrows { display: none; }
 
     /* ===========================
@@ -298,7 +316,7 @@
       border: none;
       cursor: pointer;
       color: var(--text-muted);
-      padding: 4px;
+      padding: 12px;
       transition: color 0.2s;
     }
     .popup__close:hover { color: var(--text); }
@@ -1711,6 +1729,52 @@
 
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://thw.se/#organization",
+  "name": "Thai House Wok",
+  "url": "https://thw.se/",
+  "logo": "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg",
+  "image": "https://thw.se/assets/og-image.jpg",
+  "foundingDate": "2006",
+  "description": "Thai House Wok är en restaurangkedja som sedan 2006 har tagit den thailändska matkulturen till Sverige, med 9 restauranger runt om i Stockholm.",
+  "sameAs": [
+    "https://instagram.com/thaiHouseWok",
+    "https://facebook.com/thaiHouseWok"
+  ],
+  "subOrganization": [
+    {
+      "@id": "https://thw.se/hornsgatan.html#restaurant"
+    },
+    {
+      "@id": "https://thw.se/folkungagatan.html#restaurant"
+    },
+    {
+      "@id": "https://thw.se/birkagatan.html#restaurant"
+    },
+    {
+      "@id": "https://thw.se/hantverkargatan.html#restaurant"
+    },
+    {
+      "@id": "https://thw.se/nybrogatan.html#restaurant"
+    },
+    {
+      "@id": "https://thw.se/lindhagen.html#restaurant"
+    },
+    {
+      "@id": "https://thw.se/sollentuna.html#restaurant"
+    },
+    {
+      "@id": "https://thw.se/hammarby-sjostad.html#restaurant"
+    },
+    {
+      "@id": "https://thw.se/sockenplan.html#restaurant"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -1804,7 +1868,7 @@
        HERO
   ============================================================ -->
   <section class="hero" id="hem">
-    <video class="hero__video" autoplay muted loop playsinline preload="auto">
+    <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg">
       <source src="assets/hero.mp4" type="video/mp4">
     </video>
     <div class="hero__bg"></div>
@@ -1822,11 +1886,6 @@
         <a href="bestall.html" class="btn btn-orange">Beställ online</a>
         <a href="#restauranger" class="btn btn-outline">Hitta restaurang</a>
       </div>
-    </div>
-
-    <div class="hero__scroll">
-      <div class="hero__scroll-line"></div>
-      <span class="hero__scroll-label">Scrolla</span>
     </div>
   </section>
 
@@ -2431,6 +2490,7 @@
             Hitta oss
           </div>
           <h2 class="locations__heading">Våra<br><span>Restauranger</span></h2>
+          <p class="locations__intro">Alla restauranger har öppet måndag till fredag 11–21 och lördag till söndag 12–21. Lunch serveras vardagar 11–14 från 139 kr.</p>
         </div>
         <div class="locations__arrows" id="loc-arrows">
           <button class="loc-arrow" id="loc-prev" aria-label="Föregående">
@@ -2608,17 +2668,17 @@
         <div>
           <div class="footer__col-title">Restauranger</div>
           <div class="footer__col-links">
-            <a href="#restauranger">Hornsgatan</a>
-            <a href="#restauranger">Folkungagatan</a>
-            <a href="#restauranger">Birkagatan</a>
-            <a href="#restauranger">Nybrogatan</a>
+            <a href="hornsgatan.html">Hornsgatan</a>
+            <a href="folkungagatan.html">Folkungagatan</a>
+            <a href="birkagatan.html">Birkagatan</a>
+            <a href="nybrogatan.html">Nybrogatan</a>
             <a href="#restauranger">Se alla →</a>
             <a href="jobb.html">Jobba hos oss</a>
           </div>
         </div>
       </div>
       <div class="footer__bottom">
-        <div class="footer__copy">© 2025 Thai House Wok. Alla rättigheter förbehållna.</div>
+        <div class="footer__copy">© 2026 Thai House Wok. Alla rättigheter förbehållna.</div>
         <div class="footer__bottom-links">
           <a href="#">Integritetspolicy</a>
           <a href="#">Cookies</a>
