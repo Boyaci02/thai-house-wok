@@ -1732,45 +1732,476 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://thw.se/#organization",
-  "name": "Thai House Wok",
-  "url": "https://thw.se/",
-  "logo": "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg",
-  "image": "https://thw.se/assets/og-image.jpg",
-  "foundingDate": "2006",
-  "description": "Thai House Wok är en restaurangkedja som sedan 2006 har tagit den thailändska matkulturen till Sverige, med 9 restauranger runt om i Stockholm.",
-  "sameAs": [
-    "https://instagram.com/thaiHouseWok",
-    "https://facebook.com/thaiHouseWok"
-  ],
-  "subOrganization": [
+  "@graph": [
     {
-      "@id": "https://thw.se/hornsgatan.html#restaurant"
+      "@type": "Organization",
+      "@id": "https://thw.se/#organization",
+      "name": "Thai House Wok",
+      "url": "https://thw.se/",
+      "logo": "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg",
+      "image": "https://thw.se/assets/og-image.jpg",
+      "foundingDate": "2006",
+      "description": "Thai House Wok är en restaurangkedja som sedan 2006 har tagit den thailändska matkulturen till Sverige, med 9 restauranger runt om i Stockholm.",
+      "sameAs": [
+        "https://instagram.com/thaiHouseWok",
+        "https://facebook.com/thaiHouseWok"
+      ],
+      "subOrganization": [
+        {
+          "@id": "https://thw.se/hornsgatan.html#restaurant"
+        },
+        {
+          "@id": "https://thw.se/folkungagatan.html#restaurant"
+        },
+        {
+          "@id": "https://thw.se/birkagatan.html#restaurant"
+        },
+        {
+          "@id": "https://thw.se/hantverkargatan.html#restaurant"
+        },
+        {
+          "@id": "https://thw.se/nybrogatan.html#restaurant"
+        },
+        {
+          "@id": "https://thw.se/lindhagen.html#restaurant"
+        },
+        {
+          "@id": "https://thw.se/sollentuna.html#restaurant"
+        },
+        {
+          "@id": "https://thw.se/hammarby-sjostad.html#restaurant"
+        },
+        {
+          "@id": "https://thw.se/sockenplan.html#restaurant"
+        }
+      ]
     },
     {
-      "@id": "https://thw.se/folkungagatan.html#restaurant"
+      "@type": "Restaurant",
+      "@id": "https://thw.se/hornsgatan.html#restaurant",
+      "name": "Thai House Wok – Hornsgatan",
+      "url": "https://thw.se/hornsgatan.html",
+      "image": "https://thw.se/assets/og-image.jpg",
+      "logo": "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg",
+      "telephone": "+46 8 668 18 18",
+      "servesCuisine": "Thai",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Hornsgatan 67",
+        "addressLocality": "Stockholm",
+        "addressCountry": "SE",
+        "postalCode": "118 49"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "12:00",
+          "closes": "21:00"
+        }
+      ],
+      "hasMenu": "https://thw.se/meny.html",
+      "branchOf": {
+        "@id": "https://thw.se/#organization"
+      },
+      "potentialAction": {
+        "@type": "OrderAction",
+        "target": "https://qopla.com/restaurant/thw---hornsgatan/qx1qzmwVQa/order"
+      }
     },
     {
-      "@id": "https://thw.se/birkagatan.html#restaurant"
+      "@type": "Restaurant",
+      "@id": "https://thw.se/folkungagatan.html#restaurant",
+      "name": "Thai House Wok – Folkungagatan",
+      "url": "https://thw.se/folkungagatan.html",
+      "image": "https://thw.se/assets/og-image.jpg",
+      "logo": "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg",
+      "telephone": "+46 8 643 11 30",
+      "servesCuisine": "Thai",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Folkungagatan 110",
+        "addressLocality": "Stockholm",
+        "addressCountry": "SE",
+        "postalCode": "116 30"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "12:00",
+          "closes": "21:00"
+        }
+      ],
+      "hasMenu": "https://thw.se/meny.html",
+      "branchOf": {
+        "@id": "https://thw.se/#organization"
+      },
+      "potentialAction": {
+        "@type": "OrderAction",
+        "target": "https://qopla.com/restaurant/thw---folkungagatan/qLARGmwByg/order"
+      }
     },
     {
-      "@id": "https://thw.se/hantverkargatan.html#restaurant"
+      "@type": "Restaurant",
+      "@id": "https://thw.se/birkagatan.html#restaurant",
+      "name": "Thai House Wok – Birkagatan",
+      "url": "https://thw.se/birkagatan.html",
+      "image": "https://thw.se/assets/og-image.jpg",
+      "logo": "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg",
+      "telephone": "+46 8 32 94 00",
+      "servesCuisine": "Thai",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Birkagatan 14",
+        "addressLocality": "Stockholm",
+        "addressCountry": "SE",
+        "postalCode": "113 39"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "12:00",
+          "closes": "21:00"
+        }
+      ],
+      "hasMenu": "https://thw.se/meny.html",
+      "branchOf": {
+        "@id": "https://thw.se/#organization"
+      },
+      "potentialAction": {
+        "@type": "OrderAction",
+        "target": "https://qopla.com/restaurant/thw---birkagatan/qYx1bNzGwD/order"
+      }
     },
     {
-      "@id": "https://thw.se/nybrogatan.html#restaurant"
+      "@type": "Restaurant",
+      "@id": "https://thw.se/hantverkargatan.html#restaurant",
+      "name": "Thai House Wok – Hantverkargatan",
+      "url": "https://thw.se/hantverkargatan.html",
+      "image": "https://thw.se/assets/og-image.jpg",
+      "logo": "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg",
+      "telephone": "+46 8 654 42 02",
+      "servesCuisine": "Thai",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Hantverkargatan 78",
+        "addressLocality": "Stockholm",
+        "addressCountry": "SE",
+        "postalCode": "112 38"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "12:00",
+          "closes": "21:00"
+        }
+      ],
+      "hasMenu": "https://thw.se/meny.html",
+      "branchOf": {
+        "@id": "https://thw.se/#organization"
+      },
+      "potentialAction": {
+        "@type": "OrderAction",
+        "target": "https://qopla.com/restaurant/thw---hantverkargatan/qmQvNMmOAY/order"
+      }
     },
     {
-      "@id": "https://thw.se/lindhagen.html#restaurant"
+      "@type": "Restaurant",
+      "@id": "https://thw.se/nybrogatan.html#restaurant",
+      "name": "Thai House Wok – Nybrogatan",
+      "url": "https://thw.se/nybrogatan.html",
+      "image": "https://thw.se/assets/og-image.jpg",
+      "logo": "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg",
+      "telephone": "+46 8 661 12 13",
+      "servesCuisine": "Thai",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Nybrogatan 42",
+        "addressLocality": "Stockholm",
+        "addressCountry": "SE",
+        "postalCode": "114 40"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "12:00",
+          "closes": "21:00"
+        }
+      ],
+      "hasMenu": "https://thw.se/meny.html",
+      "branchOf": {
+        "@id": "https://thw.se/#organization"
+      },
+      "potentialAction": {
+        "@type": "OrderAction",
+        "target": "https://qopla.com/restaurant/thw---nybrogatan/qWEN9veLgm/order"
+      }
     },
     {
-      "@id": "https://thw.se/sollentuna.html#restaurant"
+      "@type": "Restaurant",
+      "@id": "https://thw.se/lindhagen.html#restaurant",
+      "name": "Thai House Wok – Lindhagen",
+      "url": "https://thw.se/lindhagen.html",
+      "image": "https://thw.se/assets/og-image.jpg",
+      "logo": "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg",
+      "telephone": "+46 8 480 026 00",
+      "servesCuisine": "Thai",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Lindhagensgatan 139C",
+        "addressLocality": "Stockholm",
+        "addressCountry": "SE",
+        "postalCode": "112 51"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "12:00",
+          "closes": "21:00"
+        }
+      ],
+      "hasMenu": "https://thw.se/meny.html",
+      "branchOf": {
+        "@id": "https://thw.se/#organization"
+      },
+      "potentialAction": {
+        "@type": "OrderAction",
+        "target": "https://qopla.com/restaurant/thw---lindhagen/q7PEX1oK3A/order"
+      }
     },
     {
-      "@id": "https://thw.se/hammarby-sjostad.html#restaurant"
+      "@type": "Restaurant",
+      "@id": "https://thw.se/sollentuna.html#restaurant",
+      "name": "Thai House Wok – Sollentuna",
+      "url": "https://thw.se/sollentuna.html",
+      "image": "https://thw.se/assets/og-image.jpg",
+      "logo": "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg",
+      "telephone": "+46 8 35 24 25",
+      "servesCuisine": "Thai",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Sollentunavägen 146",
+        "addressLocality": "Sollentuna",
+        "addressCountry": "SE",
+        "postalCode": "191 44"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "12:00",
+          "closes": "21:00"
+        }
+      ],
+      "hasMenu": "https://thw.se/meny.html",
+      "branchOf": {
+        "@id": "https://thw.se/#organization"
+      },
+      "potentialAction": {
+        "@type": "OrderAction",
+        "target": "https://qopla.com/restaurant/thw---sollentuna/qry0oVP4z1/order"
+      }
     },
     {
-      "@id": "https://thw.se/sockenplan.html#restaurant"
+      "@type": "Restaurant",
+      "@id": "https://thw.se/hammarby-sjostad.html#restaurant",
+      "name": "Thai House Wok – Hammarby Sjöstad",
+      "url": "https://thw.se/hammarby-sjostad.html",
+      "image": "https://thw.se/assets/og-image.jpg",
+      "logo": "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg",
+      "telephone": "+46 8 85 50 15",
+      "servesCuisine": "Thai",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Lugnets Allé 67",
+        "addressLocality": "Stockholm",
+        "addressCountry": "SE",
+        "postalCode": "120 67"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "12:00",
+          "closes": "21:00"
+        }
+      ],
+      "hasMenu": "https://thw.se/meny.html",
+      "branchOf": {
+        "@id": "https://thw.se/#organization"
+      },
+      "potentialAction": {
+        "@type": "OrderAction",
+        "target": "https://qopla.com/restaurant/thw---hammarby-sjostad/qgdE2GokrV/order"
+      }
+    },
+    {
+      "@type": "Restaurant",
+      "@id": "https://thw.se/sockenplan.html#restaurant",
+      "name": "Thai House Wok – Sockenplan",
+      "url": "https://thw.se/sockenplan.html",
+      "image": "https://thw.se/assets/og-image.jpg",
+      "logo": "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg",
+      "telephone": "+46 8 659 01 00",
+      "servesCuisine": "Thai",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Enskedevägen 85",
+        "addressLocality": "Stockholm",
+        "addressCountry": "SE"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "12:00",
+          "closes": "21:00"
+        }
+      ],
+      "hasMenu": "https://thw.se/meny.html",
+      "branchOf": {
+        "@id": "https://thw.se/#organization"
+      }
     }
   ]
 }
