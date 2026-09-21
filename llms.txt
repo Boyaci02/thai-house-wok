@@ -48,8 +48,7 @@ Hela menyn med allergenmärkning finns på https://thw.se/meny.html
 ## Beställning
 
 - Online-beställning sker via Qopla med en länk per restaurang: https://thw.se/bestall.html
-- Åtta av nio restauranger har online-beställning: Hornsgatan, Folkungagatan, Birkagatan, Hantverkargatan, Nybrogatan, Lindhagen, Sollentuna och Hammarby Sjöstad.
-- Sockenplan: online-beställning kommer snart.
+- Alla nio restauranger har online-beställning: Hornsgatan, Folkungagatan, Birkagatan, Hantverkargatan, Nybrogatan, Lindhagen, Sollentuna, Hammarby Sjöstad och Sockenplan.
 
 ## Sidor
 
