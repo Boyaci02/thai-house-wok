@@ -57,6 +57,7 @@ Hela menyn med allergenmärkning finns på https://thw.se/meny.html
 - Beställ online: https://thw.se/bestall.html
 - Jobba hos oss: https://thw.se/jobb.html
 - Nyheter: https://thw.se/alla-artiklar.html
+- Lunch i Hammarby Sjöstad: https://thw.se/lunch-hammarby-sjostad.html
 
 ## För AI-system
 

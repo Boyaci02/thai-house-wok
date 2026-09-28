@@ -536,6 +536,17 @@
       color: rgba(255,255,255,0.65);
     }
 
+    /* Honeypot – ska aldrig synas eller nås med tangentbord */
+    .form-hp {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
     /* GDPR-checkbox */
     .form-consent {
       display: flex;
@@ -892,7 +903,7 @@
           <ul class="job-form-intro__list">
             <li>Välj vilken roll du söker till</li>
             <li>Berätta vilken restaurang som passar dig</li>
-            <li>Ladda upp ditt CV (PDF, max 10&nbsp;MB)</li>
+            <li>Ladda upp ditt CV (PDF, max 3&nbsp;MB)</li>
             <li>Vi svarar på alla ansökningar</li>
           </ul>
         </div>
@@ -902,19 +913,19 @@
           <h3 class="job-form__title">Ansökningsformulär</h3>
 
           <div class="form-status form-status--err" id="form-error-banner" role="alert">
-            Något gick fel — försök igen, eller mejla oss på <a href="mailto:[HR_EMAIL]" style="color:inherit;text-decoration:underline;">[HR_EMAIL]</a>.
+            Något gick fel — försök igen, eller mejla oss på <a href="mailto:nathalie@thw.se" style="color:inherit;text-decoration:underline;">nathalie@thw.se</a>.
           </div>
 
           <form id="job-form"
-                action="https://formspree.io/f/{FORM_ID}"
+                action="/api/ansokan"
                 method="POST"
-                enctype="multipart/form-data"
                 novalidate>
 
-            <!-- Hidden Formspree-fält -->
-            <input type="hidden" name="_subject" id="subject-line" value="Ny jobbansökan – Thai House Wok">
-            <input type="hidden" name="_replyto" id="replyto-mirror">
-            <input type="hidden" name="_format" value="plain">
+            <!-- Honeypot – ska aldrig synas eller nås med tangentbord -->
+            <div class="form-hp" aria-hidden="true">
+              <label for="botcheck">Lämna tomt</label>
+              <input type="text" id="botcheck" name="botcheck" tabindex="-1" autocomplete="off">
+            </div>
 
             <div class="form-row">
               <div class="form-group">
@@ -977,11 +988,11 @@
                 </span>
                 <span class="form-file__text">
                   <span class="form-file__label" id="cv-filename">Välj fil…</span>
-                  <span class="form-file__hint">PDF, DOC eller DOCX – max 10&nbsp;MB</span>
+                  <span class="form-file__hint">PDF, DOC eller DOCX – max 3&nbsp;MB</span>
                 </span>
                 <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required aria-required="true">
               </label>
-              <div class="form-error" id="cv-error">Filen är för stor (max 10 MB) eller har fel format.</div>
+              <div class="form-error" id="cv-error">Filen är för stor (max 3 MB) eller har fel format.</div>
             </div>
 
             <div class="form-consent">
@@ -1092,7 +1103,7 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
     // --- Formulär: CV-filnamn + storlek ---
-    const MAX_BYTES = 10 * 1024 * 1024; // 10 MB
+    const MAX_BYTES = 3 * 1024 * 1024; // 3 MB
     const cvInput   = document.getElementById('cv');
     const cvLabel   = document.getElementById('cv-filename');
     const cvError   = document.getElementById('cv-error');
@@ -1106,7 +1117,7 @@
         return;
       }
       if (file.size > MAX_BYTES) {
-        cvError.textContent = 'Filen är för stor — max 10 MB.';
+        cvError.textContent = 'Filen är för stor — max 3 MB.';
         cvError.classList.add('show');
         cvInput.setAttribute('aria-invalid', 'true');
         cvInput.value = '';
@@ -1123,8 +1134,16 @@
     const errorBanner = document.getElementById('form-error-banner');
     const gdpr        = document.getElementById('gdpr');
     const gdprError   = document.getElementById('gdpr-error');
-    const subjectLine = document.getElementById('subject-line');
-    const replyto     = document.getElementById('replyto-mirror');
+
+    // Läser en fil som base64 (utan data:-prefixet) för att kunna skickas som JSON.
+    function readAsBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result).split(',')[1] || '');
+        reader.onerror = () => reject(new Error('Kunde inte läsa filen'));
+        reader.readAsDataURL(file);
+      });
+    }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -1144,28 +1163,34 @@
       // Filstorlek (extra koll)
       const file = cvInput.files[0];
       if (file && file.size > MAX_BYTES) {
-        cvError.textContent = 'Filen är för stor — max 10 MB.';
+        cvError.textContent = 'Filen är för stor — max 3 MB.';
         cvError.classList.add('show');
         cvInput.focus();
         return;
       }
 
-      // Bygg ämnesrad: [Ansökan – Kategori – Ort] Namn
-      const namn = form.namn.value.trim() || 'Okänd sökande';
-      const kat  = form.kategori.value || 'Okategoriserad';
-      const ort  = form.restaurang.value || 'Spelar ingen roll';
-      subjectLine.value = `[Ansökan – ${kat} – ${ort}] ${namn}`;
-      replyto.value = form.email.value.trim();
-
       submitBtn.disabled = true;
       submitBtn.textContent = 'Skickar…';
 
       try {
-        const formData = new FormData(form);
-        const response = await fetch(form.action, {
+        const payload = {
+          namn: form.namn.value.trim(),
+          telefon: form.telefon.value.trim(),
+          email: form.email.value.trim(),
+          kategori: form.kategori.value,
+          restaurang: form.restaurang.value,
+          meddelande: form.meddelande.value.trim(),
+          gdpr: gdpr.checked,
+          botcheck: form.botcheck ? form.botcheck.value : ''
+        };
+        if (file) {
+          payload.cv = { filename: file.name, content: await readAsBase64(file) };
+        }
+
+        const response = await fetch('/api/ansokan', {
           method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
         });
 
         if (response.ok) {

@@ -1374,6 +1374,24 @@
       background: #e5883a;
       border-color: #e5883a;
     }
+    /* Honeypot – ska aldrig synas eller nås med tangentbord */
+    .form-hp {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .form-feedback {
+      margin: 16px 0 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #ffffff;
+      min-height: 1.5em;
+    }
+    .form-feedback--err { font-weight: 700; }
 
     /* ===========================
        BLOGG
@@ -2139,6 +2157,11 @@
         "addressCountry": "SE",
         "postalCode": "191 44"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 59.428157,
+        "longitude": 17.953152
+      },
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -2485,7 +2508,7 @@
           </div>
           <div class="about__stat">
             <div class="about__stat-num">★ 4.7</div>
-            <div class="about__stat-label">Genomsnittligt betyg</div>
+            <div class="about__stat-label">Snittbetyg på Qopla</div>
           </div>
         </div>
       </div>
@@ -3125,26 +3148,31 @@
     <div class="contact__inner">
       <div class="contact__form reveal" style="width:100%;">
         <div class="contact__form-title">Skicka ett meddelande</div>
-        <form id="contact-form">
+        <form id="contact-form" novalidate>
           <div class="form-row">
             <div class="form-group">
               <label for="name">Namn</label>
-              <input type="text" id="name" placeholder="Ditt namn" required>
+              <input type="text" id="name" name="name" autocomplete="name" placeholder="Ditt namn" required>
             </div>
             <div class="form-group">
               <label for="email">E-post</label>
-              <input type="email" id="email" placeholder="din@email.se" required>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="din@email.se" required>
             </div>
           </div>
           <div class="form-group">
             <label for="subject">Ämne</label>
-            <input type="text" id="subject" placeholder="Vad gäller det?">
+            <input type="text" id="subject" name="subject" placeholder="Vad gäller det?">
           </div>
           <div class="form-group">
             <label for="message">Meddelande</label>
-            <textarea id="message" placeholder="Skriv ditt meddelande här..." required></textarea>
+            <textarea id="message" name="message" placeholder="Skriv ditt meddelande här..." required></textarea>
+          </div>
+          <div class="form-group form-hp" aria-hidden="true">
+            <label for="botcheck">Lämna tomt</label>
+            <input type="text" id="botcheck" name="botcheck" tabindex="-1" autocomplete="off">
           </div>
           <button type="submit" class="btn btn-orange">Skicka meddelande</button>
+          <p class="form-feedback" id="contact-feedback" role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
@@ -3163,16 +3191,16 @@
       <div class="blog__grid">
 
         <!-- Featured article -->
-        <a href="hammarby-sjostad-oppning.html" class="blog-card blog-card--featured reveal">
-          <img class="blog-card__img" src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69e9eea8b0e5e2bb7f1016bb.jpg" alt="Hammarby Sjöstad – vy över stadsdelen där Thai House Wok öppnar sin tionde restaurang" loading="lazy">
+        <a href="lunch-hammarby-sjostad.html" class="blog-card blog-card--featured reveal">
+          <img class="blog-card__img" src="assets/gbp/pad-preowan-hammarby.jpg" alt="Pad Preowan med ris, en av lunchrätterna hos Thai House Wok i Hammarby Sjöstad" loading="lazy">
 
           <div class="blog-card__body">
             <div class="blog-card__meta">
-              <span class="blog-card__tag">Mat</span>
-              <span class="blog-card__date">Mars 2026</span>
+              <span class="blog-card__tag">Lunch</span>
+              <span class="blog-card__date">September 2026</span>
             </div>
-            <h3 class="blog-card__heading">Vi har öppnat i Hammarby Sjöstad – en ny plats för äkta thaimat</h3>
-            <p class="blog-card__excerpt">Sedan den 13 mars 2026 finns Thai House Wok i hjärtat av Hammarby Sjöstad, på Lugnets Allé 67. En modern stadsdel förtjänar traditionell thaimat – välkommen till oss!</p>
+            <h3 class="blog-card__heading">Lunch i Hammarby Sjöstad, 11 till 14</h3>
+            <p class="blog-card__excerpt">Varje vardag mellan elva och två serverar vi lunch på Lugnets Allé 67. Från 139 kr, ris och dryck ingår, och tre rätter att välja mellan varje dag.</p>
             <span class="blog-card__link">Läs mer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
           </div>
         </a>
@@ -3414,18 +3442,49 @@
     // --- Kontaktformulär ---
     const form = document.getElementById('contact-form');
     if (form) {
-      form.addEventListener('submit', e => {
+      const feedback = document.getElementById('contact-feedback');
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      function say(text, isError) {
+        feedback.textContent = text;
+        feedback.classList.toggle('form-feedback--err', !!isError);
+      }
+
+      form.addEventListener('submit', async e => {
         e.preventDefault();
-        const submitBtn = form.querySelector('button[type="submit"]');
-        submitBtn.textContent = 'Skickat! ✓';
+        say('');
+
+        if (!form.checkValidity()) {
+          const firstInvalid = form.querySelector(':invalid');
+          if (firstInvalid) firstInvalid.focus();
+          say('Fyll i namn, en giltig e-postadress och ett meddelande.', true);
+          return;
+        }
+
         submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.7';
-        setTimeout(() => {
-          submitBtn.textContent = 'Skicka meddelande';
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = '';
+        submitBtn.textContent = 'Skickar…';
+
+        try {
+          const payload = Object.fromEntries(new FormData(form).entries());
+          const response = await fetch('/api/kontakt', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (!response.ok) throw new Error('Server returned ' + response.status);
+
           form.reset();
-        }, 3000);
+          submitBtn.textContent = 'Skickat';
+          say('Tack! Vi har tagit emot ditt meddelande och hör av oss.');
+          setTimeout(() => {
+            submitBtn.textContent = 'Skicka meddelande';
+            submitBtn.disabled = false;
+          }, 3000);
+        } catch (err) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Skicka meddelande';
+          say('Meddelandet gick inte fram. Försök igen om en stund, eller ring restaurangen direkt – numren står under Våra restauranger.', true);
+        }
       });
     }
   </script>
