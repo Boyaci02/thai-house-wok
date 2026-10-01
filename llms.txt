@@ -32,6 +32,18 @@ Samma öppettider gäller på alla nio restauranger.
 8. Hammarby Sjöstad: Lugnets Allé 67, 120 67 Stockholm. Telefon 08 85 50 15. Takeaway och leverans. Öppnade mars 2026. https://thw.se/hammarby-sjostad.html
 9. Sockenplan, Enskede: Enskedevägen 85, 122 63 Enskede. Telefon 08 659 01 00. Takeaway och leverans. https://thw.se/sockenplan.html
 
+## Stadsdelar i Stockholm
+
+Översiktssida med alla restauranger samlade per stadsdel: https://thw.se/thaimat-stockholm.html
+
+- Södermalm: Hornsgatan 67 och Folkungagatan 110
+- Kungsholmen: Hantverkargatan 78 och Lindhagensgatan 139C (Lindhagen är sittrestaurangen)
+- Östermalm: Nybrogatan 42
+- Vasastan: Birkagatan 14
+- Hammarby Sjöstad: Lugnets Allé 67
+- Enskede, vid Sockenplan: Enskedevägen 85
+- Sollentuna: Sollentunavägen 146
+
 ## Meny och priser
 
 Hela menyn med allergenmärkning finns på https://thw.se/meny.html
@@ -53,6 +65,7 @@ Hela menyn med allergenmärkning finns på https://thw.se/meny.html
 ## Sidor
 
 - Startsida: https://thw.se/
+- Thaimat i Stockholm, alla restauranger per stadsdel: https://thw.se/thaimat-stockholm.html
 - Meny: https://thw.se/meny.html
 - Beställ online: https://thw.se/bestall.html
 - Jobba hos oss: https://thw.se/jobb.html
