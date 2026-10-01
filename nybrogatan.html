@@ -233,6 +233,19 @@
     .btn-order:hover { background: var(--purple); border-color: var(--purple); }
 
     /* ABOUT SECTION */
+    .loc-faq { max-width: 1280px; margin: 0 auto; padding: 0 48px 80px; }
+    .loc-faq__label { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+    .loc-faq__title { font-size: clamp(28px, 3.4vw, 44px); font-weight: 900; color: var(--text); line-height: 1.08; margin-bottom: 32px; }
+    .loc-faq__title span { color: var(--orange); }
+    .loc-faq__list { max-width: 820px; }
+    .loc-faq__item { border-bottom: 1px solid var(--border); }
+    .loc-faq__item summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 0; min-height: 44px; font-size: 17px; font-weight: 700; color: var(--text); cursor: pointer; list-style: none; transition: color 0.2s ease; }
+    .loc-faq__item summary::-webkit-details-marker { display: none; }
+    .loc-faq__item summary::after { content: ""; flex-shrink: 0; width: 10px; height: 10px; border-right: 2px solid var(--orange); border-bottom: 2px solid var(--orange); transform: rotate(45deg); transition: transform 0.2s ease; }
+    .loc-faq__item[open] summary::after { transform: rotate(-135deg); }
+    .loc-faq__item summary:hover { color: var(--purple); }
+    .loc-faq__item summary:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; }
+    .loc-faq__item p { padding: 0 0 22px; max-width: 680px; font-size: 16px; line-height: 1.7; color: var(--text-muted); }
     .about-section {
       max-width: 1280px;
       margin: 0 auto;
@@ -305,6 +318,9 @@
       .info-section { padding: 48px 20px; }
       .info-grid { grid-template-columns: 1fr; gap: 32px; }
       .details-card { padding: 28px 24px; }
+      .loc-faq { padding: 0 20px 56px; }
+      .loc-faq__title { margin-bottom: 20px; }
+      .loc-faq__item summary { font-size: 16px; padding: 18px 0; }
       .about-section { padding: 0 20px 60px; }
       .page-back { padding: 0 20px 60px; }
     }
@@ -323,6 +339,7 @@
   "logo": "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69b027c87fc07cbbb5541dc8.svg",
   "telephone": "+46 8 661 12 13",
   "servesCuisine": "Thai",
+  "priceRange": "139–189 kr",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Nybrogatan 42",
@@ -465,6 +482,38 @@
     </p>
   </section>
 
+  <!-- FAQ -->
+  <section class="loc-faq" id="faq">
+    <p class="loc-faq__label">Vanliga frågor</p>
+    <h2 class="loc-faq__title">Frågor om <span>Nybrogatan</span></h2>
+    <div class="loc-faq__list">
+        <details class="loc-faq__item">
+          <summary>Vilka öppettider har Thai House Wok Nybrogatan?</summary>
+          <p>Måndag till fredag 11:00–21:00, lördag och söndag 12:00–21:00. Samma öppettider gäller på alla nio restauranger.</p>
+        </details>
+        <details class="loc-faq__item">
+          <summary>Var ligger Thai House Wok Nybrogatan?</summary>
+          <p>Adressen är Nybrogatan 42, 114 40 Stockholm, i Östermalm. Telefonnummer 08 661 12 13.</p>
+        </details>
+        <details class="loc-faq__item">
+          <summary>Vad kostar lunchen på Nybrogatan?</summary>
+          <p>Lunchen kostar 139 kr och serveras måndag till fredag 11:00–14:00. Den serveras med ris och dryck ingår.</p>
+        </details>
+        <details class="loc-faq__item">
+          <summary>Kan jag beställa takeaway eller leverans från Nybrogatan?</summary>
+          <p>Ja. Restaurangen har takeaway och leverans. Knappen Beställ online på den här sidan går direkt till Nybrogatan i Qopla, eller ring 08 661 12 13.</p>
+        </details>
+        <details class="loc-faq__item">
+          <summary>Vad kostar en huvudrätt?</summary>
+          <p>Grytor och wokrätter serveras med ris och kostar 159 kr med kyckling, 169 kr med fläsk eller tofu och 179 kr med nöt, bläckfisk eller räkor. Signaturrätterna ligger på 179 till 189 kr.</p>
+        </details>
+        <details class="loc-faq__item">
+          <summary>Finns det vegetariska och glutenfria rätter på Nybrogatan?</summary>
+          <p>Huvudrätterna går att få med tofu eller grönsaker. Allergener och kostmärkning som glutenfri och laktosfri står per rätt på menysidan. Fråga gärna personalen om du är osäker.</p>
+        </details>
+    </div>
+  </section>
+
   <!-- BACK BUTTON -->
   <div class="page-back">
     <a href="index.html#restauranger" class="btn-back">
@@ -479,5 +528,62 @@
     <p class="footer__copy">© 2026 Thai House Wok. Äkta thaimat sedan 2006.</p>
   </footer>
 
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "@id": "https://thw.se/nybrogatan.html#faq",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Vilka öppettider har Thai House Wok Nybrogatan?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Måndag till fredag 11:00–21:00, lördag och söndag 12:00–21:00. Samma öppettider gäller på alla nio restauranger."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Var ligger Thai House Wok Nybrogatan?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Adressen är Nybrogatan 42, 114 40 Stockholm, i Östermalm. Telefonnummer 08 661 12 13."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Vad kostar lunchen på Nybrogatan?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Lunchen kostar 139 kr och serveras måndag till fredag 11:00–14:00. Den serveras med ris och dryck ingår."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Kan jag beställa takeaway eller leverans från Nybrogatan?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Ja. Restaurangen har takeaway och leverans. Knappen Beställ online på den här sidan går direkt till Nybrogatan i Qopla, eller ring 08 661 12 13."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Vad kostar en huvudrätt?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Grytor och wokrätter serveras med ris och kostar 159 kr med kyckling, 169 kr med fläsk eller tofu och 179 kr med nöt, bläckfisk eller räkor. Signaturrätterna ligger på 179 till 189 kr."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Finns det vegetariska och glutenfria rätter på Nybrogatan?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Huvudrätterna går att få med tofu eller grönsaker. Allergener och kostmärkning som glutenfri och laktosfri står per rätt på menysidan. Fråga gärna personalen om du är osäker."
+   }
+  }
+ ]
+}
+</script>
 </body>
 </html>

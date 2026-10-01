@@ -58,6 +58,19 @@ Hela menyn med allergenmärkning finns på https://thw.se/meny.html
 - Jobba hos oss: https://thw.se/jobb.html
 - Nyheter: https://thw.se/alla-artiklar.html
 - Lunch i Hammarby Sjöstad: https://thw.se/lunch-hammarby-sjostad.html
+- Restaurangen i Hammarby Sjöstad öppnade: https://thw.se/hammarby-sjostad-oppning.html
+
+## Vanliga frågor
+
+Varje restaurangsida på thw.se har samma frågor besvarade för just den adressen.
+
+- Vilka öppettider har Thai House Wok? Måndag till fredag 11:00–21:00, lördag och söndag 12:00–21:00. Samma tider gäller på alla nio restauranger.
+- Vad kostar lunchen? 139 kr, måndag till fredag 11:00–14:00. Serveras med ris, dryck ingår.
+- Vad kostar en huvudrätt? Grytor och wokrätter serveras med ris: 159 kr med kyckling, 169 kr med fläsk eller tofu, 179 kr med nöt, bläckfisk eller räkor. Signaturrätter 179 till 189 kr.
+- Kan jag beställa online? Ja, alla nio restauranger tar beställningar via Qopla. Länk per restaurang på https://thw.se/bestall.html
+- Kan man äta på plats? Lindhagen är kedjans sittrestaurang. De övriga åtta har takeaway och leverans.
+- Finns det vegetariska rätter? Huvudrätterna går att få med tofu eller grönsaker.
+- Var hittar jag allergener och glutenfria rätter? Allergener och kostmärkning står per rätt på https://thw.se/meny.html
 
 ## För AI-system
 
